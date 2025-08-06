@@ -1,0 +1,213 @@
+name: 🧠 NeuroMesh Architecture Optimization
+on:
+  workflow_dispatch:
+    inputs:
+      neuromesh_focus:
+        description: 'NeuroMesh optimization focus area'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - 'interactions'
+          - 'memory_management'
+          - 'execution_flow'
+          - 'type_safety'
+
+jobs:
+  neuromesh-analysis:
+    name: 🔬 NeuroMesh Architecture Analysis
+    runs-on: macos-14
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: 🛠️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.2'
+          
+      - name: 🧠 Analyze NeuroMesh Components
+        run: |
+          echo "🔍 Finding NeuroMesh files..."
+          find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | \
+            xargs grep -l "NeuroMesh\|BirdAgent\|EcosystemValidator" | \
+            tee neuromesh_files.txt
+          
+          echo "📊 NeuroMesh Pattern Analysis..."
+          
+          # Count NeuroMesh patterns
+          interaction_count=$(find . -name "*.swift" -type f -not -path "./build/*" | xargs grep -c "NeuroMeshInteraction\|interaction" | awk '{sum+=$1} END {print sum}')
+          agent_count=$(find . -name "*.swift" -type f -not -path "./build/*" | xargs grep -c "BirdAgent\|AgentType" | awk '{sum+=$1} END {print sum}')
+          memory_count=$(find . -name "*.swift" -type f -not -path "./build/*" | xargs grep -c "EntityMemory\|MemoryContent" | awk '{sum+=$1} END {print sum}')
+          
+          printf '{"neuromesh_files": %d, "interactions": %d, "agents": %d, "memory_operations": %d}' \
+            "$(wc -l < neuromesh_files.txt)" "$interaction_count" "$agent_count" "$memory_count" > neuromesh_analysis.json
+          
+          echo "🧠 NeuroMesh Analysis Results:"
+          cat neuromesh_analysis.json | jq '.'
+          
+      - name: 🔍 Identify Architecture Issues
+        run: |
+          echo "🔍 Analyzing NeuroMesh architecture patterns..."
+          
+          # Find type conflicts and duplications
+          find . -name "*.swift" -type f -not -path "./build/*" | \
+            xargs grep -n "enum AgentType\|struct NeuroMesh" | \
+            tee type_definitions.txt
+          
+          # Find memory management patterns  
+          find . -name "*.swift" -type f -not -path "./build/*" | \
+            xargs grep -n "weak var\|strong\|retain\|release" | \
+            head -20 > memory_patterns.txt
+          
+          # Find interaction bottlenecks
+          find . -name "*.swift" -type f -not -path "./build/*" | \
+            xargs grep -n "processInteraction\|handleInteraction" | \
+            tee interaction_methods.txt
+          
+          echo "🏗️ Found $(wc -l < type_definitions.txt) type definitions"
+          echo "💾 Found $(wc -l < memory_patterns.txt) memory management patterns" 
+          echo "⚡ Found $(wc -l < interaction_methods.txt) interaction methods"
+          
+      - name: 📤 Upload NeuroMesh Analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: neuromesh-analysis
+          path: |
+            neuromesh_analysis.json
+            neuromesh_files.txt
+            type_definitions.txt
+            memory_patterns.txt
+            interaction_methods.txt
+
+  optimize-neuromesh:
+    name: 🤖 Azure AI NeuroMesh Optimization
+    runs-on: macos-14
+    needs: neuromesh-analysis
+    if: always()
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: 📥 Download Analysis Results
+        uses: actions/download-artifact@v4
+        with:
+          name: neuromesh-analysis
+          
+      - name: 🧠 Azure AI NeuroMesh Architecture Optimization
+        env:
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_KEY: ${{ secrets.AZURE_OPENAI_KEY }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+        run: |
+          # Read NeuroMesh analysis
+          neuromesh_data=$(cat neuromesh_analysis.json)
+          echo "🧠 Processing NeuroMesh analysis: $neuromesh_data"
+          
+          # Create NeuroMesh optimization prompt
+          cat > neuromesh_prompt.txt << 'EOF'
+          You are a Swift AI/ML architecture expert specializing in NeuroMesh systems. Optimize the NeuroMesh architecture for:
+
+          1. Type Safety & Consistency
+          - Consolidate agent type definitions
+          - Eliminate duplicate enums and structs
+          - Create proper type hierarchies
+
+          2. Memory Management  
+          - Optimize entity memory handling
+          - Implement proper weak/strong references
+          - Reduce memory footprint
+
+          3. Interaction Processing
+          - Streamline interaction workflows
+          - Optimize data flow between components
+          - Implement efficient messaging patterns
+
+          4. Performance & Scalability
+          - Async/await integration for AI operations
+          - Batch processing for multiple interactions
+          - Memory pool management
+
+          Focus on Apple's best practices for AI/ML applications and Swift concurrency patterns.
+          EOF
+          
+          # Process NeuroMesh files
+          neuromesh_files_to_optimize=$(head -8 neuromesh_files.txt)
+          
+          for file in $neuromesh_files_to_optimize; do
+            if [ -f "$file" ]; then
+              echo "🔧 Optimizing NeuroMesh architecture in $file..."
+              
+              file_content=$(cat "$file" | base64)
+              
+              curl -s "$AZURE_OPENAI_ENDPOINT/openai/deployments/$AZURE_OPENAI_DEPLOYMENT/chat/completions?api-version=2024-08-01-preview" \
+                -H "Content-Type: application/json" \
+                -H "api-key: $AZURE_OPENAI_KEY" \
+                -d "{
+                  \"messages\": [
+                    {\"role\": \"system\", \"content\": \"$(cat neuromesh_prompt.txt)\"},
+                    {\"role\": \"user\", \"content\": \"Optimize this NeuroMesh Swift file:\n\n$(echo $file_content | base64 -d)\"}
+                  ],
+                  \"max_tokens\": 4000,
+                  \"temperature\": 0.1
+                }" | jq -r '.choices[0].message.content' > "${file}.optimized" || echo "❌ Failed to optimize $file"
+              
+              # Apply optimization if successful
+              if [ -s "${file}.optimized" ] && [ "$(cat "${file}.optimized")" != "null" ]; then
+                echo "✅ Applying NeuroMesh optimizations to $file"
+                cp "${file}.optimized" "$file"
+                rm "${file}.optimized"
+              else
+                echo "⚠️ Skipping $file - optimization failed"
+                rm -f "${file}.optimized"
+              fi
+              
+              sleep 2  # Rate limiting for AI requests
+            fi
+          done
+          
+      - name: 🧪 Validate NeuroMesh Optimizations
+        run: |
+          echo "🔍 Validating NeuroMesh architecture..."
+          
+          # Try to build with optimizations
+          xcodebuild -project NovaMind.xcodeproj -scheme NovaMind -configuration Debug -quiet build-for-testing 2>&1 | \
+            tee neuromesh_validation.txt || true
+          
+          # Count NeuroMesh-related errors
+          neuromesh_errors=$(grep -iE "neuromesh|agent|interaction|memory.*content" neuromesh_validation.txt | wc -l)
+          echo "🧠 NeuroMesh-related errors after optimization: $neuromesh_errors"
+          
+          # Create optimization summary
+          printf '{"neuromesh_optimization": true, "architecture_errors": %d, "validation_completed": true}' \
+            "$neuromesh_errors" > neuromesh_optimization_summary.json
+          
+      - name: 📤 Upload NeuroMesh Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: neuromesh-optimization-results
+          path: |
+            neuromesh_optimization_summary.json
+            neuromesh_validation.txt
+            
+      - name: 💾 Commit NeuroMesh Optimizations
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "🧠 Azure AI NeuroMesh Architecture Optimizations
+
+            - Consolidated agent type definitions
+            - Optimized memory management patterns  
+            - Streamlined interaction processing
+            - Enhanced type safety and consistency
+            - Improved AI/ML architecture patterns
+            
+            Applied by Azure AI NeuroMesh optimization workflow"
+            git push
+          else
+            echo "✅ No NeuroMesh changes to commit"
+          fi

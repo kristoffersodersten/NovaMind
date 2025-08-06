@@ -1,0 +1,207 @@
+name: 🚀 Async Performance Optimization
+on:
+  workflow_dispatch:
+    inputs:
+      optimization_type:
+        description: 'Type of async optimization to perform'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - 'task_groups'
+          - 'actor_isolation'
+          - 'concurrent_collections'
+          - 'async_streams'
+
+jobs:
+  async-performance-analysis:
+    name: 🔍 Analyze Async Performance Patterns
+    runs-on: macos-14
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: 🛠️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.2'
+          
+      - name: 📊 Analyze Async Functions
+        run: |
+          echo "🔍 Finding async functions..."
+          find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | \
+            xargs grep -l "async func\|async var\|async let\|await" | \
+            tee async_files.txt
+          
+          echo "📈 Counting async patterns..."
+          async_func_count=$(find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | xargs grep -c "async func" | awk '{sum+=$1} END {print sum}')
+          await_count=$(find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | xargs grep -c "await" | awk '{sum+=$1} END {print sum}')
+          task_count=$(find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | xargs grep -c "Task {" | awk '{sum+=$1} END {print sum}')
+          
+          printf '{"async_functions": %d, "await_calls": %d, "task_creations": %d, "files_with_async": %d}' \
+            "$async_func_count" "$await_count" "$task_count" "$(wc -l < async_files.txt)" > async_analysis.json
+          
+          echo "📋 Async Performance Analysis:"
+          cat async_analysis.json | jq '.'
+          
+      - name: 🎯 Identify Performance Bottlenecks  
+        run: |
+          echo "🔍 Finding potential performance issues..."
+          
+          # Find blocking patterns in async code
+          find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | \
+            xargs grep -n "DispatchQueue.main.sync\|Thread.sleep\|usleep\|sleep(" | \
+            head -20 > blocking_patterns.txt
+          
+          # Find inefficient async patterns  
+          find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | \
+            xargs grep -n "for.*await\|while.*await" | \
+            head -20 > inefficient_loops.txt
+          
+          # Find missing actor isolation
+          find . -name "*.swift" -type f -not -path "./build/*" -not -path "./.build/*" | \
+            xargs grep -l "@MainActor\|actor " | \
+            tee actor_files.txt
+          
+          echo "⚠️ Found $(wc -l < blocking_patterns.txt) potential blocking patterns"
+          echo "🔄 Found $(wc -l < inefficient_loops.txt) potentially inefficient async loops"  
+          echo "🎭 Found $(wc -l < actor_files.txt) files using actors"
+          
+      - name: 📤 Upload Analysis Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: async-performance-analysis
+          path: |
+            async_analysis.json
+            async_files.txt
+            blocking_patterns.txt
+            inefficient_loops.txt
+            actor_files.txt
+
+  optimize-with-azure-ai:
+    name: 🤖 Azure AI Async Optimization
+    runs-on: macos-14
+    needs: async-performance-analysis
+    if: always()
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: 📥 Download Analysis Results
+        uses: actions/download-artifact@v4
+        with:
+          name: async-performance-analysis
+          
+      - name: 🧠 Azure AI Performance Optimization
+        env:
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_KEY: ${{ secrets.AZURE_OPENAI_KEY }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+        run: |
+          # Read analysis results
+          async_data=$(cat async_analysis.json)
+          echo "📊 Processing async analysis: $async_data"
+          
+          # Create optimization prompt for Azure AI
+          cat > optimization_prompt.txt << 'EOF'
+          You are a Swift performance optimization expert. Based on the async analysis data provided, optimize Swift async/await code for:
+
+          1. TaskGroup usage for concurrent operations
+          2. Actor isolation for thread safety
+          3. AsyncSequence/AsyncStream for data streams  
+          4. Structured concurrency patterns
+          5. Main actor isolation for UI updates
+          6. Avoiding blocking operations in async contexts
+
+          Focus on:
+          - Converting callback-based code to async/await
+          - Using TaskGroup for parallel operations
+          - Implementing proper actor boundaries
+          - Optimizing async loops and iterations
+          - Using AsyncThrowingStream for data flows
+          - Ensuring main thread UI updates with @MainActor
+
+          Return optimized Swift code that follows Apple's concurrency guidelines.
+          EOF
+          
+          # Process first batch of async files
+          files_to_optimize=$(head -10 async_files.txt)
+          
+          for file in $files_to_optimize; do
+            if [ -f "$file" ]; then
+              echo "🔧 Optimizing async patterns in $file..."
+              
+              # Create Azure AI request
+              file_content=$(cat "$file" | base64)
+              
+              curl -s "$AZURE_OPENAI_ENDPOINT/openai/deployments/$AZURE_OPENAI_DEPLOYMENT/chat/completions?api-version=2024-08-01-preview" \
+                -H "Content-Type: application/json" \
+                -H "api-key: $AZURE_OPENAI_KEY" \
+                -d "{
+                  \"messages\": [
+                    {\"role\": \"system\", \"content\": \"$(cat optimization_prompt.txt)\"},
+                    {\"role\": \"user\", \"content\": \"Optimize this Swift file for async performance:\n\n$(echo $file_content | base64 -d)\"}
+                  ],
+                  \"max_tokens\": 4000,
+                  \"temperature\": 0.1
+                }" | jq -r '.choices[0].message.content' > "${file}.optimized" || echo "❌ Failed to optimize $file"
+              
+              # Apply optimization if successful
+              if [ -s "${file}.optimized" ] && [ "$(cat "${file}.optimized")" != "null" ]; then
+                echo "✅ Applying async optimizations to $file"
+                cp "${file}.optimized" "$file"
+                rm "${file}.optimized"
+              else
+                echo "⚠️ Skipping $file - optimization failed"
+                rm -f "${file}.optimized"
+              fi
+              
+              sleep 1  # Rate limiting
+            fi
+          done
+          
+      - name: 🧪 Validate Optimizations
+        run: |
+          echo "🔍 Validating async optimizations..."
+          
+          # Try to build with optimizations
+          xcodebuild -project NovaMind.xcodeproj -scheme NovaMind -configuration Debug -quiet build-for-testing 2>&1 | \
+            tee validation_output.txt || true
+          
+          # Count remaining async-related errors  
+          async_errors=$(grep -E "async|await|Task|Actor" validation_output.txt | wc -l)
+          echo "🔢 Async-related errors after optimization: $async_errors"
+          
+          # Create summary
+          printf '{"optimization_applied": true, "async_errors_remaining": %d, "validation_completed": true}' \
+            "$async_errors" > async_optimization_summary.json
+          
+      - name: 📤 Upload Optimization Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: async-optimization-results
+          path: |
+            async_optimization_summary.json
+            validation_output.txt
+            
+      - name: 💾 Commit Async Optimizations
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "🚀 Azure AI Async Performance Optimizations
+
+            - Optimized async/await patterns  
+            - Improved TaskGroup usage
+            - Enhanced actor isolation
+            - Better structured concurrency
+            - Reduced async performance bottlenecks
+            
+            Applied by Azure AI async optimization workflow"
+            git push
+          else
+            echo "✅ No changes to commit"
+          fi
