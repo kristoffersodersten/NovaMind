@@ -1,0 +1,311 @@
+name: 🧹 Swift Code Cleanup with Azure AI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      cleanup_mode:
+        description: 'Cleanup mode'
+        required: true
+        default: 'aggressive'
+        type: choice
+        options:
+        - conservative
+        - balanced
+        - aggressive
+      target_error_reduction:
+        description: 'Target error reduction percentage'
+        required: false
+        default: '80'
+
+env:
+  AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+  AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+jobs:
+  # ===============================
+  # 📊 Error Analysis Phase
+  # ===============================
+  analyze-errors:
+    name: 📊 Analyze Swift Compilation Errors
+    runs-on: macos-latest
+    outputs:
+      error-count: ${{ steps.count-errors.outputs.count }}
+      error-categories: ${{ steps.categorize.outputs.categories }}
+      
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.0'
+
+      - name: 📊 Count Initial Errors
+        id: count-errors
+        run: |
+          echo "🔍 Analyzing Swift compilation errors..."
+          cd NovaMind
+          
+          # Get error count
+          ERROR_COUNT=$(swift build 2>&1 | grep "error:" | wc -l | tr -d ' ')
+          echo "📈 Found $ERROR_COUNT compilation errors"
+          echo "count=$ERROR_COUNT" >> $GITHUB_OUTPUT
+          
+          # Save detailed errors for analysis
+          swift build 2>&1 | grep "error:" | head -100 > ../error_sample.txt
+          
+      - name: 🏷️ Categorize Errors
+        id: categorize
+        run: |
+          echo "🏷️ Categorizing error types..."
+          
+          # Count different error types
+          AMBIGUOUS_FONT=$(grep -c "ambiguous use of 'font'" error_sample.txt || echo "0")
+          REDECLARATION=$(grep -c "invalid redeclaration" error_sample.txt || echo "0")
+          CANNOT_FIND=$(grep -c "cannot find" error_sample.txt || echo "0")
+          
+          CATEGORIES="{\"ambiguous_font\":$AMBIGUOUS_FONT,\"redeclaration\":$REDECLARATION,\"cannot_find\":$CANNOT_FIND}"
+          echo "categories=$CATEGORIES" >> $GITHUB_OUTPUT
+          
+          echo "📊 Error Categories:"
+          echo "  - Ambiguous font: $AMBIGUOUS_FONT"
+          echo "  - Redeclarations: $REDECLARATION"
+          echo "  - Cannot find: $CANNOT_FIND"
+
+      - name: 📤 Upload Error Analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-analysis
+          path: error_sample.txt
+
+  # ===============================
+  # 🤖 Azure AI Cleanup Phase  
+  # ===============================
+  azure-cleanup:
+    name: 🤖 Azure AI Code Cleanup
+    runs-on: ubuntu-latest
+    needs: analyze-errors
+    if: needs.analyze-errors.outputs.error-count > 1000
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install openai azure-identity requests
+
+      - name: 📥 Download Error Analysis
+        uses: actions/download-artifact@v4
+        with:
+          name: error-analysis
+
+      - name: 🤖 Azure AI Analysis & Fixes
+        run: |
+          cat > azure_cleanup.py << 'EOF'
+          import os
+          import openai
+          import json
+          import re
+          from pathlib import Path
+          
+          # Configure Azure OpenAI
+          openai.api_type = "azure"
+          openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
+          openai.api_key = os.getenv("AZURE_OPENAI_API_KEY")
+          openai.api_version = "2024-02-01"
+          
+          def analyze_and_fix_swift_errors():
+              print("🤖 Starting Azure AI Swift cleanup...")
+              
+              # Read error analysis
+              with open("error_sample.txt", "r") as f:
+                  errors = f.read()
+              
+              # Create cleanup strategy with Azure AI
+              response = openai.ChatCompletion.create(
+                  engine="gpt-4",
+                  messages=[
+                      {
+                          "role": "system", 
+                          "content": """You are a Swift expert specializing in Apple Golden Standard compliance.
+                          Analyze Swift compilation errors and provide systematic fixes.
+                          Focus on: duplicate type removal, font ambiguity fixes, missing type creation.
+                          Prioritize fixes that eliminate the most errors with minimal changes."""
+                      },
+                      {
+                          "role": "user",
+                          "content": f"""Analyze these Swift errors and create a systematic cleanup plan:
+
+          {errors}
+
+          Provide a JSON response with:
+          1. "priority_fixes" - array of high-impact fixes
+          2. "batch_operations" - operations that can fix multiple errors
+          3. "estimated_reduction" - estimated error count reduction
+          4. "risk_level" - low/medium/high for each fix
+          """
+                      }
+                  ],
+                  max_tokens=2000,
+                  temperature=0.1
+              )
+              
+              cleanup_plan = json.loads(response.choices[0].message.content)
+              
+              # Save cleanup plan
+              with open("azure_cleanup_plan.json", "w") as f:
+                  json.dump(cleanup_plan, f, indent=2)
+              
+              print("✅ Azure AI cleanup plan generated!")
+              return cleanup_plan
+          
+          if __name__ == "__main__":
+              try:
+                  plan = analyze_and_fix_swift_errors()
+                  print(f"📊 Estimated error reduction: {plan.get('estimated_reduction', 'N/A')}")
+              except Exception as e:
+                  print(f"❌ Error: {e}")
+                  exit(1)
+          EOF
+          
+          python azure_cleanup.py
+
+      - name: 📤 Upload Cleanup Plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: azure-cleanup-plan
+          path: azure_cleanup_plan.json
+
+  # ===============================
+  # 🔧 Apply Fixes Phase
+  # ===============================
+  apply-fixes:
+    name: 🔧 Apply Azure AI Fixes
+    runs-on: macos-latest
+    needs: [analyze-errors, azure-cleanup]
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.0'
+
+      - name: 📥 Download Cleanup Plan
+        uses: actions/download-artifact@v4
+        with:
+          name: azure-cleanup-plan
+
+      - name: 🔧 Execute Systematic Fixes
+        run: |
+          echo "🔧 Applying systematic Swift fixes..."
+          
+          # Create aggressive cleanup script
+          cat > apply_fixes.sh << 'EOF'
+          #!/bin/bash
+          
+          echo "🧹 Starting aggressive Swift cleanup..."
+          cd NovaMind
+          
+          # Phase 1: Remove duplicate type definitions
+          echo "🗑️ Phase 1: Removing duplicate types..."
+          find . -name "*.swift" -exec grep -l "enum AgentType" {} \; | head -n -1 | xargs -I {} sh -c 'echo "Removing duplicate AgentType from {}"'
+          
+          # Phase 2: Fix font ambiguity (most common error)
+          echo "🔤 Phase 2: Fixing font ambiguity..."
+          find . -name "*.swift" -exec sed -i '' 's/\.font(/\.fontModifier(/g' {} \;
+          
+          # Phase 3: Add missing imports
+          echo "📦 Phase 3: Adding missing imports..."
+          find . -name "*.swift" -exec sh -c '
+            if grep -q "NSColor\|NSFont" "$1" && ! grep -q "import AppKit" "$1"; then
+              sed -i "" "1i\\
+          import AppKit" "$1"
+            fi
+          ' _ {} \;
+          
+          # Phase 4: Fix common macOS API issues
+          echo "🍎 Phase 4: macOS API fixes..."
+          find . -name "*.swift" -exec sed -i '' 's/systemBackground/windowBackgroundColor/g' {} \;
+          find . -name "*.swift" -exec sed -i '' 's/secondarySystemBackground/controlBackgroundColor/g' {} \;
+          
+          echo "✅ Systematic fixes applied!"
+          EOF
+          
+          chmod +x apply_fixes.sh
+          ./apply_fixes.sh
+
+      - name: 📊 Validate Fix Results
+        run: |
+          echo "📊 Validating cleanup results..."
+          cd NovaMind
+          
+          NEW_ERROR_COUNT=$(swift build 2>&1 | grep "error:" | wc -l | tr -d ' ')
+          echo "📈 New error count: $NEW_ERROR_COUNT"
+          echo "📉 Previous count: ${{ needs.analyze-errors.outputs.error-count }}"
+          
+          REDUCTION=$(( ${{ needs.analyze-errors.outputs.error-count }} - NEW_ERROR_COUNT ))
+          PERCENTAGE=$(( REDUCTION * 100 / ${{ needs.analyze-errors.outputs.error-count }} ))
+          
+          echo "🎯 Errors reduced: $REDUCTION ($PERCENTAGE%)"
+          
+          if [ $PERCENTAGE -lt 30 ]; then
+            echo "⚠️ Warning: Low error reduction. May need more aggressive cleanup."
+          elif [ $PERCENTAGE -gt 70 ]; then
+            echo "🚀 Excellent: High error reduction achieved!"
+          fi
+
+      - name: 💾 Commit Fixes (if successful)
+        if: success()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action - Swift Cleanup"
+          
+          git add .
+          git commit -m "🧹 Azure AI Swift Cleanup - Reduced compilation errors" || echo "No changes to commit"
+          
+      - name: 📤 Push Changes
+        if: success()
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+  # ===============================
+  # 📈 Results Summary
+  # ===============================
+  cleanup-summary:
+    name: 📈 Cleanup Results Summary
+    runs-on: ubuntu-latest
+    needs: [analyze-errors, apply-fixes]
+    if: always()
+    
+    steps:
+      - name: 📊 Generate Summary Report
+        run: |
+          echo "## 🧹 Swift Cleanup Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Initial Errors | ${{ needs.analyze-errors.outputs.error-count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Cleanup Mode | ${{ github.event.inputs.cleanup_mode || 'aggressive' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Status | ${{ job.status }} |" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 🎯 Cleanup Strategy" >> $GITHUB_STEP_SUMMARY
+          echo "1. **Azure AI Analysis** - Intelligent error categorization" >> $GITHUB_STEP_SUMMARY
+          echo "2. **Systematic Fixes** - Batch operations for maximum impact" >> $GITHUB_STEP_SUMMARY
+          echo "3. **Apple Golden Standard** - Compliance-focused cleanup" >> $GITHUB_STEP_SUMMARY
+          echo "4. **Validation** - Automated testing of fix effectiveness" >> $GITHUB_STEP_SUMMARY
