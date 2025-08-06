@@ -14,7 +14,7 @@ struct AccessibilityPreviewView: View {
     private var contrastRatioSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Contrast Ratios")
-                .font(Font.system(.subheadline))
+                .systemFont(Font.system(.subheadline))
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
@@ -38,13 +38,13 @@ struct AccessibilityPreviewView: View {
             Spacer()
 
             Text(String(format: "%.1f:1", test.ratio))
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .monospaced()
                 .foregroundColor(test.isAccessible ? .green : .red)
 
             Image(systemName: test.isAccessible ? "checkmark.circle.fill" : "xmark.circle.fill")
                 .foregroundColor(test.isAccessible ? .green : .red)
-                .font(Font.caption)
+                .systemFont(Font.caption)
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
@@ -55,12 +55,12 @@ struct AccessibilityPreviewView: View {
     private var colorBlindnessSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Color Blindness Simulation")
-                .font(Font.system(.subheadline))
+                .systemFont(Font.system(.subheadline))
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
             Text("Testing how colors appear to users with different types of color vision deficiency")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.foregroundSecondary)
         }
     }

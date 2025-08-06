@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 import Foundation
 
@@ -10,12 +11,12 @@ struct EditProviderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Redigera leverantör")
-                .font(Font.custom("SF Pro", size: 22).weight(.bold))
+                .systemFont(Font.custom("SF Pro", size: 22).weight(.bold))
 
             TextField("Namn", text: $provider.name)
-                .font(Font.custom("SF Pro", size: 15))
+                .systemFont(Font.custom("SF Pro", size: 15))
             TextField("API-nyckel", text: $apiKeyText)
-                .font(Font.custom("SF Pro", size: 15))
+                .systemFont(Font.custom("SF Pro", size: 15))
                 .onAppear {
                     apiKeyText = provider.apiKey
                 }
@@ -23,7 +24,7 @@ struct EditProviderView: View {
                     provider.apiKey = newValue
                 }
             TextField("Endpoint", text: $provider.endpoint)
-                .font(Font.custom("SF Pro", size: 15))
+                .systemFont(Font.custom("SF Pro", size: 15))
 
             HStack {
                 Spacer()
@@ -33,7 +34,7 @@ struct EditProviderView: View {
                 .buttonStyle(.borderedProminent)
                 .scaleEffect(1.0)
                 .animation(.spring(response: 0.3, dampingFraction: 0.6), value: false)
-                .font(Font.custom("SF Pro", size: 15))
+                .systemFont(Font.custom("SF Pro", size: 15))
             }
         }
         .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))

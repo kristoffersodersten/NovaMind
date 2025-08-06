@@ -57,7 +57,7 @@ extension KrilleStyle {
 struct KrillePrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(weight: .medium))
+            .systemFont(Font.KrilleStyle.Typography.body(weight: .medium))
             .foregroundColor(.white)
             .padding(.horizontal, KrilleStyle.Spacing.large)
             .padding(.vertical, KrilleStyle.Spacing.medium)
@@ -73,7 +73,7 @@ struct KrillePrimaryButtonStyle: ButtonStyle {
 struct KrilleSecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(weight: .medium))
+            .systemFont(Font.KrilleStyle.Typography.body(weight: .medium))
             .foregroundColor(KrilleStyle.Colors.novaPrimary)
             .padding(.horizontal, KrilleStyle.Spacing.large)
             .padding(.vertical, KrilleStyle.Spacing.medium)
@@ -89,7 +89,7 @@ struct KrilleSecondaryButtonStyle: ButtonStyle {
 struct KrilleGhostButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(weight: .medium))
+            .systemFont(Font.KrilleStyle.Typography.body(weight: .medium))
             .foregroundColor(KrilleStyle.Colors.novaPrimary)
             .padding(.horizontal, KrilleStyle.Spacing.large)
             .padding(.vertical, KrilleStyle.Spacing.medium)
@@ -104,7 +104,7 @@ struct KrilleGhostButtonStyle: ButtonStyle {
 struct KrilleDestructiveButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(weight: .medium))
+            .systemFont(Font.KrilleStyle.Typography.body(weight: .medium))
             .foregroundColor(.white)
             .padding(.horizontal, KrilleStyle.Spacing.large)
             .padding(.vertical, KrilleStyle.Spacing.medium)
@@ -156,7 +156,7 @@ struct KrilleElevatedCardModifier: ViewModifier {
 struct KrilleTextFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(Font.KrilleStyle.Typography.body())
+            .systemFont(Font.KrilleStyle.Typography.body())
             .padding(KrilleStyle.Spacing.medium)
             .background(
                 RoundedRectangle(cornerRadius: KrilleStyle.CornerRadius.input)

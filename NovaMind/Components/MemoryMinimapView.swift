@@ -15,14 +15,14 @@ struct MemoryMinimapView: View {
             // Header
             HStack {
                 Text("Minimap")
-                    .font(Font.system(.caption2))
+                    .systemFont(Font.system(.caption2))
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundSecondary)
 
                 Spacer()
 
                 Text("\(items.count) minnen")
-                    .font(Font.system(.caption2))
+                    .systemFont(Font.system(.caption2))
                     .foregroundColor(.foregroundSecondary)
             }
 

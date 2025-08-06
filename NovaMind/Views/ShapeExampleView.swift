@@ -4,7 +4,7 @@ struct ShapeExampleView: View {
     var body: some View {
         VStack(spacing: 24) {
             Text("SwiftUI Shape Examples")
-                .font(Font.title)
+                .systemFont(Font.title)
                 .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
 
             SwiftUI.RoundedRectangle(cornerRadius: 16)

@@ -153,9 +153,9 @@ struct PanelView<Content: View>: View {
             )
             .background(
                 RoundedRectangle(cornerRadius: state == .collapsed ? 8 : 16)
-                    .fill(Color.backgroundPrimary.opacity(0.95 as Double))
+                    .fill(Color.backgroundPrimary.opacity(0.95))
                     .shadow(
-                        color: Color.novaBlack.opacity(0.1 as Double),
+                        color: Color.novaBlack.opacity(0.1),
                         radius: state == .pinned ? 12 : 8,
                         x: 0,
                         y: state == .pinned ? 4 : 2
@@ -186,8 +186,8 @@ struct MainChatView: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 16)
                 .background(.ultraThinMaterial)
-                .cornerRadius(CGFloat(16))
-                .shadow(color: .glow.opacity(0.1 as Double), radius: 8, y: -2)
+                .cornerRadius(16)
+                .shadow(color: .glow.opacity(0.1), radius: 8, y: -2)
         }
     }
 }
@@ -235,7 +235,7 @@ struct ParallaxBackground: View {
             // Subtle parallax gradients
             RadialGradient(
                 colors: [
-                    Color.glow.opacity(0.02 as Double),
+                    Color.glow.opacity(0.02),
                     Color.clear
                 ],
                 center: UnitPoint(x: 0.3 + phase * 0.1, y: 0.7 + phase * 0.05),
@@ -245,7 +245,7 @@ struct ParallaxBackground: View {
 
             RadialGradient(
                 colors: [
-                    Color.novaBlack.opacity(0.01 as Double),
+                    Color.novaBlack.opacity(0.01),
                     Color.clear
                 ],
                 center: UnitPoint(x: 0.7 - phase * 0.08, y: 0.3 + phase * 0.06),
@@ -257,6 +257,17 @@ struct ParallaxBackground: View {
 }
 
 // MARK: - Scroll Detection Extension
+extension View {
+    func onScroll(_ action: @escaping (CGFloat) -> Void) -> some View {
+        background(
+            GeometryReader { geo in
+                Color.clear
+                    .preference(key: ScrollOffsetKey.self, value: geo.frame(in: .global).minY)
+            }
+        )
+        .onPreferenceChange(ScrollOffsetKey.self, perform: action)
+    }
+}
 
 struct ScrollOffsetKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
@@ -266,6 +277,34 @@ struct ScrollOffsetKey: PreferenceKey {
 }
 
 // MARK: - Keyboard Shortcuts Extension
+extension View {
+    func keyboardShortcuts() -> some View {
+        self
+            .onReceive(
+                NotificationCenter.default.publisher(for: NSApplication.keyboardShortcutNotification)
+            ) { notification in
+                guard let keyCode = notification.userInfo?["keyCode"] as? UInt16,
+                      let modifiers = notification.userInfo?["modifiers"] as? NSEvent.ModifierFlags else { return }
+
+                handleKeyboardShortcut(keyCode: keyCode, modifiers: modifiers)
+            }
+    }
+
+    private func handleKeyboardShortcut(keyCode: UInt16, modifiers: NSEvent.ModifierFlags) {
+        switch (keyCode, modifiers) {
+        case (18, [.command]): // Cmd+1 - Focus Left Panel
+            print("Focus left panel")
+        case (19, [.command]): // Cmd+2 - Focus Center Panel
+            print("Focus center panel")
+        case (123, [.shift, .command]): // Shift+Cmd+Left - Expand Left
+            print("Expand left panel")
+        case (124, [.shift, .command]): // Shift+Cmd+Right - Expand Right
+            print("Expand right panel")
+        default:
+            break
+        }
+    }
+}
 
 // MARK: - Notification Extension
 extension NSApplication {

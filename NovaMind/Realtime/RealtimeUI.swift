@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 
@@ -9,7 +10,7 @@ struct RealtimeUI: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text("Realtime Feed")
-        .font(Font.title)
+        .systemFont(Font.title)
         .bold()
         .padding(.top)
 

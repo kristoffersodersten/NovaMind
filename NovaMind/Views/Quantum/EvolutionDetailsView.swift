@@ -38,7 +38,7 @@ struct EvolutionDetailsView: View {
     private func mutationOverviewSection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Mutation Overview")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .fontWeight(.bold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -57,7 +57,7 @@ struct EvolutionDetailsView: View {
     private func geneticChangesSection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Genetic Changes")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .fontWeight(.bold)
 
             ForEach(
@@ -75,7 +75,7 @@ struct EvolutionDetailsView: View {
     private func performanceMetricsSection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Performance Metrics")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .fontWeight(.bold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -108,7 +108,7 @@ struct EvolutionDetailsView: View {
     private func renderDNASection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Render DNA State")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .fontWeight(.bold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -154,7 +154,7 @@ struct InfoRow: View {
             Text(value)
                 .fontWeight(.medium)
         }
-        .font(Font.subheadline)
+        .systemFont(Font.subheadline)
     }
 }
 
@@ -165,17 +165,17 @@ struct GeneticChangeRow: View {
     var body: some View {
         HStack {
             Text("\(index).")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
                 .frame(width: 20, alignment: .leading)
 
             Text(change.displayName)
-                .font(Font.subheadline)
+                .systemFont(Font.subheadline)
 
             Spacer()
 
             Image(systemName: "arrow.right")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.blue)
         }
         .padding(.vertical, 4)
@@ -189,13 +189,13 @@ struct DNAGenomeRow: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(Font.subheadline)
+                .systemFont(Font.subheadline)
                 .fontWeight(.medium)
 
             Spacer()
 
             Text(genome)
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .fontFamily(.monospaced)
                 .foregroundColor(.secondary)
         }

@@ -22,14 +22,14 @@ struct CanvasMinimapView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Minimap")
-                    .font(Font.system(.caption))
+                    .systemFont(Font.system(.caption))
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundPrimary)
 
                 Spacer()
 
                 Text("\(memoryBlocks.count) blocks")
-                    .font(Font.custom("SF Pro", size: 10, relativeTo: .caption2))
+                    .systemFont(Font.custom("SF Pro", size: 10, relativeTo: .caption2))
                     .foregroundColor(.foregroundSecondary)
             }
 

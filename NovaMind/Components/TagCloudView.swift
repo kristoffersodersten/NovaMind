@@ -16,14 +16,14 @@ struct TagCloudView: View {
     var body: some View {
         VStack(spacing: 30) {
             Text("TagCloud Interactive View")
-                .font(Font.largeTitle)
+                .systemFont(Font.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.foregroundPrimary)
 
             // Control section
             VStack(spacing: 16) {
                 Toggle("Redigerbar tagg-moln", isOn: $showEditableCloud)
-                    .font(Font.headline)
+                    .systemFont(Font.headline)
 
                 if showEditableCloud {
                     Button("Lägg till slumpmässig tagg") {
@@ -55,18 +55,18 @@ struct TagCloudView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("AI-Enhanced TagCloud")
-                        .font(Font.headline)
+                        .systemFont(Font.headline)
                         .foregroundColor(.foregroundPrimary)
 
                     if !aiGeneratedTags.isEmpty {
                         Label("\(aiGeneratedTags.count) AI-genererade", systemImage: "sparkles")
-                            .font(Font.caption)
+                            .systemFont(Font.caption)
                             .foregroundColor(.glow)
                     }
                 }
 
                 Text("✨ AI-genererade taggar har gnista-ikon och tjockare kant")
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.foregroundSecondary)
 
                 TagCloudView(
@@ -90,11 +90,11 @@ struct TagCloudView: View {
             // Non-editable TagCloud
             VStack(alignment: .leading, spacing: 12) {
                 Text("Icke-redigerbar TagCloud")
-                    .font(Font.headline)
+                    .systemFont(Font.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Endast läsning med hover-effekter")
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.foregroundSecondary)
 
                 TagCloudView(
@@ -111,11 +111,11 @@ struct TagCloudView: View {
             // Legacy TagInfo support demo
             VStack(alignment: .leading, spacing: 12) {
                 Text("Legacy TagInfo Support")
-                    .font(Font.headline)
+                    .systemFont(Font.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Bakåtkompatibilitet med befintlig TagInfo struktur")
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.foregroundSecondary)
 
                 TagCloudView(

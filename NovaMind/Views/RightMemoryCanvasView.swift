@@ -18,7 +18,7 @@ struct RightMemoryCanvasView: View {
             // Header med add-knapp
             HStack {
                 Text("Minneskarta")
-                    .font(Font.system(.title2))
+                    .systemFont(Font.system(.title2))
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
                 
@@ -28,7 +28,7 @@ struct RightMemoryCanvasView: View {
                     showingAddMemorySheet = true
                 }) {
                     Image(systemName: "plus.circle.fill")
-                        .font(Font.system(.title2))
+                        .systemFont(Font.system(.title2))
                         .foregroundColor(.accentColor)
                 }
                 .buttonStyle(PlainButtonStyle())

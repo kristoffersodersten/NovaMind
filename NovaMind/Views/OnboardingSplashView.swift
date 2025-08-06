@@ -26,18 +26,18 @@ struct OnboardingSplashView: View {
                 // Logo and title section
                 VStack(spacing: 16) {
                     Image(systemName: "brain.head.profile")
-                        .font(Font.system(size: 80, weight: .light))
+                        .systemFont(Font.system(size: 80, weight: .light))
                         .foregroundColor(.glow)
                         .scaleEffect(1.0 + animationPhase * 0.1)
                         .animation(.easeInOut(duration: 3).repeatForever(autoreverses: true), value: animationPhase)
 
                     Text("Welcome to NovaMind")
-                        .font(Font.largeTitle)
+                        .systemFont(Font.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.foregroundPrimary)
 
                     Text("Your AI-powered cognitive workspace")
-                        .font(Font.title2)
+                        .systemFont(Font.title2)
                         .foregroundColor(.foregroundSecondary)
                         .multilineTextAlignment(.center)
                 }
@@ -91,13 +91,13 @@ struct OnboardingSplashView: View {
     private var welcomeStepView: some View {
         VStack(spacing: 16) {
             Text("Intelligent Workspace")
-                .font(Font.title)
+                .systemFont(Font.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
             Text("NovaMind combines AI-powered conversations with spatial memory organization, " +
                  "creating a seamless cognitive workspace for your thoughts and projects.")
-                .font(Font.body)
+                .systemFont(Font.body)
                 .foregroundColor(.foregroundSecondary)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
@@ -107,7 +107,7 @@ struct OnboardingSplashView: View {
     private var featuresStepView: some View {
         VStack(spacing: 16) {
             Text("Core Features")
-                .font(Font.title)
+                .systemFont(Font.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
@@ -134,13 +134,13 @@ struct OnboardingSplashView: View {
     private var readyStepView: some View {
         VStack(spacing: 16) {
             Text("Ready to Begin")
-                .font(Font.title)
+                .systemFont(Font.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
             Text("You're all set! NovaMind will adapt to your workflow and help you organize " +
                  "your thoughts, projects, and conversations in a natural, intuitive way.")
-                .font(Font.body)
+                .systemFont(Font.body)
                 .foregroundColor(.foregroundSecondary)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
@@ -191,17 +191,17 @@ struct FeatureRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon)
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .foregroundColor(.glow)
                 .frame(width: 24)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(Font.headline)
+                    .systemFont(Font.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text(description)
-                    .font(Font.subheadline)
+                    .systemFont(Font.subheadline)
                     .foregroundColor(.foregroundSecondary)
                     .lineLimit(nil)
             }
@@ -219,7 +219,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .padding(.vertical, 12)
             .background(Color.glow)
             .foregroundColor(.backgroundPrimary)
-            .font(Font.headline)
+            .systemFont(Font.headline)
             .cornerRadius(CGFloat(8))
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
@@ -233,7 +233,7 @@ struct SecondaryButtonStyle: ButtonStyle {
             .padding(.vertical, 12)
             .background(Color.separator.opacity(0.2 as Double))
             .foregroundColor(.foregroundSecondary)
-            .font(Font.headline)
+            .systemFont(Font.headline)
             .cornerRadius(CGFloat(8))
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)

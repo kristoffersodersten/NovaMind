@@ -52,7 +52,7 @@ struct TagChip: View {
 
     var body: some View {
         Text(tag)
-            .font(Font.caption)
+            .systemFont(Font.caption)
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(color.opacity(0.2 as Double))
@@ -71,7 +71,7 @@ struct KrilleBadge: View {
             Image(systemName: icon)
             Text(label)
         }
-        .font(Font.caption)
+        .systemFont(Font.caption)
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
         .background(color.opacity(0.2 as Double))
@@ -90,7 +90,7 @@ struct NovaMindStatusBubble: View {
             Image(systemName: icon)
             Text(title)
         }
-        .font(Font.caption)
+        .systemFont(Font.caption)
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
         .background(isActive ? Color.green.opacity(0.2 as Double) : Color.red.opacity(0.2 as Double))
@@ -116,9 +116,9 @@ struct OnboardingMainContentView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Welcome to NovaMind")
-                .font(Font.largeTitle.weight(.bold))
+                .systemFont(Font.largeTitle.weight(.bold))
             Text("Your AI-powered development assistant")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .foregroundColor(.secondary)
         }
         .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
@@ -161,7 +161,7 @@ struct IconButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: systemName)
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .foregroundColor(active ? .accentColor : .secondary)
                 .scaleEffect(pulse ? 1.1 : 1.0)
                 .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: pulse)

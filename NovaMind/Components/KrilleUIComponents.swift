@@ -11,7 +11,7 @@ struct KrilleUIComponents: View {
         ScrollView {
             VStack(spacing: 32) {
                 Text("KrilleCore 2030 Design Demo")
-                    .font(Font.title.bold())
+                    .systemFont(Font.title.bold())
                     .padding(.top, 20)
 
                 HStack(spacing: 16) {

@@ -9,7 +9,7 @@ struct GeneralThreadsView: View {
                 // Section header
                 HStack {
                     Text("Allmänna Trådar")
-                        .font(Font.caption)
+                        .systemFont(Font.caption)
                         .fontWeight(.semibold)
                         .foregroundColor(.foregroundSecondary)
                         .textCase(.uppercase)
@@ -17,7 +17,7 @@ struct GeneralThreadsView: View {
                     Spacer()
 
                     Text("\(threads.count)")
-                        .font(Font.caption2)
+                        .systemFont(Font.caption2)
                         .foregroundColor(.secondary)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)

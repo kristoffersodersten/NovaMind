@@ -16,7 +16,7 @@ struct ChatBubble: View {
                     .foregroundColor(message.role == .user ? .white : .primary)
                     .cornerRadius(CGFloat(16))
                 Text(message.timestamp, style: .time)
-                    .font(Font.caption2)
+                    .systemFont(Font.caption2)
                     .foregroundColor(.secondary)
             }
             if message.role == .assistant {

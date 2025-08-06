@@ -1,4 +1,4 @@
-import AppKit // For Color(.systemBackground) on macOS
+import AppKit // For Color(.windowBackgroundColor) on macOS
 import Foundation
 import SwiftUI
 
@@ -103,7 +103,7 @@ struct WorkspaceView: View {
       VStack(spacing: 8) {
         ZStack(alignment: .bottom) {
           TextEditor(text: $inputText)
-            .font(Font.custom("SF Pro", size: 16))
+            .systemFont(Font.custom("SF Pro", size: 16))
             .frame(height: dynamicHeight())
             .cornerRadius(CGFloat(8))
             .shadow(color: .black.opacity(0.05 as Double), radius: 1, y: 1)
@@ -144,7 +144,7 @@ struct WorkspaceView: View {
           Spacer()
           Button(action: sendMessage) {
             Image(systemName: "arrow.up.circle.fill")
-              .font(Font.title2)
+              .systemFont(Font.title2)
               .foregroundColor(.accentColor)
               .glowEffect(active: inputText.count > 0)
           }
@@ -153,7 +153,7 @@ struct WorkspaceView: View {
         .padding(.horizontal, 4)
       }
       .padding(.vertical, 12)
-      .background(Color(.systemBackground))
+      .background(Color(.windowBackgroundColor))
       .shadow(color: .black.opacity(0.04 as Double), radius: 2, y: -1)
     }
     .background(
@@ -215,24 +215,24 @@ struct BubbleContent: View {
         if let agent = message.agent {
           Image(systemName: agent.icon)
             .foregroundColor(agent.accent)
-            .font(Font.title3)
+            .systemFont(Font.title3)
             .glowEffect(active: true)
           Text(agent.name)
-            .font(Font.caption)
+            .systemFont(Font.caption)
             .foregroundColor(agent.accent)
             .bold()
         } else {
           Image(systemName: "person.crop.circle")
             .foregroundColor(.gray)
-            .font(Font.title3)
+            .systemFont(Font.title3)
           Text("User")
-            .font(Font.caption)
+            .systemFont(Font.caption)
             .foregroundColor(.gray)
             .bold()
         }
       }
       Text(message.text)
-        .font(Font.custom("SF Pro", size: 16))
+        .systemFont(Font.custom("SF Pro", size: 16))
         .foregroundColor(.primary)
         .padding(.vertical, 8)
         .padding(.horizontal, 14)

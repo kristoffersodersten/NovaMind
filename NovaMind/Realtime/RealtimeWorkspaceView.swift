@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 
@@ -33,7 +34,7 @@ struct RealtimeWorkspaceView: View {
       // Titelrad
       HStack {
         Text("NovaMind")
-          .font(Font.title2)
+          .systemFont(Font.title2)
           .fontWeight(.semibold)
           .foregroundStyle(.primary)
         Spacer()
@@ -66,7 +67,7 @@ struct RealtimeWorkspaceView: View {
           .padding(.vertical, 16)
           .padding(.horizontal, 12)
         }
-        .background(Color(.systemBackground))
+        .background(Color(.windowBackgroundColor))
         .onChange(of: messages.count) { _ in
           // Scrolla till senaste meddelandet
           if let last = messages.last {
@@ -142,11 +143,11 @@ private struct InputBar: View {
         if text.isEmpty {
           Text("Skriv ett meddelande...")
             .foregroundColor(.secondary)
-            .font(Font.custom("SF Pro", size: 15))
+            .systemFont(Font.custom("SF Pro", size: 15))
         }
         TextEditor(text: $text)
           .frame(minHeight: 36, maxHeight: 120)
-          .font(Font.custom("SF Pro", size: 15))
+          .systemFont(Font.custom("SF Pro", size: 15))
           .focused($isFocused)
           .background(Color(NSColor.controlBackgroundColor))
           .cornerRadius(CGFloat(10))
@@ -157,7 +158,7 @@ private struct InputBar: View {
       // Skicka-knapp
       Button(action: onSend) {
         Image(systemName: "arrow.up.circle.fill")
-          .font(Font.title2)
+          .systemFont(Font.title2)
           .foregroundColor(text.isEmpty ? .gray : .accentColor)
           .accessibilityLabel("Skicka meddelande")
       }

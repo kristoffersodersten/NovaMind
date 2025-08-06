@@ -33,7 +33,7 @@ struct ChatMessageView: View {
     
     private var messageBubble: some View {
         Text(message.content)
-            .font(Font.custom("SF Pro", size: 15, relativeTo: .body))
+            .systemFont(Font.custom("SF Pro", size: 15, relativeTo: .body))
             .foregroundColor(.foregroundPrimary)
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -52,7 +52,7 @@ struct ChatMessageView: View {
     
     private var timestamp: some View {
         Text(timeString(from: message.timestamp))
-            .font(Font.custom("SF Pro", size: 11, relativeTo: .caption2))
+            .systemFont(Font.custom("SF Pro", size: 11, relativeTo: .caption2))
             .foregroundColor(.foregroundSecondary)
             .padding(.horizontal, 4)
     }
@@ -61,14 +61,14 @@ struct ChatMessageView: View {
         HStack(spacing: 8) {
             Button(action: saveToMemory) {
                 Image(systemName: "tray.full")
-                    .font(Font.system(size: 12))
+                    .systemFont(Font.system(size: 12))
                     .foregroundColor(.foregroundSecondary)
             }
             .buttonStyle(PlainButtonStyle())
             
             Button(action: copyMessage) {
                 Image(systemName: "doc.on.doc")
-                    .font(Font.system(size: 12))
+                    .systemFont(Font.system(size: 12))
                     .foregroundColor(.foregroundSecondary)
             }
             .buttonStyle(PlainButtonStyle())

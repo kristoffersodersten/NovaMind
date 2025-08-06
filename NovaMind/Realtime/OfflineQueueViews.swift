@@ -22,7 +22,7 @@ struct OfflineQueueView: View {
                     Image(systemName: "wifi.slash")
                         .foregroundColor(.red)
                     Text("Offline. Messages will be sent when back online. Queue: \(queueCount)")
-                        .font(Font.footnote)
+                        .systemFont(Font.footnote)
                         .foregroundColor(.secondary)
                 }
                 .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))

@@ -10,7 +10,7 @@ struct MemoryCanvasHeaderView: View {
             // Title and add button
             HStack {
                 Text("Memory Canvas")
-                    .font(Font.custom("SF Pro", size: 18).weight(.semibold))
+                    .systemFont(Font.custom("SF Pro", size: 18).weight(.semibold))
                     .foregroundColor(.foregroundPrimary)
 
                 Spacer()
@@ -18,7 +18,7 @@ struct MemoryCanvasHeaderView: View {
                 Button(action: onAddTapped, label: {
                     Image(systemName: "plus.circle.fill")
                         .foregroundColor(.glow)
-                        .font(Font.title2)
+                        .systemFont(Font.title2)
                         .glowEffect(active: true)
                 })
                 .microSpringButton()
@@ -28,11 +28,11 @@ struct MemoryCanvasHeaderView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.foregroundSecondary)
-                    .font(Font.system(size: 14))
+                    .systemFont(Font.system(size: 14))
 
                 TextField("Search memories...", text: $searchText)
                     .textFieldStyle(PlainTextFieldStyle())
-                    .font(Font.custom("SF Pro", size: 14))
+                    .systemFont(Font.custom("SF Pro", size: 14))
                     .foregroundColor(.foregroundPrimary)
             }
             .padding(.horizontal, 12)

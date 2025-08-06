@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 
@@ -28,7 +29,7 @@ extension Color {
             return Color(red: 0.90, green: 0.90, blue: 0.92)
         }
         #else
-        return Color(UIColor.secondarySystemBackground)
+        return Color(UIColor.controlBackgroundColor)
         #endif
     }
 

@@ -14,7 +14,7 @@ struct InputBarView: View {
             // Input text area
             HStack(spacing: 12) {
                 TextEditor(text: $text)
-                    .font(Font.custom("SF Pro", size: 16))
+                    .systemFont(Font.custom("SF Pro", size: 16))
                     .focused($isFocused)
                     .frame(minHeight: 44, maxHeight: 120)
                     .padding(.horizontal, 12)
@@ -30,7 +30,7 @@ struct InputBarView: View {
                 // Send button
                 Button(action: onSend) {
                     Image(systemName: "arrow.up.circle.fill")
-                        .font(Font.title2)
+                        .systemFont(Font.title2)
                         .foregroundColor(text.isEmpty ? .foregroundSecondary : .glow)
                         .glowEffect(active: !text.isEmpty)
                 }
@@ -68,7 +68,7 @@ struct InputBarView: View {
                 Spacer()
 
                 Text("\(text.count)/4000")
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.foregroundSecondary)
             }
         }

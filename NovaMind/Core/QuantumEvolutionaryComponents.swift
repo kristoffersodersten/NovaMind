@@ -12,11 +12,11 @@ struct MetricCard: View {
     var body: some View {
         VStack(spacing: 4) {
             Text(title)
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
             
             Text(formattedValue)
-                .font(Font.headline)
+                .systemFont(Font.headline)
                 .fontWeight(.bold)
                 .foregroundColor(color)
         }
@@ -50,7 +50,7 @@ struct EntanglementStatusCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Quantum Entanglement")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .fontWeight(.bold)
             
             HStack {
@@ -119,7 +119,7 @@ struct MoralGraphStatusCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Moral Graph Networks")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .fontWeight(.bold)
             
             HStack {
@@ -148,12 +148,12 @@ struct MoralGraphStatusCard: View {
             if !status.recentViolations.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Recent Violations:")
-                        .font(Font.caption)
+                        .systemFont(Font.caption)
                         .foregroundColor(.secondary)
                     
                     ForEach(status.recentViolations.prefix(3), id: \.self) { violation in
                         Text("• \(violation)")
-                            .font(Font.caption)
+                            .systemFont(Font.caption)
                             .foregroundColor(.red)
                     }
                 }
@@ -179,7 +179,7 @@ struct ChaosResilienceCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Chaos Resilience")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .fontWeight(.bold)
             
             HStack {
@@ -224,7 +224,7 @@ struct ChaosResilienceChart: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("Resilience Distribution")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
             
             HStack(spacing: 2) {
@@ -246,10 +246,10 @@ struct EvolutionHistoryCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Latest Evolution")
-                    .font(Font.headline)
+                    .systemFont(Font.headline)
                 Spacer()
                 Text(result.timestamp, style: .relative)
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.secondary)
             }
             
@@ -263,12 +263,12 @@ struct EvolutionHistoryCard: View {
             if result.success {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Genetic Changes:")
-                        .font(Font.subheadline)
+                        .systemFont(Font.subheadline)
                         .fontWeight(.medium)
                     
                     ForEach(result.geneticChanges, id: \.id) { change in
                         Text("• \(change.displayName)")
-                            .font(Font.caption)
+                            .systemFont(Font.caption)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -293,7 +293,7 @@ struct LastMutationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Last Mutation")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
             
             HStack {
@@ -301,18 +301,18 @@ struct LastMutationView: View {
                     .foregroundColor(.blue)
                 
                 Text(mutation.type.displayName)
-                    .font(Font.subheadline)
+                    .systemFont(Font.subheadline)
                     .fontWeight(.medium)
                 
                 Spacer()
                 
                 Text("\(mutation.confidence, specifier: "%.1f")%")
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.blue)
             }
             
             Text(mutation.expectedBenefit.displayName)
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.green)
         }
         .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
@@ -328,11 +328,11 @@ struct DNAGenomeRow: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
             Spacer()
             Text(genome)
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .fontWeight(.medium)
         }
     }
@@ -350,6 +350,6 @@ struct InfoRow: View {
             Text(value)
                 .fontWeight(.semibold)
         }
-        .font(Font.subheadline)
+        .systemFont(Font.subheadline)
     }
 }

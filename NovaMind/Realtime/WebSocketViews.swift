@@ -18,7 +18,7 @@ public struct WebSocketConnectionStatusView: View {
         .accessibilityHidden(true)
 
       Text(statusText)
-        .font(Font.caption)
+        .systemFont(Font.caption)
         .foregroundColor(.secondary)
         .accessibilityLabel("Anslutningsstatus: \(statusText)")
     }

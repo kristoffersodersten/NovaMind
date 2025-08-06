@@ -282,7 +282,7 @@ struct VoiceInputView: View {
 
                     // Microphone icon
                     Image(systemName: voiceManager.isListening ? "mic.fill" : "mic")
-                        .font(Font.system(size: 20, weight: .medium))
+                        .systemFont(Font.system(size: 20, weight: .medium))
                         .foregroundColor(voiceManager.isListening ? .novaBsack : .foregroundPrimary)
                 }
             }
@@ -311,7 +311,7 @@ struct VoiceInputView: View {
             // MARK: - Transcribed Text Preview
             if !voiceManager.transcribedText.isEmpty {
                 Text(voiceManager.transcribedText)
-                    .font(Font.custom("SF Pro", size: 12))
+                    .systemFont(Font.custom("SF Pro", size: 12))
                     .foregroundColor(.foregroundSecondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 12)
@@ -324,11 +324,11 @@ struct VoiceInputView: View {
             // MARK: - Hands-Free Toggle
             HStack {
                 Image(systemName: "hands.and.sparkles")
-                    .font(Font.system(size: 12))
+                    .systemFont(Font.system(size: 12))
                     .foregroundColor(.glow)
 
                 Text("Handsfree")
-                    .font(Font.custom("SF Pro", size: 12))
+                    .systemFont(Font.custom("SF Pro", size: 12))
                     .foregroundColor(.foregroundPrimary)
 
                 Toggle("", isOn: $voiceManager.isHandsFreeMode)
@@ -343,7 +343,7 @@ struct VoiceInputView: View {
             // MARK: - Error Message
             if let errorMessage = voiceManager.errorMessage {
                 Text(errorMessage)
-                    .font(Font.custom("SF Pro", size: 10))
+                    .systemFont(Font.custom("SF Pro", size: 10))
                     .foregroundColor(.red)
                     .multilineTextAlignment(.center)
                     .transition(.opacity)

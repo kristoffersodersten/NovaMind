@@ -39,7 +39,7 @@ public struct WebSocketStatusIndicator: View {
                 )
 
             Text("\(webSocketManager.messagesSent)/\(webSocketManager.messagesReceived)")
-                .font(Font.caption2)
+                .systemFont(Font.caption2)
                 .foregroundStyle(.secondary)
         }
         .padding(.horizontal, 6)

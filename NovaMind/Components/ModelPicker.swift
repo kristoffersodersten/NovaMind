@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 // ModelPicker.swift
@@ -94,11 +95,11 @@ public struct ModelPicker: View {
                     .shadow(color: .accentColor.opacity(0.3 as Double), radius: 1, x: 0, y: 0)
 
                 Text(selectedModelDisplayName)
-                    .font(Font.system(.body))
+                    .systemFont(Font.system(.body))
                     .foregroundColor(.primary)
 
                 Image(systemName: "chevron.down")
-                    .font(Font.caption2)
+                    .systemFont(Font.caption2)
                     .foregroundColor(.secondary)
             }
             .padding(.horizontal, 8)
@@ -189,14 +190,14 @@ public struct ModelPicker: View {
                 Image(systemName: modelIcon(for: model))
                 VStack(alignment: .leading, spacing: 2) {
                     Text(model.name)
-                        .font(Font.system(.body))
+                        .systemFont(Font.system(.body))
                     if !model.isAvailable {
                         Text("Unavailable")
-                            .font(Font.caption)
+                            .systemFont(Font.caption)
                             .foregroundColor(.secondary)
                     } else if model.batteryRequired > 0 || model.powerRequired {
                         Text("Requires: \(requirementsText(for: model))")
-                            .font(Font.caption)
+                            .systemFont(Font.caption)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -232,7 +233,7 @@ public struct ModelPicker: View {
                 }
             }
         }
-        .font(Font.caption)
+        .systemFont(Font.caption)
         .foregroundColor(.secondary)
     }
 

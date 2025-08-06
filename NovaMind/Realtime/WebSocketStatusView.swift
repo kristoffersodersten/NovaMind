@@ -9,7 +9,7 @@ struct WebSocketStatusView: View {
                 .fill(statusColor)
                 .frame(width: CGFloat(10), height: CGFloat(10))
             Text(statusText)
-                .font(Font.caption)
+                .systemFont(Font.caption)
         }
         .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
     }

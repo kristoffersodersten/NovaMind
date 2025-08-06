@@ -42,12 +42,12 @@ struct SettingsView: View {
     var body: some View {
         VStack(spacing: 24) {
             Text("Settings")
-                .font(Font.largeTitle)
+                .systemFont(Font.largeTitle)
                 .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 16) {
                 Text("Theme")
-                    .font(Font.headline)
+                    .systemFont(Font.headline)
                 
                 HStack(spacing: 16) {
                     ForEach([ThemeManager.AppTheme.system, .light, .dark], id: \.self) { theme in
@@ -67,7 +67,7 @@ struct SettingsView: View {
                                             )
                                     )
                                 Text(theme.displayName)
-                                    .font(Font.caption)
+                                    .systemFont(Font.caption)
                                     .foregroundColor(.secondary)
                             }
                         })

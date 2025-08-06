@@ -10,7 +10,7 @@ struct MinimizedMemoryView: View {
                     .frame(width: CGFloat(16), height: CGFloat(16))
                     .overlay(
                         Image(systemName: memoryType.iconName)
-                            .font(Font.system(size: 8))
+                            .systemFont(Font.system(size: 8))
                             .foregroundColor(memoryType.color)
                     )
             }

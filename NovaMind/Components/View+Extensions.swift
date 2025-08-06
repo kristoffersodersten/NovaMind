@@ -29,6 +29,18 @@ extension NSCursor {
 #endif
 
 // MARK: - View Modifiers for NovaMind UI Components
+extension View {
+    /// Applies a micro spring button animation effect
+    func microSpringButton() -> some View {
+        self.scaleEffect(1.0)
+            .animation(.interpolatingSpring(stiffness: 300, damping: 15), value: UUID())
+    }
+    
+    /// Applies a glow effect when active
+    func glowEffect(active: Bool) -> some View {
+        self.shadow(color: active ? .blue : .clear, radius: 4)
+    }
+}
 
 // Glowing effect modifier
 struct GlowEffect: ViewModifier {
@@ -39,7 +51,7 @@ struct GlowEffect: ViewModifier {
     func body(content: Content) -> some View {
         content
             .shadow(
-                color: isActive ? color.opacity(0.6 as Double) : Color.clear,
+                color: isActive ? color.opacity(0.6) : Color.clear,
                 radius: isActive ? radius : 0,
                 x: 0,
                 y: 0
@@ -48,6 +60,11 @@ struct GlowEffect: ViewModifier {
     }
 }
 
+extension View {
+    func glowEffect(active: Bool = true, color: Color = .glow, radius: CGFloat = 4) -> some View {
+        self.modifier(GlowEffect(isActive: active, color: color, radius: radius))
+    }
+}
 
 // Pulse effect modifier
 struct PulseEffect: ViewModifier {
@@ -77,8 +94,36 @@ struct PulseEffect: ViewModifier {
     }
 }
 
+extension View {
+    func pulseEffect(active: Bool = true) -> some View {
+        self.modifier(PulseEffect(active: active))
+    }
+}
 
 // Helper for sending notifications for user activity tracking
+extension View {
+    func trackUserActivity() -> some View {
+        self
+            .onTapGesture {
+                NotificationCenter.default.post(name: NSNotification.Name("UserActivity"), object: nil)
+            }
+            .onHover { _ in
+                NotificationCenter.default.post(name: NSNotification.Name("UserActivity"), object: nil)
+            }
+    }
+    
+    func krilleHover() -> some View {
+        self.overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.glow.opacity(0.3), lineWidth: 1)
+                .opacity(0)
+        )
+    }
+    
+    func microSpringButton() -> some View {
+        self.buttonStyle(MicroSpringButtonStyle())
+    }
+}
 
 // MARK: - Button Styles
 

@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 struct LeftSidebarShowcase: View {
@@ -25,7 +26,7 @@ struct LeftSidebarShowcase: View {
                             Image(systemName: showSidebar ? "sidebar.left" : "sidebar.right")
                             Text(showSidebar ? "Dölj Sidebar" : "Visa Sidebar")
                         }
-                        .font(Font.headline)
+                        .systemFont(Font.headline)
                         .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
                         .background(Color.blue.opacity(0.2 as Double))
                         .foregroundColor(.blue)
@@ -35,7 +36,7 @@ struct LeftSidebarShowcase: View {
                     Spacer()
 
                     Text("LeftSidebar Features")
-                        .font(Font.title2)
+                        .systemFont(Font.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.primary)
                 }
@@ -44,7 +45,7 @@ struct LeftSidebarShowcase: View {
                 // Demo content
                 VStack(spacing: 16) {
                     Text("Sidebar Features:")
-                        .font(Font.headline)
+                        .systemFont(Font.headline)
                         .foregroundColor(.primary)
 
                     VStack(alignment: .leading, spacing: 8) {
@@ -107,18 +108,18 @@ struct FeatureRow: View {
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .foregroundColor(.blue)
                 .frame(width: 30)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(Font.subheadline)
+                    .systemFont(Font.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
 
                 Text(description)
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
             }

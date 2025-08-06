@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 
@@ -114,7 +115,7 @@ struct UnifiedTitleBar: View {
                 // Back button
                 Button(action: { navigationManager.goBack() }) {
                     Image(systemName: "chevron.left")
-                        .font(Font.system(size: 14, weight: .medium))
+                        .systemFont(Font.system(size: 14, weight: .medium))
                         .foregroundColor(navigationManager.canGoBack() ? .glow : .foregroundSecondary)
                 }
                 .disabled(!navigationManager.canGoBack())
@@ -123,7 +124,7 @@ struct UnifiedTitleBar: View {
                 // Forward button
                 Button(action: { navigationManager.goForward() }) {
                     Image(systemName: "chevron.right")
-                        .font(Font.system(size: 14, weight: .medium))
+                        .systemFont(Font.system(size: 14, weight: .medium))
                         .foregroundColor(navigationManager.canGoForward() ? .glow : .foregroundSecondary)
                 }
                 .disabled(!navigationManager.canGoForward())
@@ -148,7 +149,7 @@ struct UnifiedTitleBar: View {
                     }
                 } label: {
                     Image(systemName: "list.bullet")
-                        .font(Font.system(size: 14, weight: .medium))
+                        .systemFont(Font.system(size: 14, weight: .medium))
                         .foregroundColor(.glow)
                 }
                 .buttonStyle(TitleBarButtonStyle())
@@ -159,11 +160,11 @@ struct UnifiedTitleBar: View {
             // MARK: - Current Panel Indicator
             HStack(spacing: 8) {
                 Image(systemName: navigationManager.selectedPanel.iconName)
-                    .font(Font.system(size: 12))
+                    .systemFont(Font.system(size: 12))
                     .foregroundColor(.glow)
 
                 Text(navigationManager.selectedPanel.displayName)
-                    .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
+                    .systemFont(Font.custom("SF Pro", size: 14, relativeTo: .body))
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundPrimary)
             }
@@ -179,7 +180,7 @@ struct UnifiedTitleBar: View {
                 // Theme toggle
                 Button(action: { themeManager.toggleTheme() }) {
                     Image(systemName: themeManager.currentTheme == .dark ? "sun.max" : "moon")
-                        .font(Font.system(size: 14))
+                        .systemFont(Font.system(size: 14))
                         .foregroundColor(.glow)
                 }
                 .buttonStyle(TitleBarButtonStyle())

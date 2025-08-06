@@ -15,13 +15,13 @@ struct MemoryLayerView: View {
                     .frame(width: CGFloat(8), height: CGFloat(8))
 
                 Text(memoryType.displayName)
-                    .font(Font.system(size: 14, weight: .medium))
+                    .systemFont(Font.system(size: 14, weight: .medium))
                     .foregroundColor(.foregroundPrimary)
 
                 Spacer()
 
                 Text("\(filteredItems.count)")
-                    .font(Font.system(size: 12))
+                    .systemFont(Font.system(size: 12))
                     .foregroundColor(.foregroundSecondary)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)

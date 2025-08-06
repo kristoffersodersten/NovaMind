@@ -24,9 +24,9 @@ struct ProjectAgentView: View {
                 Button(action: onReturnToProjects) {
                     HStack(spacing: 6) {
                         Image(systemName: "arrow.left.circle.fill")
-                            .font(Font.system(size: 16))
+                            .systemFont(Font.system(size: 16))
                         Text("Projects")
-                            .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
+                            .systemFont(Font.custom("SF Pro", size: 14, relativeTo: .body))
                     }
                     .foregroundColor(.glow)
                 }
@@ -43,7 +43,7 @@ struct ProjectAgentView: View {
                         .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: isAgentActive)
 
                     Text(isAgentActive ? "AI Active" : "AI Standby")
-                        .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
+                        .systemFont(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                         .foregroundColor(.foregroundSecondary)
                 }
             }
@@ -52,7 +52,7 @@ struct ProjectAgentView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("Project Description")
-                        .font(Font.custom("SF Pro", size: 16, relativeTo: .headline))
+                        .systemFont(Font.custom("SF Pro", size: 16, relativeTo: .headline))
                         .fontWeight(.semibold)
                         .foregroundColor(.foregroundPrimary)
 
@@ -60,7 +60,7 @@ struct ProjectAgentView: View {
 
                     Button(action: { isAgentActive.toggle() }) {
                         Text(isAgentActive ? "Deactivate" : "Activate")
-                            .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
+                            .systemFont(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
                             .background(isAgentActive ? Color.red.opacity(0.2 as Double) : Color.glow.opacity(0.2 as Double))
@@ -70,7 +70,7 @@ struct ProjectAgentView: View {
                 }
 
                 TextEditor(text: $projectDescription)
-                    .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
+                    .systemFont(Font.custom("SF Pro", size: 14, relativeTo: .body))
                     .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                     .background(Color.novaGray.opacity(0.3 as Double))
                     .cornerRadius(CGFloat(8))
@@ -85,13 +85,13 @@ struct ProjectAgentView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text("AI Influence")
-                        .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
+                        .systemFont(Font.custom("SF Pro", size: 14, relativeTo: .body))
                         .foregroundColor(.foregroundPrimary)
 
                     Spacer()
 
                     Text("\(Int(aiStrength * 100))%")
-                        .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
+                        .systemFont(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                         .foregroundColor(.foregroundSecondary)
                 }
 
@@ -103,7 +103,7 @@ struct ProjectAgentView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("Key Points")
-                        .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
+                        .systemFont(Font.custom("SF Pro", size: 14, relativeTo: .body))
                         .foregroundColor(.foregroundPrimary)
 
                     Spacer()
@@ -117,7 +117,7 @@ struct ProjectAgentView: View {
 
                 if keyPoints.isEmpty {
                     Text("No key points defined")
-                        .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
+                        .systemFont(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                         .foregroundColor(.foregroundSecondary)
                         .italic()
                 } else {
@@ -144,14 +144,14 @@ struct ProjectAgentView: View {
                 .frame(width: CGFloat(6), height: CGFloat(6))
 
             Text(point)
-                .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
+                .systemFont(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                 .foregroundColor(.foregroundPrimary)
 
             Spacer()
 
             Button(action: { removeKeyPoint(point) }) {
                 Image(systemName: "xmark.circle.fill")
-                    .font(Font.system(size: 12))
+                    .systemFont(Font.system(size: 12))
                     .foregroundColor(.foregroundSecondary)
             }
             .buttonStyle(PlainButtonStyle())

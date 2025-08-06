@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 struct OnboardingView: View {
@@ -8,17 +9,17 @@ struct OnboardingView: View {
         VStack {
             VStack {
                 Text("Welcome to NovaMind")
-                    .font(Font.largeTitle)
+                    .systemFont(Font.largeTitle)
                     .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
 
                 Text("Getting started...")
-                    .font(Font.body)
+                    .systemFont(Font.body)
                     .foregroundColor(.secondary)
             }
 
             Button(action: completeOnboarding) {
                 Text("Fortsätt")
-                    .font(Font.custom("SF Pro", size: 18).weight(.medium))
+                    .systemFont(Font.custom("SF Pro", size: 18).weight(.medium))
                     .padding(.horizontal, 24)
                     .padding(.vertical, 12)
                     .frame(maxWidth: .infinity)

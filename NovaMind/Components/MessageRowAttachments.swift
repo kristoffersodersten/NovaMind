@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 // MessageRowAttachments.swift
@@ -25,10 +26,10 @@ struct MessageRowAttachments: View {
                 .foregroundColor(.blue)
             VStack(alignment: .leading, spacing: 2) {
                 Text(attachment.name)
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .lineLimit(1)
                 Text(formatFileSize(attachment.size))
-                    .font(Font.caption2)
+                    .systemFont(Font.caption2)
                     .foregroundColor(.secondary)
             }
             Button(action: onRemove) {

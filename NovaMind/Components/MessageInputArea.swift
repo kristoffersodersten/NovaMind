@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 
@@ -19,7 +20,7 @@ struct MessageInputArea: View {
                 .cornerRadius(CGFloat(8))
             Button(action: sendMessage) {
                 Image(systemName: "arrow.up.circle.fill")
-                    .font(Font.title)
+                    .systemFont(Font.title)
             }
             .buttonStyle(PlainButtonStyle())
             .disabled(inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)

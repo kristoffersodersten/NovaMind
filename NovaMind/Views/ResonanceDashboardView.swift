@@ -52,12 +52,12 @@ extension ResonanceDashboardView {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Resonance System Overview")
-                    .font(Font.title)
+                    .systemFont(Font.title)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("NovaMind Multi-Agent CI/CD Ethical Architecture")
-                    .font(Font.subheadline)
+                    .systemFont(Font.subheadline)
                     .foregroundColor(.foregroundSecondary)
             }
 
@@ -78,7 +78,7 @@ extension ResonanceDashboardView {
                 .frame(width: CGFloat(12), height: CGFloat(12))
 
             Text(systemHealthText)
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .fontWeight(.medium)
                 .foregroundColor(.foregroundSecondary)
         }
@@ -95,7 +95,7 @@ extension ResonanceDashboardView {
     private var refreshButton: some View {
         Button(action: refreshData) {
             Image(systemName: "arrow.clockwise")
-                .font(Font.title2)
+                .systemFont(Font.title2)
                 .foregroundColor(.highlightAction)
         }
         .disabled(isRefreshing)
@@ -128,9 +128,9 @@ extension ResonanceDashboardView {
                     label: {
                     VStack(spacing: 6) {
                         Text(item.emoji)
-                            .font(Font.title2)
+                            .systemFont(Font.title2)
                         Text(item.title)
-                            .font(Font.caption)
+                            .systemFont(Font.caption)
                             .fontWeight(.medium)
                     }
                     .foregroundColor(selectedTab == index ? .highlightAction : .foregroundSecondary)
@@ -170,7 +170,7 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("System Overview")
-                    .font(Font.title2)
+                    .systemFont(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Dashboard content will be implemented here")
@@ -184,7 +184,7 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Agent Management")
-                    .font(Font.title2)
+                    .systemFont(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Agent management content will be implemented here")
@@ -198,7 +198,7 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Resonance Radar")
-                    .font(Font.title2)
+                    .systemFont(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Radar content will be implemented here")
@@ -212,7 +212,7 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Pipeline Status")
-                    .font(Font.title2)
+                    .systemFont(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Pipeline status content will be implemented here")
@@ -226,7 +226,7 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Memory Architecture")
-                    .font(Font.title2)
+                    .systemFont(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Memory architecture content will be implemented here")
@@ -240,7 +240,7 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Ethics Compliance")
-                    .font(Font.title2)
+                    .systemFont(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Ethics compliance content will be implemented here")
@@ -286,7 +286,7 @@ struct DetailedLogsView: View {
         NavigationView {
             VStack {
                 Text("Detailed Logs")
-                    .font(Font.title)
+                    .systemFont(Font.title)
                     .fontWeight(.bold)
                     .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
 

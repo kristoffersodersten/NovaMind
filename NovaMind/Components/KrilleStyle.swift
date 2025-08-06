@@ -251,7 +251,7 @@ struct KrilleStyle {
 struct KrillePrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(.semibold))
+            .systemFont(Font.KrilleStyle.Typography.body(.semibold))
             .foregroundColor(.white)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -267,7 +267,7 @@ struct KrillePrimaryButtonStyle: ButtonStyle {
 struct KrilleSecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(.medium))
+            .systemFont(Font.KrilleStyle.Typography.body(.medium))
             .foregroundColor(KrilleStyle.Colors.novaGlow)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -286,7 +286,7 @@ struct KrilleSecondaryButtonStyle: ButtonStyle {
 struct KrilleGhostButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(.medium))
+            .systemFont(Font.KrilleStyle.Typography.body(.medium))
             .foregroundColor(KrilleStyle.Colors.novaPrimary)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -301,7 +301,7 @@ struct KrilleGhostButtonStyle: ButtonStyle {
 struct KrilleDestructiveButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.KrilleStyle.Typography.body(.semibold))
+            .systemFont(Font.KrilleStyle.Typography.body(.semibold))
             .foregroundColor(.white)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -353,7 +353,7 @@ struct KrilleElevatedCardModifier: ViewModifier {
 struct KrilleTextFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(Font.KrilleStyle.Typography.body())
+            .systemFont(Font.KrilleStyle.Typography.body())
             .padding(KrilleStyle.Spacing.md)
             .background(
                 RoundedRectangle(cornerRadius: KrilleStyle.CornerRadius.input)

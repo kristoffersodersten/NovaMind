@@ -265,7 +265,7 @@ public struct TypingIndicatorView: View {
             )
         }
       }
-      Text(text).font(Font.caption).foregroundColor(.secondary)
+      Text(text).systemFont(Font.caption).foregroundColor(.secondary)
     }
     .padding(.horizontal, 12).padding(.vertical, 6)
     .background(Color.secondary.opacity(0.1 as Double)).cornerRadius(CGFloat(12))

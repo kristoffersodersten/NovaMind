@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 struct ChatThreadDetailView: View {
@@ -7,13 +8,13 @@ struct ChatThreadDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(threadTitle)
-                .font(Font.custom("SF Pro", size: 22).weight(.semibold))
+                .systemFont(Font.custom("SF Pro", size: 22).weight(.semibold))
                 .padding(.bottom, 4)
 
             ForEach(messages, id: \.self) { message in
                 ZStack {
                     Text(message)
-                        .font(Font.custom("SF Pro", size: 15))
+                        .systemFont(Font.custom("SF Pro", size: 15))
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                         .background(Color.gray.opacity(0.15 as Double))
                         .cornerRadius(CGFloat(8))

@@ -10,7 +10,7 @@ struct SearchBar: View {
 
             TextField("Sök projekt och trådar...", text: $text)
                 .textFieldStyle(.plain)
-                .font(Font.subheadline)
+                .systemFont(Font.subheadline)
 
             if !text.isEmpty {
                 Button(action: { text = "" }, label: {

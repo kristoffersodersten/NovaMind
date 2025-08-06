@@ -18,11 +18,11 @@ struct MetricCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
 
             Text(formattedValue)
-                .font(Font.title3)
+                .systemFont(Font.title3)
                 .fontWeight(.bold)
                 .foregroundColor(color)
         }
@@ -52,10 +52,10 @@ struct PreferenceSlider: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                 Spacer()
                 Text(value, format: .percent.precision(.fractionLength(1)))
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .foregroundColor(.secondary)
             }
 
@@ -71,7 +71,7 @@ struct LastMutationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("Last Mutation")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
 
             HStack {
@@ -80,11 +80,11 @@ struct LastMutationView: View {
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(mutation.type.displayName)
-                        .font(Font.subheadline)
+                        .systemFont(Font.subheadline)
                         .fontWeight(.medium)
 
                     Text("\(mutation.geneticChanges.count) genetic changes")
-                        .font(Font.caption)
+                        .systemFont(Font.caption)
                         .foregroundColor(.secondary)
                 }
 
@@ -104,7 +104,7 @@ struct RiskBadge: View {
 
     var body: some View {
         Text(level.displayName)
-            .font(Font.caption)
+            .systemFont(Font.caption)
             .fontWeight(.medium)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
@@ -120,7 +120,7 @@ struct QuantumEntanglementVisualization: View {
     var body: some View {
         VStack {
             Text("Entanglement Matrix")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
 
             LazyVGrid(
@@ -158,10 +158,10 @@ struct MoralMetricBar: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
-                    .font(Font.subheadline)
+                    .systemFont(Font.subheadline)
                 Spacer()
                 Text(value, format: .percent.precision(.fractionLength(1)))
-                    .font(Font.subheadline)
+                    .systemFont(Font.subheadline)
                     .fontWeight(.medium)
             }
 
@@ -190,7 +190,7 @@ struct ChaosResilienceChart: View {
     var body: some View {
         VStack {
             Text("Resilience Visualization")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
 
             HStack(alignment: .bottom, spacing: 4) {
@@ -216,13 +216,13 @@ struct EvolutionHistoryCard: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(result.mutation.type.displayName)
-                    .font(Font.headline)
+                    .systemFont(Font.headline)
                     .fontWeight(.medium)
 
                 Spacer()
 
                 Text("Success")
-                    .font(Font.caption)
+                    .systemFont(Font.caption)
                     .fontWeight(.medium)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -232,15 +232,15 @@ struct EvolutionHistoryCard: View {
             }
 
             Text("Target: \(result.mutation.targetComponent.displayName)")
-                .font(Font.subheadline)
+                .systemFont(Font.subheadline)
                 .foregroundColor(.secondary)
 
             Text("Genetic Changes: \(result.mutation.geneticChanges.count)")
-                .font(Font.subheadline)
+                .systemFont(Font.subheadline)
                 .foregroundColor(.secondary)
 
             Text("Hash: \(result.semanticHash.value.prefix(16))...")
-                .font(Font.caption)
+                .systemFont(Font.caption)
                 .foregroundColor(.secondary)
                 .fontFamily(.monospaced)
         }

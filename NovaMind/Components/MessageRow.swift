@@ -21,7 +21,7 @@ struct MessageRow: View {
                     .cornerRadius(CGFloat(16))
                 if isLast {
                     Text(message.timestamp, style: .time)
-                        .font(Font.caption2)
+                        .systemFont(Font.caption2)
                         .foregroundColor(.secondary)
                 }
             }
