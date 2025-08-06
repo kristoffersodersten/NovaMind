@@ -401,7 +401,7 @@ class NovaMindCICDConfig: ObservableObject {
 
 struct CICDConfiguration {
     let version: String
-    let environment: Environment
+    let environment: DeploymentEnvironment
     let agentDefaults: AgentDefaults
     let ethicsConfig: EthicsConfiguration
     let resonanceConfig: ResonanceConfiguration
@@ -481,7 +481,7 @@ enum StageType: String, Codable {
     case monitor = "monitor"
 }
 
-enum Environment: String, Codable {
+enum DeploymentEnvironment: String, Codable {
     case development = "development"
     case staging = "staging"
     case production = "production"
@@ -559,28 +559,6 @@ struct CICDHealth {
     }
 }
 
-struct ComponentHealth {
-    let isHealthy: Bool
-    let lastCheck: Date
-    let metrics: [String: Double]
-
-    init() {
-        self.isHealthy = true
-        self.lastCheck = Date()
-        self.metrics = [:]
-    }
-
-    init(isHealthy: Bool, lastCheck: Date, metrics: [String: Double]) {
-        self.isHealthy = isHealthy
-        self.lastCheck = lastCheck
-        self.metrics = metrics
-    }
-
-    var healthScore: Double {
-        return isHealthy ? 1.0 : 0.0
-    }
-}
-
 struct DeploymentMetrics {
     let successRate: Double
     let averageDeployTime: TimeInterval
@@ -650,13 +628,6 @@ struct AgentConfig {
     let name: String
     let type: AgentType
     let configuration: [String: Any]
-}
-
-enum AgentType: String, Codable {
-    case sparrow = "sparrow"
-    case raven = "raven"
-    case owl = "owl"
-    case mentor = "mentor"
 }
 
 struct AgentDefaults {

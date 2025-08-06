@@ -33,9 +33,9 @@ struct KrilleStyle {
         static let separator = Color("separator")
 
         // Interactive states
-        static let hover = novaGlow.opacity(0.1)
-        static let pressed = novaGlow.opacity(0.2)
-        static let disabled = novaGray.opacity(0.3)
+        static let hover = novaGlow.opacity(0.1 as Double)
+        static let pressed = novaGlow.opacity(0.2 as Double)
+        static let disabled = novaGray.opacity(0.3 as Double)
         static let focus = novaGlow
 
         // Gradients
@@ -46,13 +46,13 @@ struct KrilleStyle {
         )
 
         static let backgroundGradient = LinearGradient(
-            colors: [novaBackground, novaBackground.opacity(0.8)],
+            colors: [novaBackground, novaBackground.opacity(0.8 as Double)],
             startPoint: .top,
             endPoint: .bottom
         )
 
         static let glowGradient = RadialGradient(
-            colors: [novaGlow.opacity(0.8), novaGlow.opacity(0.1), Color.clear],
+            colors: [novaGlow.opacity(0.8 as Double), novaGlow.opacity(0.1 as Double), Color.clear],
             center: .center,
             startRadius: 0,
             endRadius: 100
@@ -211,12 +211,12 @@ struct KrilleStyle {
     }
 
     struct Shadows {
-        static let xtraSmall = ShadowStyle(color: Colors.novaBlack.opacity(0.1), radius: 1, xOffset: 0, yOffset: 1)
-        static let small = ShadowStyle(color: Colors.novaBlack.opacity(0.1), radius: 2, xOffset: 0, yOffset: 1)
-        static let medium = ShadowStyle(color: Colors.novaBlack.opacity(0.1), radius: 4, xOffset: 0, yOffset: 2)
-        static let large = ShadowStyle(color: Colors.novaBlack.opacity(0.1), radius: 8, xOffset: 0, yOffset: 4)
-        static let xtraLarge = ShadowStyle(color: Colors.novaBlack.opacity(0.15), radius: 16, xOffset: 0, yOffset: 8)
-        static let glow = ShadowStyle(color: Colors.novaGlow.opacity(0.3), radius: 8, xOffset: 0, yOffset: 0)
+        static let xtraSmall = ShadowStyle(color: Colors.novaBlack.opacity(0.1 as Double), radius: 1, xOffset: 0, yOffset: 1)
+        static let small = ShadowStyle(color: Colors.novaBlack.opacity(0.1 as Double), radius: 2, xOffset: 0, yOffset: 1)
+        static let medium = ShadowStyle(color: Colors.novaBlack.opacity(0.1 as Double), radius: 4, xOffset: 0, yOffset: 2)
+        static let large = ShadowStyle(color: Colors.novaBlack.opacity(0.1 as Double), radius: 8, xOffset: 0, yOffset: 4)
+        static let xtraLarge = ShadowStyle(color: Colors.novaBlack.opacity(0.15 as Double), radius: 16, xOffset: 0, yOffset: 8)
+        static let glow = ShadowStyle(color: Colors.novaGlow.opacity(0.3 as Double), radius: 8, xOffset: 0, yOffset: 0)
     }
 
     // MARK: - Animation System
@@ -251,7 +251,7 @@ struct KrilleStyle {
 struct KrillePrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(KrilleStyle.Typography.body(.semibold))
+            .font(Font.KrilleStyle.Typography.body(.semibold))
             .foregroundColor(.white)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -267,7 +267,7 @@ struct KrillePrimaryButtonStyle: ButtonStyle {
 struct KrilleSecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(KrilleStyle.Typography.body(.medium))
+            .font(Font.KrilleStyle.Typography.body(.medium))
             .foregroundColor(KrilleStyle.Colors.novaGlow)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -286,7 +286,7 @@ struct KrilleSecondaryButtonStyle: ButtonStyle {
 struct KrilleGhostButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(KrilleStyle.Typography.body(.medium))
+            .font(Font.KrilleStyle.Typography.body(.medium))
             .foregroundColor(KrilleStyle.Colors.novaPrimary)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -301,7 +301,7 @@ struct KrilleGhostButtonStyle: ButtonStyle {
 struct KrilleDestructiveButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(KrilleStyle.Typography.body(.semibold))
+            .font(Font.KrilleStyle.Typography.body(.semibold))
             .foregroundColor(.white)
             .padding(KrilleStyle.Spacing.buttonInsets)
             .background(
@@ -353,7 +353,7 @@ struct KrilleElevatedCardModifier: ViewModifier {
 struct KrilleTextFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(KrilleStyle.Typography.body())
+            .font(Font.KrilleStyle.Typography.body())
             .padding(KrilleStyle.Spacing.md)
             .background(
                 RoundedRectangle(cornerRadius: KrilleStyle.CornerRadius.input)
@@ -371,7 +371,7 @@ struct KrilleNavigationBarModifier: ViewModifier {
         content
             .background(
                 Rectangle()
-                    .fill(KrilleStyle.Colors.novaBackground.opacity(0.9))
+                    .fill(KrilleStyle.Colors.novaBackground.opacity(0.9 as Double))
                     .shadow(
                         color: KrilleStyle.Shadows.sm.color,
                         radius: KrilleStyle.Shadows.sm.radius,

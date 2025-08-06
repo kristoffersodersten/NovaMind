@@ -17,7 +17,7 @@ struct GradientPreviewView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(gradient.name)
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundPrimary)
 
@@ -26,12 +26,12 @@ struct GradientPreviewView: View {
                 Button("Copy") {
                     onCopy(gradient)
                 }
-                .font(.caption)
+                .font(Font.caption)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .background(Color.glow.opacity(0.2))
+                .background(Color.glow.opacity(0.2 as Double))
                 .foregroundColor(.glow)
-                .cornerRadius(4)
+                .cornerRadius(CGFloat(4))
             }
 
             RoundedRectangle(cornerRadius: 8)

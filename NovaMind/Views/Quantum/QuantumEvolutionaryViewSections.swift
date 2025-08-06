@@ -11,7 +11,7 @@ extension QuantumEvolutionaryView {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Quantum System Status")
-                    .font(.title2)
+                    .font(Font.title2)
                     .fontWeight(.bold)
 
                 Spacer()
@@ -55,11 +55,11 @@ extension QuantumEvolutionaryView {
                 Text(quantumSystem.systemState.lastEvolution, style: .relative)
                     .fontWeight(.semibold)
             }
-            .font(.caption)
+            .font(Font.caption)
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     var constitutionalLockIndicator: some View {
@@ -68,16 +68,16 @@ extension QuantumEvolutionaryView {
                 .foregroundColor(quantumSystem.evolutionLocked ? .red : .green)
 
             Text(quantumSystem.evolutionLocked ? "Locked" : "Active")
-                .font(.caption)
+                .font(Font.caption)
                 .fontWeight(.medium)
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
         .background(
             (quantumSystem.evolutionLocked ? Color.red : Color.green)
-                .opacity(0.1)
+                .opacity(0.1 as Double)
         )
-        .cornerRadius(8)
+        .cornerRadius(CGFloat(8))
     }
 
     // MARK: - Evolution Control Section
@@ -85,7 +85,7 @@ extension QuantumEvolutionaryView {
     var evolutionControlSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Evolution Control")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             VStack(spacing: 16) {
@@ -94,15 +94,15 @@ extension QuantumEvolutionaryView {
                 emergencyControlsView
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     var contextConfigurationView: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Current Context")
-                .font(.headline)
+                .font(Font.headline)
 
             LazyVGrid(
                 columns: Array(repeating: GridItem(.flexible()), count: 2),
@@ -110,17 +110,17 @@ extension QuantumEvolutionaryView {
             ) {
                 ForEach(Array(currentContext.usagePattern), id: \.self) { pattern in
                     Text(pattern.displayName)
-                        .font(.caption)
+                        .font(Font.caption)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
-                        .background(Color.blue.opacity(0.2))
-                        .cornerRadius(6)
+                        .background(Color.blue.opacity(0.2 as Double))
+                        .cornerRadius(CGFloat(6))
                 }
             }
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("User Preferences")
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                     .fontWeight(.medium)
 
                 PreferenceSlider(
@@ -185,7 +185,7 @@ extension QuantumEvolutionaryView {
                     .fontWeight(.medium)
                 }
                 .frame(maxWidth: .infinity)
-                .padding()
+                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
                 .background(
                     LinearGradient(
                         colors: [Color.blue, Color.purple],
@@ -194,7 +194,7 @@ extension QuantumEvolutionaryView {
                     )
                 )
                 .foregroundColor(.white)
-                .cornerRadius(10)
+                .cornerRadius(CGFloat(10))
             })
             .disabled(isEvolutionInProgress || quantumSystem.evolutionLocked)
 
@@ -207,7 +207,7 @@ extension QuantumEvolutionaryView {
     var emergencyControlsView: some View {
         VStack(spacing: 8) {
             Text("Emergency Controls")
-                .font(.headline)
+                .font(Font.headline)
                 .foregroundColor(.red)
 
             HStack {
@@ -247,7 +247,7 @@ extension QuantumEvolutionaryView {
     var quantumEntanglementSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Quantum Entanglement")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             if let status = entanglementStatus {
@@ -277,16 +277,16 @@ extension QuantumEvolutionaryView {
                             .fontWeight(.semibold)
                     }
                 }
-                .font(.subheadline)
+                .font(Font.subheadline)
 
                 QuantumEntanglementVisualization(status: status)
             } else {
                 ProgressView("Loading entanglement status...")
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     // MARK: - Moral Graph Section
@@ -294,7 +294,7 @@ extension QuantumEvolutionaryView {
     var moralGraphSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Moral Graph Networks")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             if let status = moralGraphStatus {
@@ -321,9 +321,9 @@ extension QuantumEvolutionaryView {
                 ProgressView("Loading moral graph status...")
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     // MARK: - Chaos Resilience Section
@@ -331,7 +331,7 @@ extension QuantumEvolutionaryView {
     var chaosResilienceSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Chaos Resilience Monitor")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             if let result = chaosTestResult {
@@ -372,7 +372,7 @@ extension QuantumEvolutionaryView {
                         .foregroundColor(result.resilienceScore > 0.8 ? .green : .orange)
                     }
                 }
-                .font(.subheadline)
+                .font(Font.subheadline)
 
                 ChaosResilienceChart(result: result)
             } else {
@@ -380,9 +380,9 @@ extension QuantumEvolutionaryView {
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     // MARK: - Evolution History Section
@@ -390,7 +390,7 @@ extension QuantumEvolutionaryView {
     var evolutionHistorySection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Evolution History")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             if let result = evolutionResult {
@@ -400,8 +400,8 @@ extension QuantumEvolutionaryView {
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color(.systemBackground))
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 }

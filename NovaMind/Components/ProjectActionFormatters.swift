@@ -19,35 +19,35 @@ struct ProjectActionFormatter {
 
     private func formatCreate(for action: ProjectAction) -> some View {
         VStack(alignment: .leading) {
-            Text("Create Project").font(.headline)
+            Text("Create Project").font(Font.headline)
             Text("Timestamp: \(action.timestamp.formatted())")
         }
     }
 
     private func formatRename(for action: ProjectAction) -> some View {
         VStack(alignment: .leading) {
-            Text("Rename Project").font(.headline)
+            Text("Rename Project").font(Font.headline)
             Text("Timestamp: \(action.timestamp.formatted())")
         }
     }
 
     private func formatDelete(for action: ProjectAction) -> some View {
         VStack(alignment: .leading) {
-            Text("Delete Project").font(.headline)
+            Text("Delete Project").font(Font.headline)
             Text("Timestamp: \(action.timestamp.formatted())")
         }
     }
 
     private func formatDuplicate(for action: ProjectAction) -> some View {
         VStack(alignment: .leading) {
-            Text("Duplicate Project").font(.headline)
+            Text("Duplicate Project").font(Font.headline)
             Text("Timestamp: \(action.timestamp.formatted())")
         }
     }
 
     private func formatArchive(for action: ProjectAction) -> some View {
         VStack(alignment: .leading) {
-            Text("Archive Project").font(.headline)
+            Text("Archive Project").font(Font.headline)
             Text("Timestamp: \(action.timestamp.formatted())")
         }
     }

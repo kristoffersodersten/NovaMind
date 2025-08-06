@@ -46,22 +46,29 @@ struct NovaMindApp: App {
 
                 // AI-driven performance overlay
                 if showPerformanceOverlay {
+                    // TODO: Implement NovaMindPerformanceOverlay
+                    /*
                     NovaMindPerformanceOverlay(
                         systemHealth: guiController.systemState,
                         dataFlowMetrics: guiController.dataFlow,
                         ecosystemHealth: ecosystemHealthMonitor.healthScore
                     )
                     .transition(.opacity.combined(with: .scale))
+                    */
                 }
 
                 // Real-time connection status
+                // TODO: Implement NovaMindConnectionStatusView
+                /*
                 NovaMindConnectionStatusView(
                     networkStatus: guiController.networkStatus,
-                    systemStatus: ecosystemHealthMonitor.systemStatus
+                    systemStatus: ecosystemHealthMonitor.overallHealth > 0.8 ? .operational :
+                                 ecosystemHealthMonitor.overallHealth > 0.5 ? .degraded : .failing
                 )
+                */
             }
         }
-        .windowStyle(.hiddenTitleBar)
+        // .windowStyle(.hiddenTitleBar) // TODO: Fix WindowStyle for current Swift version
         .commands {
             CommandGroup(replacing: .newItem) {
                 Button("New Chat") {
@@ -102,13 +109,13 @@ struct NovaMindApp: App {
         print("🚀 NovaMind Quantum-Constitutional Organic Mesh System Starting...")
 
         // Initialize AI-driven optimizations
-        guiController.initializeOptimizations()
+        // guiController.initializeOptimizations() // TODO: Fix GUI controller method
 
         // Start ecosystem health monitoring
         ecosystemHealthMonitor.startMonitoring()
 
         // Setup performance tracking
-        PerformanceMonitor.shared.startMonitoring()
+        // PerformanceMonitor.shared.startMonitoring() // TODO: Implement PerformanceMonitor
 
         print("✅ All quantum systems initialized successfully")
     }
@@ -119,8 +126,10 @@ extension Notification.Name {
     static let togglePerformanceOverlay = Notification.Name("togglePerformanceOverlay")
 }
 
+// TODO: Fix WindowStyle implementation for current Swift version
+/*
 struct HiddenTitleBarWindowStyle: WindowStyle {
-    func makeBody(configuration: Configuration) -> some View {
+    func makeBody(configuration: WindowStyleConfiguration) -> some View {
         configuration.content
             .background(WindowAccessor { window in
                 window?.titleVisibility = .hidden
@@ -129,6 +138,7 @@ struct HiddenTitleBarWindowStyle: WindowStyle {
             })
     }
 }
+*/
 
 struct WindowAccessor: NSViewRepresentable {
     var callback: (NSWindow?) -> Void

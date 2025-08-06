@@ -537,13 +537,6 @@ enum CoralNodeType: String, CaseIterable {
     case specialized
 }
 
-enum AgentType: String, CaseIterable {
-    case scoutbird
-    case angrybird
-    case mentor
-    case coordinator
-}
-
 struct AgentMigration: Identifiable {
     let id: String
     let agentId: String

@@ -65,17 +65,18 @@ jobs:
         run: |
           echo "🏷️ Categorizing error types..."
           
-          # Count different error types
-          AMBIGUOUS_FONT=$(grep -c "ambiguous use of 'font'" error_sample.txt || echo "0")
-          REDECLARATION=$(grep -c "invalid redeclaration" error_sample.txt || echo "0")
-          CANNOT_FIND=$(grep -c "cannot find" error_sample.txt || echo "0")
+          # Count different error types (with safer handling)
+          AMBIGUOUS_FONT=$(grep -c "ambiguous use of 'font'" error_sample.txt 2>/dev/null || echo "0")
+          REDECLARATION=$(grep -c "invalid redeclaration" error_sample.txt 2>/dev/null || echo "0")
+          CANNOT_FIND=$(grep -c "cannot find" error_sample.txt 2>/dev/null || echo "0")
           
-          CATEGORIES="{\"ambiguous_font\":$AMBIGUOUS_FONT,\"redeclaration\":$REDECLARATION,\"cannot_find\":$CANNOT_FIND}"
+          # Create valid JSON (escape quotes properly)
+          CATEGORIES=$(printf '{"ambiguous_font":%d,"redeclaration":%d,"cannot_find":%d}' "$AMBIGUOUS_FONT" "$REDECLARATION" "$CANNOT_FIND")
           echo "categories=$CATEGORIES" >> $GITHUB_OUTPUT
           
           echo "📊 Error Categories:"
           echo "  - Ambiguous font: $AMBIGUOUS_FONT"
-          echo "  - Redeclarations: $REDECLARATION"
+          echo "  - Redeclarations: $REDECLARATION"  
           echo "  - Cannot find: $CANNOT_FIND"
 
       - name: 📤 Upload Error Analysis

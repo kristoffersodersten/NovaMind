@@ -9,7 +9,7 @@ struct RealtimeUI: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text("Realtime Feed")
-        .font(.title)
+        .font(Font.title)
         .bold()
         .padding(.top)
 
@@ -17,9 +17,9 @@ struct RealtimeUI: View {
         VStack(alignment: .leading, spacing: 8) {
           ForEach(realtimeMessages.indices, id: \.self) { messageIndex in
             Text(realtimeMessages[messageIndex])
-              .padding(8)
+              .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
               .background(Color(NSColor.controlBackgroundColor))
-              .cornerRadius(8)
+              .cornerRadius(CGFloat(8))
               .transition(.move(edge: .bottom).combined(with: .opacity))
           }
         }

@@ -8,7 +8,7 @@ struct TypingIndicator: View {
             ForEach(0..<3) { index in
                 Circle()
                     .fill(Color.foregroundSecondary)
-                    .frame(width: 6, height: 6)
+                    .frame(width: CGFloat(6), height: CGFloat(6))
                     .scaleEffect(animatingDots ? 1.2 : 0.8)
                     .animation(
                         .easeInOut(duration: 0.6)
@@ -20,8 +20,8 @@ struct TypingIndicator: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
-        .background(Color.novaGray.opacity(0.3))
-        .cornerRadius(12)
+        .background(Color.novaGray.opacity(0.3 as Double))
+        .cornerRadius(CGFloat(12))
         .onAppear {
             animatingDots = true
         }

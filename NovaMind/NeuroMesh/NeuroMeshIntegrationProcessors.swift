@@ -81,38 +81,6 @@ extension NeuroMeshIntegrationExamples {
             ]
         )
     }
-                type: .collaboration,
-                content: "Successful collaborative knowledge sharing",
-                timestamp: Date()
-            ),
-            achievements: [
-                Achievement(
-                    type: "collaboration",
-                    description: "Established mutual consent relationship",
-                    impact: 0.8,
-                    timestamp: Date()
-                )
-            ],
-            context: NeuroMeshContext(
-                purpose: .collaboration,
-                privacyLevel: .shared,
-                ethicalFlags: ["mutual_consent"]
-            )
-        )
-
-        return IntegrationResult(
-            title: example.title,
-            description: example.description,
-            stage: .completed,
-            insights: [
-                "Consent process completed successfully",
-                "Trust score: \(String(format: "%.1f", trustBuilding.initialTrustScore * 100))%",
-                "Shared memory space created",
-                "Collaborative interaction stored",
-                "Emotional celebration response triggered"
-            ]
-        )
-    }
     
     func processCrossAgentLearning(example: IntegrationResult) async throws -> IntegrationResult {
         // 1. Agent identifies knowledge gap

@@ -13,7 +13,7 @@ struct ComponentPreviewView: View {
     private var buttonPreviewSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Buttons")
-                .font(.subheadline)
+                .font(Font.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
@@ -33,25 +33,25 @@ struct ComponentPreviewView: View {
     private var textPreviewSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Typography")
-                .font(.subheadline)
+                .font(Font.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Large Title")
-                    .font(.largeTitle)
+                    .font(Font.largeTitle)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Headline")
-                    .font(.headline)
+                    .font(Font.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Body text with secondary color")
-                    .font(.body)
+                    .font(Font.body)
                     .foregroundColor(.foregroundSecondary)
 
                 Text("Caption text")
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.foregroundSecondary)
             }
         }
@@ -60,24 +60,24 @@ struct ComponentPreviewView: View {
     private var cardPreviewSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Cards")
-                .font(.subheadline)
+                .font(Font.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
             HStack(spacing: 12) {
                 VStack(alignment: .leading) {
                     Text("Card Title")
-                        .font(.headline)
+                        .font(Font.headline)
                         .foregroundColor(.foregroundPrimary)
 
                     Text("Card content with multiple lines of text to show how it wraps.")
-                        .font(.body)
+                        .font(Font.body)
                         .foregroundColor(.foregroundSecondary)
                 }
-                .padding()
+                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
                 .background(Color.backgroundPrimary)
-                .cornerRadius(8)
-                .shadow(color: .novaBlack.opacity(0.1), radius: 4)
+                .cornerRadius(CGFloat(8))
+                .shadow(color: .novaBlack.opacity(0.1 as Double), radius: 4)
 
                 Spacer()
             }

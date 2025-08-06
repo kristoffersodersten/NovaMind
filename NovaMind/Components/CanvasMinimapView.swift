@@ -22,14 +22,14 @@ struct CanvasMinimapView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Minimap")
-                    .font(.custom("SF Pro", size: 12, relativeTo: .caption))
+                    .font(Font.system(.caption))
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundPrimary)
 
                 Spacer()
 
                 Text("\(memoryBlocks.count) blocks")
-                    .font(.custom("SF Pro", size: 10, relativeTo: .caption2))
+                    .font(Font.custom("SF Pro", size: 10, relativeTo: .caption2))
                     .foregroundColor(.foregroundSecondary)
             }
 
@@ -47,16 +47,16 @@ struct CanvasMinimapView: View {
             }
             .frame(height: blockSize * 3 + spacing * 2 + 8)
         }
-        .padding(12)
-        .background(Color.novaGray.opacity(0.3))
-        .cornerRadius(8)
+        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+        .background(Color.novaGray.opacity(0.3 as Double))
+        .cornerRadius(CGFloat(8))
     }
 
     private func minimapBlock(for block: MemoryBlock) -> some View {
         Rectangle()
             .fill(blockColor(for: block))
             .frame(width: blockSize, height: blockSize)
-            .cornerRadius(2)
+            .cornerRadius(CGFloat(2))
             .overlay(
                 RoundedRectangle(cornerRadius: 2)
                     .stroke(
@@ -78,13 +78,13 @@ struct CanvasMinimapView: View {
     private func blockColor(for block: MemoryBlock) -> Color {
         switch block.type {
         case .shortTerm:
-            return .blue.opacity(0.7)
+            return .blue.opacity(0.7 as Double)
         case .midTerm:
-            return .orange.opacity(0.7)
+            return .orange.opacity(0.7 as Double)
         case .longTerm:
-            return .purple.opacity(0.7)
+            return .purple.opacity(0.7 as Double)
         case .vector:
-            return .glow.opacity(0.7)
+            return .glow.opacity(0.7 as Double)
         }
     }
 }

@@ -84,11 +84,11 @@ struct NeuroMeshDashboard: View {
         VStack(spacing: 8) {
             HStack {
                 Image(systemName: "brain.head.profile")
-                    .font(.title2)
+                    .font(Font.title2)
                     .foregroundColor(.nova_primary)
 
                 Text("Neuromesh Memory System")
-                    .font(.headline)
+                    .font(Font.headline)
                     .fontWeight(.semibold)
 
                 Spacer()
@@ -132,7 +132,7 @@ struct NeuroMeshDashboard: View {
     private var toggleButton: some View {
         Button(action: { isRealTimeMode.toggle() }) {
             Image(systemName: isRealTimeMode ? "pause.circle.fill" : "play.circle.fill")
-                .font(.title2)
+                .font(Font.title2)
                 .foregroundColor(.nova_primary)
         }
     }
@@ -154,7 +154,7 @@ struct NeuroMeshDashboard: View {
                 // Learning Pattern Analysis
                 LearningPatternAnalysis()
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
         .background(Color.backgroundPrimary)
     }
@@ -176,7 +176,7 @@ struct NeuroMeshDashboard: View {
                 // Mutual Consent Network
                 MutualConsentNetwork()
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
         .background(Color.backgroundPrimary)
     }
@@ -201,7 +201,7 @@ struct NeuroMeshDashboard: View {
                 // Federation Status
                 FederationStatusView()
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
         .background(Color.backgroundPrimary)
     }
@@ -223,7 +223,7 @@ struct NeuroMeshDashboard: View {
                 // Collective Emotional Context
                 CollectiveEmotionalContextView()
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
         .background(Color.backgroundPrimary)
     }
@@ -248,7 +248,7 @@ struct NeuroMeshDashboard: View {
                 // Signal Strength Analysis
                 SignalStrengthAnalysis()
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
         .background(Color.backgroundPrimary)
     }
@@ -328,10 +328,10 @@ struct CollectiveMemoryCard: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Golden Standards")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.goldenStandards)")
-                            .font(.headline)
+                            .font(Font.headline)
                             .foregroundColor(.highlightAction)
                     }
 
@@ -339,10 +339,10 @@ struct CollectiveMemoryCard: View {
 
                     VStack(alignment: .trailing) {
                         Text("Improvement Tweaks")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.improvementTweaks)")
-                            .font(.headline)
+                            .font(Font.headline)
                             .foregroundColor(.nova_primary)
                     }
                 }
@@ -350,10 +350,10 @@ struct CollectiveMemoryCard: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Error Patterns")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.errorPatterns)")
-                            .font(.headline)
+                            .font(Font.headline)
                             .foregroundColor(.red)
                     }
 
@@ -361,10 +361,10 @@ struct CollectiveMemoryCard: View {
 
                     VStack(alignment: .trailing) {
                         Text("Federation Nodes")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.federationNodes)")
-                            .font(.headline)
+                            .font(Font.headline)
                             .foregroundColor(.green)
                     }
                 }
@@ -388,15 +388,15 @@ struct CurrentEmotionalState: View {
                 // Primary emotion display
                 HStack {
                     EmotionIcon(emotion: emotionalModel.currentEmotionalState.primaryEmotion)
-                        .font(.system(size: 40))
+                        .font(Font.system(size: 40))
 
                     VStack(alignment: .leading) {
                         Text(emotionalModel.currentEmotionalState.primaryEmotion.rawValue.capitalized)
-                            .font(.title2)
+                            .font(Font.title2)
                             .fontWeight(.semibold)
 
                         Text("Intensity: \(Int(emotionalModel.currentEmotionalState.intensity * 100))%")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                     }
 
@@ -406,7 +406,7 @@ struct CurrentEmotionalState: View {
                 // Emotional intensity bar
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Emotional Intensity")
-                        .font(.caption)
+                        .font(Font.caption)
                         .foregroundColor(.foregroundSecondary)
 
                     ProgressView(value: emotionalModel.currentEmotionalState.intensity)
@@ -467,13 +467,13 @@ struct ResonanceRadarStatusCard: View {
             VStack(spacing: 12) {
                 HStack {
                     Text("Status")
-                        .font(.caption)
+                        .font(Font.caption)
                         .foregroundColor(.foregroundSecondary)
 
                     Spacer()
 
                     Text(resonanceRadar.isScanning ? "Scanning..." : "Ready")
-                        .font(.caption)
+                        .font(Font.caption)
                         .fontWeight(.medium)
                         .foregroundColor(resonanceRadar.isScanning ? .orange : .green)
                 }
@@ -481,39 +481,39 @@ struct ResonanceRadarStatusCard: View {
                 if let lastAnalysis = resonanceRadar.lastAnalysis {
                     HStack {
                         Text("Last Analysis")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.foregroundSecondary)
 
                         Spacer()
 
                         Text(formatDate(lastAnalysis))
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.foregroundPrimary)
                     }
                 }
 
                 HStack {
                     Text("Hypotheses")
-                        .font(.caption)
+                        .font(Font.caption)
                         .foregroundColor(.foregroundSecondary)
 
                     Spacer()
 
                     Text("\(resonanceRadar.hypothesisNodes.count)")
-                        .font(.caption)
+                        .font(Font.caption)
                         .fontWeight(.medium)
                         .foregroundColor(.nova_primary)
                 }
 
                 HStack {
                     Text("Causality Links")
-                        .font(.caption)
+                        .font(Font.caption)
                         .foregroundColor(.foregroundSecondary)
 
                     Spacer()
 
                     Text("\(resonanceRadar.causalityLinks.count)")
-                        .font(.caption)
+                        .font(Font.caption)
                         .fontWeight(.medium)
                         .foregroundColor(.highlightAction)
                 }
@@ -549,7 +549,7 @@ struct CardView<Content: View>: View {
                     .foregroundColor(.nova_primary)
 
                 Text(title)
-                    .font(.headline)
+                    .font(Font.headline)
                     .fontWeight(.semibold)
 
                 Spacer()
@@ -557,10 +557,10 @@ struct CardView<Content: View>: View {
 
             content
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
-        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+        .cornerRadius(CGFloat(12))
+        .shadow(color: .black.opacity(0.1 as Double), radius: 4, x: 0, y: 2)
     }
 }
 
@@ -571,13 +571,13 @@ struct StatRow: View {
     var body: some View {
         HStack {
             Text(label)
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.foregroundSecondary)
 
             Spacer()
 
             Text(value)
-                .font(.caption)
+                .font(Font.caption)
                 .fontWeight(.medium)
                 .foregroundColor(.foregroundPrimary)
         }
@@ -593,13 +593,13 @@ struct ProgressBar: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.foregroundSecondary)
 
                 Spacer()
 
                 Text("\(Int(progress * 100))%")
-                    .font(.caption)
+                    .font(Font.caption)
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundPrimary)
             }
@@ -619,14 +619,14 @@ struct HealthIndicator: View {
         VStack(spacing: 4) {
             Circle()
                 .fill(status.color)
-                .frame(width: 8, height: 8)
+                .frame(width: CGFloat(8), height: CGFloat(8))
 
             Text(title)
-                .font(.caption2)
+                .font(Font.caption2)
                 .foregroundColor(.foregroundSecondary)
 
             Text(value)
-                .font(.caption2)
+                .font(Font.caption2)
                 .fontWeight(.medium)
                 .foregroundColor(.foregroundPrimary)
         }

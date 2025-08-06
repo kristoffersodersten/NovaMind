@@ -7,21 +7,13 @@ import SwiftUI
 
 // Note: MCPTypes are defined in ../../Shared/MCPTypes.swift
 
-// MARK: - Memory Scope Definition
-
-enum MemoryScope {
-  case workingMemory
-  case longTermMemory
-  case contextMemory
-}
-
 // MARK: - Local ChatMessage Model for WorkspaceView
 
 struct WorkspaceChatMessage: Identifiable {
   let id = UUID()
   let sender: SenderType
   let text: String
-  let agent: AgentType?
+  let agent: AgentProfile?
   let accent: Color?
   let scope: MemoryScope
 }
@@ -31,7 +23,7 @@ enum SenderType {
   case assistant
 }
 
-struct AgentType {
+struct AgentProfile {
   let id: String
   let name: String
   let icon: String  // SF Symbol name
@@ -48,12 +40,12 @@ struct MainWorkspaceView: View {
       text: "Hej, vad är NovaMind?",
       agent: nil,
       accent: nil,
-      scope: MemoryScope.workingMemory
+      scope: MemoryScope.individual("user")
     ),
     WorkspaceChatMessage(
       sender: .assistant,
       text: "NovaMind är en AI-assistent som hjälper dig med utveckling.",
-      agent: AgentType(
+      agent: AgentProfile(
         id: "nova",
         name: "Nova",
         icon: "brain",
@@ -61,12 +53,12 @@ struct MainWorkspaceView: View {
         modelType: "GPT-4"
       ),
       accent: Color.blue,
-      scope: MemoryScope.workingMemory
+      scope: MemoryScope.entity("nova")
     ),
     WorkspaceChatMessage(
       sender: .assistant,
       text: "Jag kan hjälpa till med kodning, design och planering.",
-      agent: AgentType(
+      agent: AgentProfile(
         id: "assistant",
         name: "Assistant",
         icon: "gear",
@@ -74,7 +66,7 @@ struct MainWorkspaceView: View {
         modelType: "Claude"
       ),
       accent: Color.green,
-      scope: MemoryScope.workingMemory
+      scope: MemoryScope.entity("assistant")
     )
   ]
   @State private var inputText: String = ""
@@ -90,7 +82,7 @@ struct MainWorkspaceView: View {
       ScrollView {
         VStack(spacing: 18) {
           ForEach(messages) { msg in
-            ChatBubble(message: msg)
+            WorkspaceChatBubble(message: msg)
           }
         }
         .padding(.vertical, 24)
@@ -103,7 +95,7 @@ struct MainWorkspaceView: View {
       VStack(spacing: 8) {
         ZStack(alignment: .bottom) {
           TextEditor(text: $inputText)
-            .font(.custom("SF Pro", size: 16))
+            .font(Font.custom("SF Pro", size: 16))
             .frame(height: dynamicHeight())
             .cornerRadius(8)
             .shadow(color: .black.opacity(0.05), radius: 1, y: 1)
@@ -144,7 +136,7 @@ struct MainWorkspaceView: View {
           Spacer()
           Button(action: sendMessage) {
             Image(systemName: "arrow.up.circle.fill")
-              .font(.title2)
+              .font(Font.title2)
               .foregroundColor(.accentColor)
               .glowEffect(active: inputText.count > 0)
           }
@@ -186,9 +178,9 @@ struct MainWorkspaceView: View {
   }
 }
 
-// MARK: - ChatBubble
+// MARK: - WorkspaceChatBubble
 
-struct ChatBubble: View {
+struct WorkspaceChatBubble: View {
   let message: WorkspaceChatMessage
   var body: some View {
     HStack {
@@ -215,24 +207,24 @@ struct BubbleContent: View {
         if let agent = message.agent {
           Image(systemName: agent.icon)
             .foregroundColor(agent.accent)
-            .font(.title3)
+            .font(Font.title3)
             .glowEffect(active: true)
           Text(agent.name)
-            .font(.caption)
+            .font(Font.caption)
             .foregroundColor(agent.accent)
             .bold()
         } else {
           Image(systemName: "person.crop.circle")
             .foregroundColor(.gray)
-            .font(.title3)
+            .font(Font.title3)
           Text("User")
-            .font(.caption)
+            .font(Font.caption)
             .foregroundColor(.gray)
             .bold()
         }
       }
       Text(message.text)
-        .font(.custom("SF Pro", size: 16))
+        .font(Font.custom("SF Pro", size: 16))
         .foregroundColor(.primary)
         .padding(.vertical, 8)
         .padding(.horizontal, 14)

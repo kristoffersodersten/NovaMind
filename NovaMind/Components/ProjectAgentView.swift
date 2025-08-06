@@ -24,9 +24,9 @@ struct ProjectAgentView: View {
                 Button(action: onReturnToProjects) {
                     HStack(spacing: 6) {
                         Image(systemName: "arrow.left.circle.fill")
-                            .font(.system(size: 16))
+                            .font(Font.system(size: 16))
                         Text("Projects")
-                            .font(.custom("SF Pro", size: 14, relativeTo: .body))
+                            .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
                     }
                     .foregroundColor(.glow)
                 }
@@ -38,12 +38,12 @@ struct ProjectAgentView: View {
                 HStack(spacing: 6) {
                     Circle()
                         .fill(isAgentActive ? Color.green : Color.gray)
-                        .frame(width: 8, height: 8)
+                        .frame(width: CGFloat(8), height: CGFloat(8))
                         .scaleEffect(isAgentActive ? 1.2 : 1.0)
                         .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: isAgentActive)
 
                     Text(isAgentActive ? "AI Active" : "AI Standby")
-                        .font(.custom("SF Pro", size: 12, relativeTo: .caption))
+                        .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                         .foregroundColor(.foregroundSecondary)
                 }
             }
@@ -52,7 +52,7 @@ struct ProjectAgentView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("Project Description")
-                        .font(.custom("SF Pro", size: 16, relativeTo: .headline))
+                        .font(Font.custom("SF Pro", size: 16, relativeTo: .headline))
                         .fontWeight(.semibold)
                         .foregroundColor(.foregroundPrimary)
 
@@ -60,24 +60,24 @@ struct ProjectAgentView: View {
 
                     Button(action: { isAgentActive.toggle() }) {
                         Text(isAgentActive ? "Deactivate" : "Activate")
-                            .font(.custom("SF Pro", size: 12, relativeTo: .caption))
+                            .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
-                            .background(isAgentActive ? Color.red.opacity(0.2) : Color.glow.opacity(0.2))
-                            .cornerRadius(6)
+                            .background(isAgentActive ? Color.red.opacity(0.2 as Double) : Color.glow.opacity(0.2 as Double))
+                            .cornerRadius(CGFloat(6))
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
 
                 TextEditor(text: $projectDescription)
-                    .font(.custom("SF Pro", size: 14, relativeTo: .body))
-                    .padding(12)
-                    .background(Color.novaGray.opacity(0.3))
-                    .cornerRadius(8)
+                    .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
+                    .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+                    .background(Color.novaGray.opacity(0.3 as Double))
+                    .cornerRadius(CGFloat(8))
                     .frame(minHeight: 100, maxHeight: 200)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(isAgentActive ? Color.glow.opacity(0.5) : Color.separator, lineWidth: 1)
+                            .stroke(isAgentActive ? Color.glow.opacity(0.5 as Double) : Color.separator, lineWidth: 1)
                     )
             }
 
@@ -85,13 +85,13 @@ struct ProjectAgentView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text("AI Influence")
-                        .font(.custom("SF Pro", size: 14, relativeTo: .body))
+                        .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
                         .foregroundColor(.foregroundPrimary)
 
                     Spacer()
 
                     Text("\(Int(aiStrength * 100))%")
-                        .font(.custom("SF Pro", size: 12, relativeTo: .caption))
+                        .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                         .foregroundColor(.foregroundSecondary)
                 }
 
@@ -103,7 +103,7 @@ struct ProjectAgentView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("Key Points")
-                        .font(.custom("SF Pro", size: 14, relativeTo: .body))
+                        .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
                         .foregroundColor(.foregroundPrimary)
 
                     Spacer()
@@ -117,7 +117,7 @@ struct ProjectAgentView: View {
 
                 if keyPoints.isEmpty {
                     Text("No key points defined")
-                        .font(.custom("SF Pro", size: 12, relativeTo: .caption))
+                        .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                         .foregroundColor(.foregroundSecondary)
                         .italic()
                 } else {
@@ -131,7 +131,7 @@ struct ProjectAgentView: View {
 
             Spacer()
         }
-        .padding(16)
+        .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
         .sheet(isPresented: $showingKeyPointEditor) {
             KeyPointEditor(keyPoints: $keyPoints)
         }
@@ -141,25 +141,25 @@ struct ProjectAgentView: View {
         HStack {
             Circle()
                 .fill(Color.glow)
-                .frame(width: 6, height: 6)
+                .frame(width: CGFloat(6), height: CGFloat(6))
 
             Text(point)
-                .font(.custom("SF Pro", size: 12, relativeTo: .caption))
+                .font(Font.custom("SF Pro", size: 12, relativeTo: .caption))
                 .foregroundColor(.foregroundPrimary)
 
             Spacer()
 
             Button(action: { removeKeyPoint(point) }) {
                 Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 12))
+                    .font(Font.system(size: 12))
                     .foregroundColor(.foregroundSecondary)
             }
             .buttonStyle(PlainButtonStyle())
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
-        .background(Color.novaGray.opacity(0.3))
-        .cornerRadius(6)
+        .background(Color.novaGray.opacity(0.3 as Double))
+        .cornerRadius(CGFloat(6))
     }
 
     private func removeKeyPoint(_ point: String) {
@@ -199,7 +199,7 @@ struct KeyPointEditor: View {
 
                 Spacer()
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             .navigationTitle("Key Points")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

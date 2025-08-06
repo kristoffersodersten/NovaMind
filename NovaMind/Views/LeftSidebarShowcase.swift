@@ -25,26 +25,26 @@ struct LeftSidebarShowcase: View {
                             Image(systemName: showSidebar ? "sidebar.left" : "sidebar.right")
                             Text(showSidebar ? "Dölj Sidebar" : "Visa Sidebar")
                         }
-                        .font(.headline)
-                        .padding()
-                        .background(Color.blue.opacity(0.2))
+                        .font(Font.headline)
+                        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                        .background(Color.blue.opacity(0.2 as Double))
                         .foregroundColor(.blue)
-                        .cornerRadius(8)
+                        .cornerRadius(CGFloat(8))
                     })
 
                     Spacer()
 
                     Text("LeftSidebar Features")
-                        .font(.title2)
+                        .font(Font.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.primary)
                 }
-                .padding()
+                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
 
                 // Demo content
                 VStack(spacing: 16) {
                     Text("Sidebar Features:")
-                        .font(.headline)
+                        .font(Font.headline)
                         .foregroundColor(.primary)
 
                     VStack(alignment: .leading, spacing: 8) {
@@ -84,13 +84,13 @@ struct LeftSidebarShowcase: View {
                             description: "Komplett stöd för skärmläsare och tangentbordsnavigation"
                         )
                     }
-                    .padding()
-                    .background(Color.black.opacity(0.3))
-                    .cornerRadius(12)
+                    .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                    .background(Color.black.opacity(0.3 as Double))
+                    .cornerRadius(CGFloat(12))
 
                     Spacer()
                 }
-                .padding()
+                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(NSColor.controlBackgroundColor))
@@ -107,18 +107,18 @@ struct FeatureRow: View {
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
-                .font(.title2)
+                .font(Font.title2)
                 .foregroundColor(.blue)
                 .frame(width: 30)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
 
                 Text(description)
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
             }

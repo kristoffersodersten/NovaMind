@@ -9,7 +9,7 @@ struct MemoryItemView: View {
             // Title row with importance indicator
             HStack {
                 Text(item.title)
-                    .font(.system(size: 12, weight: .medium))
+                    .font(Font.system(size: 12, weight: .medium))
                     .foregroundColor(.foregroundPrimary)
                     .lineLimit(1)
 
@@ -18,13 +18,13 @@ struct MemoryItemView: View {
                 if item.importance > 3 {
                     Image(systemName: "star.fill")
                         .foregroundColor(.highlightAction)
-                        .font(.system(size: 10))
+                        .font(Font.system(size: 10))
                 }
             }
 
             // Content preview
             Text(item.content)
-                .font(.system(size: 11))
+                .font(Font.system(size: 11))
                 .foregroundColor(.foregroundSecondary)
                 .lineLimit(2)
 
@@ -33,20 +33,20 @@ struct MemoryItemView: View {
                 HStack {
                     ForEach(item.tags.prefix(3), id: \.self) { tag in
                         Text(tag)
-                            .font(.system(size: 9))
+                            .font(Font.system(size: 9))
                             .foregroundColor(.foregroundSecondary)
                             .padding(.horizontal, 4)
                             .padding(.vertical, 1)
-                            .background(Color.separator.opacity(0.3))
-                            .cornerRadius(4)
+                            .background(Color.separator.opacity(0.3 as Double))
+                            .cornerRadius(CGFloat(4))
                     }
                     Spacer()
                 }
             }
         }
-        .padding(8)
+        .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
         .background(Color.backgroundPrimary)
-        .cornerRadius(8)
+        .cornerRadius(CGFloat(8))
         .krilleHover()
     }
 }

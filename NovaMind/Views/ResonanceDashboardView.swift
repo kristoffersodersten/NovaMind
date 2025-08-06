@@ -52,12 +52,12 @@ extension ResonanceDashboardView {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Resonance System Overview")
-                    .font(.title)
+                    .font(Font.title)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("NovaMind Multi-Agent CI/CD Ethical Architecture")
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                     .foregroundColor(.foregroundSecondary)
             }
 
@@ -75,17 +75,17 @@ extension ResonanceDashboardView {
         HStack(spacing: 8) {
             Circle()
                 .fill(systemHealthColor)
-                .frame(width: 12, height: 12)
+                .frame(width: CGFloat(12), height: CGFloat(12))
 
             Text(systemHealthText)
-                .font(.caption)
+                .font(Font.caption)
                 .fontWeight(.medium)
                 .foregroundColor(.foregroundSecondary)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
-        .background(Color.backgroundPrimary.opacity(0.8))
-        .cornerRadius(12)
+        .background(Color.backgroundPrimary.opacity(0.8 as Double))
+        .cornerRadius(CGFloat(12))
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.separator, lineWidth: 1)
@@ -95,7 +95,7 @@ extension ResonanceDashboardView {
     private var refreshButton: some View {
         Button(action: refreshData) {
             Image(systemName: "arrow.clockwise")
-                .font(.title2)
+                .font(Font.title2)
                 .foregroundColor(.highlightAction)
         }
         .disabled(isRefreshing)
@@ -128,16 +128,16 @@ extension ResonanceDashboardView {
                     label: {
                     VStack(spacing: 6) {
                         Text(item.emoji)
-                            .font(.title2)
+                            .font(Font.title2)
                         Text(item.title)
-                            .font(.caption)
+                            .font(Font.caption)
                             .fontWeight(.medium)
                     }
                     .foregroundColor(selectedTab == index ? .highlightAction : .foregroundSecondary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
                     .background(
-                        selectedTab == index ? Color.highlightAction.opacity(0.1) : Color.clear
+                        selectedTab == index ? Color.highlightAction.opacity(0.1 as Double) : Color.clear
                     )
                     }
                 )
@@ -170,13 +170,13 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("System Overview")
-                    .font(.title2)
+                    .font(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Dashboard content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
     }
 
@@ -184,13 +184,13 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Agent Management")
-                    .font(.title2)
+                    .font(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Agent management content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
     }
 
@@ -198,13 +198,13 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Resonance Radar")
-                    .font(.title2)
+                    .font(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Radar content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
     }
 
@@ -212,13 +212,13 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Pipeline Status")
-                    .font(.title2)
+                    .font(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Pipeline status content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
     }
 
@@ -226,13 +226,13 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Memory Architecture")
-                    .font(.title2)
+                    .font(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Memory architecture content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
     }
 
@@ -240,13 +240,13 @@ extension ResonanceDashboardView {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Ethics Compliance")
-                    .font(.title2)
+                    .font(Font.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
                 Text("Ethics compliance content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
     }
 }
@@ -286,9 +286,9 @@ struct DetailedLogsView: View {
         NavigationView {
             VStack {
                 Text("Detailed Logs")
-                    .font(.title)
+                    .font(Font.title)
                     .fontWeight(.bold)
-                    .padding()
+                    .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
 
                 Text("Log details will be shown here")
                     .foregroundColor(.secondary)

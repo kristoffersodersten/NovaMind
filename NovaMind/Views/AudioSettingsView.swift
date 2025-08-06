@@ -9,10 +9,10 @@ struct AudioSettingsView: View {
                     Text("Volym")
                 }
                 Text("Justera volymen för ljudnotiser och feedback.")
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
     }
 }

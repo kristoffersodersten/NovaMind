@@ -1,5 +1,5 @@
 import Foundation
-import OSLog OSLog
+import OSLog
 
 
 // MARK: - Model types

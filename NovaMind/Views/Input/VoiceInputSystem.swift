@@ -271,7 +271,7 @@ struct VoiceInputView: View {
                     // Background circle
                     Circle()
                         .fill(voiceManager.isListening ? Color.glow : Color.novaGray)
-                        .frame(width: 48, height: 48)
+                        .frame(width: CGFloat(48), height: CGFloat(48))
                         .scaleEffect(pulseAnimation ? 1.1 : 1.0)
                         .animation(
                             voiceManager.isListening ?
@@ -282,7 +282,7 @@ struct VoiceInputView: View {
 
                     // Microphone icon
                     Image(systemName: voiceManager.isListening ? "mic.fill" : "mic")
-                        .font(.system(size: 20, weight: .medium))
+                        .font(Font.system(size: 20, weight: .medium))
                         .foregroundColor(voiceManager.isListening ? .novaBsack : .foregroundPrimary)
                 }
             }
@@ -311,24 +311,24 @@ struct VoiceInputView: View {
             // MARK: - Transcribed Text Preview
             if !voiceManager.transcribedText.isEmpty {
                 Text(voiceManager.transcribedText)
-                    .font(.custom("SF Pro", size: 12))
+                    .font(Font.custom("SF Pro", size: 12))
                     .foregroundColor(.foregroundSecondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
-                    .background(Color.novaGray.opacity(0.5))
-                    .cornerRadius(8)
+                    .background(Color.novaGray.opacity(0.5 as Double))
+                    .cornerRadius(CGFloat(8))
                     .transition(.opacity.combined(with: .scale))
             }
 
             // MARK: - Hands-Free Toggle
             HStack {
                 Image(systemName: "hands.and.sparkles")
-                    .font(.system(size: 12))
+                    .font(Font.system(size: 12))
                     .foregroundColor(.glow)
 
                 Text("Handsfree")
-                    .font(.custom("SF Pro", size: 12))
+                    .font(Font.custom("SF Pro", size: 12))
                     .foregroundColor(.foregroundPrimary)
 
                 Toggle("", isOn: $voiceManager.isHandsFreeMode)
@@ -337,19 +337,19 @@ struct VoiceInputView: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
-            .background(Color.novaGray.opacity(0.3))
-            .cornerRadius(8)
+            .background(Color.novaGray.opacity(0.3 as Double))
+            .cornerRadius(CGFloat(8))
 
             // MARK: - Error Message
             if let errorMessage = voiceManager.errorMessage {
                 Text(errorMessage)
-                    .font(.custom("SF Pro", size: 10))
+                    .font(Font.custom("SF Pro", size: 10))
                     .foregroundColor(.red)
                     .multilineTextAlignment(.center)
                     .transition(.opacity)
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .onChange(of: voiceManager.transcribedText) { newText in
             if !newText.isEmpty && !voiceManager.isProcessing {
                 // Auto-insert transcribed text
@@ -372,6 +372,6 @@ struct VoiceInputView_Previews: PreviewProvider {
             voiceManager: VoiceInputManager(),
             inputText: .constant("")
         )
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
     }
 }

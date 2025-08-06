@@ -91,25 +91,25 @@ public struct ModelPicker: View {
                 Image(systemName: modelIcon)
                     .foregroundColor(.secondary)
                     .scaleEffect(1.0)
-                    .shadow(color: .accentColor.opacity(0.3), radius: 1, x: 0, y: 0)
+                    .shadow(color: .accentColor.opacity(0.3 as Double), radius: 1, x: 0, y: 0)
 
                 Text(selectedModelDisplayName)
-                    .font(.system(.body))
+                    .font(Font.system(.body))
                     .foregroundColor(.primary)
 
                 Image(systemName: "chevron.down")
-                    .font(.caption2)
+                    .font(Font.caption2)
                     .foregroundColor(.secondary)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Color(NSColor.quaternaryLabelColor))
-            .cornerRadius(6)
+            .cornerRadius(CGFloat(6))
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.accentColor.opacity(0.2), lineWidth: 1)
-                    .shadow(color: .accentColor.opacity(0.3), radius: 3, x: 0, y: 1)
-                    .opacity(0.4)
+                    .stroke(Color.accentColor.opacity(0.2 as Double), lineWidth: 1)
+                    .shadow(color: .accentColor.opacity(0.3 as Double), radius: 3, x: 0, y: 1)
+                    .opacity(0.4 as Double)
             )
             .onHover { hovering in
                 withAnimation(.easeInOut(duration: 0.2)) {
@@ -189,14 +189,14 @@ public struct ModelPicker: View {
                 Image(systemName: modelIcon(for: model))
                 VStack(alignment: .leading, spacing: 2) {
                     Text(model.name)
-                        .font(.system(.body))
+                        .font(Font.system(.body))
                     if !model.isAvailable {
                         Text("Unavailable")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.secondary)
                     } else if model.batteryRequired > 0 || model.powerRequired {
                         Text("Requires: \(requirementsText(for: model))")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -232,7 +232,7 @@ public struct ModelPicker: View {
                 }
             }
         }
-        .font(.caption)
+        .font(Font.caption)
         .foregroundColor(.secondary)
     }
 

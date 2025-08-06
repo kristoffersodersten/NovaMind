@@ -1,43 +1,52 @@
 import SwiftUI
 
-// MARK: - Model Definitions
-struct Project: Identifiable {
-    let id = UUID()
-    let name: String
-    let description: String
-    var agentConfiguration: ProjectAgentConfiguration?
+// MARK: - Sidebar Model Definitions
+public struct SidebarProject: Identifiable {
+    public let id = UUID()
+    public let name: String
+    public let description: String
+    public var agentConfiguration: ProjectAgentConfiguration?
+    
+    public init(name: String, description: String, agentConfiguration: ProjectAgentConfiguration? = nil) {
+        self.name = name
+        self.description = description
+        self.agentConfiguration = agentConfiguration
+    }
 }
 
-struct ProjectAgentConfiguration {
-    let isEnabled: Bool
+public struct ProjectAgentConfiguration {
+    public let isEnabled: Bool
+    
+    public init(isEnabled: Bool) {
+        self.isEnabled = isEnabled
+    }
 }
 
-struct ChatThread: Identifiable {
-    let id = UUID()
-    let title: String
-    let tags: [String]
-    let isImportant: Bool
-    let projectId: UUID?
-}
+// Use the core ChatThread type
+typealias SidebarChatThread = ChatThread
 
-class ProjectStore: ObservableObject {
-    @Published var projects: [Project] = [
-        Project(
+public class ProjectStore: ObservableObject {
+    @Published public var projects: [SidebarProject] = [
+        SidebarProject(
             name: "Sample Project",
             description: "A sample project",
             agentConfiguration: ProjectAgentConfiguration(isEnabled: true)
         )
     ]
+    
+    public init() {}
 }
 
-class ChatThreadStore: ObservableObject {
-    @Published var threads: [ChatThread] = []
+public class ChatThreadStore: ObservableObject {
+    @Published var threads: [SidebarChatThread] = []
     
-    func getGeneralThreads() -> [ChatThread] {
+    public init() {}
+    
+    func getGeneralThreads() -> [SidebarChatThread] {
         return threads.filter { $0.projectId == nil }
     }
     
-    func getThreadsForProject(_ projectId: UUID) -> [ChatThread] {
+    func getThreadsForProject(_ projectId: UUID) -> [SidebarChatThread] {
         return threads.filter { $0.projectId == projectId }
     }
 }

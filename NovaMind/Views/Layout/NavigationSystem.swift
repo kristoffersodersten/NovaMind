@@ -114,7 +114,7 @@ struct UnifiedTitleBar: View {
                 // Back button
                 Button(action: { navigationManager.goBack() }) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(Font.system(size: 14, weight: .medium))
                         .foregroundColor(navigationManager.canGoBack() ? .glow : .foregroundSecondary)
                 }
                 .disabled(!navigationManager.canGoBack())
@@ -123,7 +123,7 @@ struct UnifiedTitleBar: View {
                 // Forward button
                 Button(action: { navigationManager.goForward() }) {
                     Image(systemName: "chevron.right")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(Font.system(size: 14, weight: .medium))
                         .foregroundColor(navigationManager.canGoForward() ? .glow : .foregroundSecondary)
                 }
                 .disabled(!navigationManager.canGoForward())
@@ -148,7 +148,7 @@ struct UnifiedTitleBar: View {
                     }
                 } label: {
                     Image(systemName: "list.bullet")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(Font.system(size: 14, weight: .medium))
                         .foregroundColor(.glow)
                 }
                 .buttonStyle(TitleBarButtonStyle())
@@ -159,18 +159,18 @@ struct UnifiedTitleBar: View {
             // MARK: - Current Panel Indicator
             HStack(spacing: 8) {
                 Image(systemName: navigationManager.selectedPanel.iconName)
-                    .font(.system(size: 12))
+                    .font(Font.system(size: 12))
                     .foregroundColor(.glow)
 
                 Text(navigationManager.selectedPanel.displayName)
-                    .font(.custom("SF Pro", size: 14, relativeTo: .body))
+                    .font(Font.custom("SF Pro", size: 14, relativeTo: .body))
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundPrimary)
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
-            .background(Color.novaGray.opacity(0.3))
-            .cornerRadius(6)
+            .background(Color.novaGray.opacity(0.3 as Double))
+            .cornerRadius(CGFloat(6))
 
             Spacer()
 
@@ -179,7 +179,7 @@ struct UnifiedTitleBar: View {
                 // Theme toggle
                 Button(action: { themeManager.toggleTheme() }) {
                     Image(systemName: themeManager.currentTheme == .dark ? "sun.max" : "moon")
-                        .font(.system(size: 14))
+                        .font(Font.system(size: 14))
                         .foregroundColor(.glow)
                 }
                 .buttonStyle(TitleBarButtonStyle())
@@ -187,20 +187,20 @@ struct UnifiedTitleBar: View {
                 // Window controls placeholder
                 HStack(spacing: 4) {
                     Circle()
-                        .fill(Color.red.opacity(0.7))
-                        .frame(width: 12, height: 12)
+                        .fill(Color.red.opacity(0.7 as Double))
+                        .frame(width: CGFloat(12), height: CGFloat(12))
                     Circle()
-                        .fill(Color.yellow.opacity(0.7))
-                        .frame(width: 12, height: 12)
+                        .fill(Color.yellow.opacity(0.7 as Double))
+                        .frame(width: CGFloat(12), height: CGFloat(12))
                     Circle()
-                        .fill(Color.green.opacity(0.7))
-                        .frame(width: 12, height: 12)
+                        .fill(Color.green.opacity(0.7 as Double))
+                        .frame(width: CGFloat(12), height: CGFloat(12))
                 }
             }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .background(Color.backgroundPrimary.opacity(0.95))
+        .background(Color.backgroundPrimary.opacity(0.95 as Double))
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
@@ -219,7 +219,7 @@ struct UnifiedTitleBar: View {
 struct TitleBarButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(6)
+            .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
             .background(
                 Circle()
                     .fill(configuration.isPressed ? Color.novaGray : Color.clear)

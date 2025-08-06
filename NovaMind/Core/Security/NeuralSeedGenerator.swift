@@ -192,12 +192,17 @@ class EntropyCollector {
     private func collectCPUStateEntropy() -> [UInt8] {
         var entropy: [UInt8] = []
         
-        // CPU cycle counter if available
-        #if arch(x86_64)
-        var cpuCounter: UInt64 = 0
-        asm("rdtsc" : "=A" (cpuCounter))
-        
-        withUnsafeBytes(of: cpuCounter) { bytes in
+        // CPU cycle counter alternative - using mach_absolute_time for high-resolution timing
+        #if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
+        import Darwin
+        let machTime = mach_absolute_time()
+        withUnsafeBytes(of: machTime) { bytes in
+            entropy.append(contentsOf: bytes)
+        }
+        #else
+        // Fallback to current time for other platforms
+        let currentTime = UInt64(Date().timeIntervalSince1970 * 1_000_000)
+        withUnsafeBytes(of: currentTime) { bytes in
             entropy.append(contentsOf: bytes)
         }
         #endif

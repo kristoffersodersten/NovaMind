@@ -17,7 +17,7 @@ extension Color {
 
     // MARK: - Computed Colors (for dynamic behavior)
     static var interactiveGlow: Color {
-        glow.opacity(0.8)
+        glow.opacity(0.8 as Double)
     }
 
     static var panelBackground: Color {

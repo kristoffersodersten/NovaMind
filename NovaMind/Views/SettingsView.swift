@@ -42,12 +42,12 @@ struct SettingsView: View {
     var body: some View {
         VStack(spacing: 24) {
             Text("Settings")
-                .font(.largeTitle)
+                .font(Font.largeTitle)
                 .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 16) {
                 Text("Theme")
-                    .font(.headline)
+                    .font(Font.headline)
                 
                 HStack(spacing: 16) {
                     ForEach([ThemeManager.AppTheme.system, .light, .dark], id: \.self) { theme in
@@ -57,7 +57,7 @@ struct SettingsView: View {
                             VStack(spacing: 8) {
                                 RoundedRectangle(cornerRadius: 8)
                                     .fill(themePreviewColor(for: theme))
-                                    .frame(width: 60, height: 40)
+                                    .frame(width: CGFloat(60), height: CGFloat(40))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
                                             .stroke(
@@ -67,7 +67,7 @@ struct SettingsView: View {
                                             )
                                     )
                                 Text(theme.displayName)
-                                    .font(.caption)
+                                    .font(Font.caption)
                                     .foregroundColor(.secondary)
                             }
                         })
@@ -75,19 +75,19 @@ struct SettingsView: View {
                     }
                 }
             }
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(12)
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .background(Color.gray.opacity(0.1 as Double))
+            .cornerRadius(CGFloat(12))
             
             Spacer()
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
     }
     
     private func themePreviewColor(for theme: ThemeManager.AppTheme) -> Color {
         switch theme {
         case .system:
-            return Color.gray.opacity(0.3)
+            return Color.gray.opacity(0.3 as Double)
         case .light:
             return Color.white
         case .dark:

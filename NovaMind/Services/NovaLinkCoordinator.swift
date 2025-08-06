@@ -414,7 +414,6 @@ class NovaLinkCoordinator: ObservableObject {
         
         return recommendations
     }
-}
 
 // MARK: - Routing Logic
 

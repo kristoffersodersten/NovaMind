@@ -41,11 +41,6 @@ struct MessageListView: View {
     }
 }
 
-// MARK: - Color Extensions
-private extension Color {
-    static let backgroundPrimary = Color(NSColor.controlBackgroundColor)
-}
-
 // MARK: - Preview
 #Preview {
     MessageListView(

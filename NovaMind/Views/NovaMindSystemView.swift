@@ -26,7 +26,7 @@ struct NovaMindSystemView: View {
             ZStack {
                 // Background
                 LinearGradient(
-                    colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.1)],
+                    colors: [Color.blue.opacity(0.1 as Double), Color.purple.opacity(0.1 as Double)],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -61,7 +61,7 @@ extension NovaMindSystemView {
             HStack {
                 HStack(spacing: 8) {
                     Image(systemName: "brain.head.profile")
-                        .font(.title)
+                        .font(Font.title)
                         .foregroundStyle(
                             .linearGradient(
                                 colors: [.blue, .purple],
@@ -71,7 +71,7 @@ extension NovaMindSystemView {
                         )
 
                     Text("NovaMind")
-                        .font(.title2)
+                        .font(Font.title2)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                 }
@@ -82,7 +82,7 @@ extension NovaMindSystemView {
                 controlButtons
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal)
     }
@@ -116,19 +116,19 @@ extension NovaMindSystemView {
         HStack(spacing: 8) {
             Button(action: { showSystemDashboard = true }, label: {
                 Image(systemName: "gauge.badge.plus")
-                    .font(.title3)
+                    .font(Font.title3)
             })
             .buttonStyle(.bordered)
 
             Button(action: { showSecurityPanel = true }, label: {
                 Image(systemName: "lock.shield")
-                    .font(.title3)
+                    .font(Font.title3)
             })
             .buttonStyle(.bordered)
 
             Button(action: { showRenderingStats = true }, label: {
                 Image(systemName: "cpu")
-                    .font(.title3)
+                    .font(Font.title3)
             })
             .buttonStyle(.bordered)
         }
@@ -141,14 +141,14 @@ extension NovaMindSystemView {
                 securityCard
                 metricsCard
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
     }
 
     private var systemOverviewCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Quantum System")
-                .font(.headline)
+                .font(Font.headline)
                 .fontWeight(.semibold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -169,14 +169,14 @@ extension NovaMindSystemView {
             .buttonStyle(.borderedProminent)
             .disabled(quantumSystem.evolutionLocked)
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
     private var securityCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Security Status")
-                .font(.headline)
+                .font(Font.headline)
                 .fontWeight(.semibold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -191,14 +191,14 @@ extension NovaMindSystemView {
                 MetricRow(label: "Active Sessions", value: "1")
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
     private var metricsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("System Metrics")
-                .font(.headline)
+                .font(Font.headline)
                 .fontWeight(.semibold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -217,7 +217,7 @@ extension NovaMindSystemView {
                 )
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
@@ -226,17 +226,17 @@ extension NovaMindSystemView {
             HStack(spacing: 4) {
                 Circle()
                     .fill(systemModeColor)
-                    .frame(width: 8, height: 8)
+                    .frame(width: CGFloat(8), height: CGFloat(8))
 
                 Text(systemMode.displayName)
-                    .font(.caption)
+                    .font(Font.caption)
                     .fontWeight(.medium)
             }
 
             Spacer()
 
             Text("Last validation: \(lastConstitutionalValidation, style: .relative)")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
 
             Spacer()
@@ -244,7 +244,7 @@ extension NovaMindSystemView {
             Button("Emergency Reset") {
                 Task { await performEmergencyReset() }
             }
-            .font(.caption)
+            .font(Font.caption)
             .foregroundColor(.red)
         }
         .padding(.horizontal)
@@ -319,15 +319,15 @@ struct StatusIndicator: View {
     var body: some View {
         VStack(spacing: 4) {
             Image(systemName: icon)
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(color)
 
             Text(value, format: .percent.precision(.fractionLength(0)))
-                .font(.caption2)
+                .font(Font.caption2)
                 .fontWeight(.medium)
 
             Text(label)
-                .font(.caption2)
+                .font(Font.caption2)
                 .foregroundColor(.secondary)
         }
     }
@@ -345,7 +345,7 @@ struct MetricRow: View {
             Text(value)
                 .fontWeight(.medium)
         }
-        .font(.subheadline)
+        .font(Font.subheadline)
     }
 }
 

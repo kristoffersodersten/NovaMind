@@ -12,18 +12,18 @@ struct MetricCard: View {
     var body: some View {
         VStack(spacing: 4) {
             Text(title)
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
             
             Text(formattedValue)
-                .font(.headline)
+                .font(Font.headline)
                 .fontWeight(.bold)
                 .foregroundColor(color)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
         .background(Color.backgroundSecondary)
-        .cornerRadius(8)
+        .cornerRadius(CGFloat(8))
     }
     
     private var formattedValue: String {
@@ -50,7 +50,7 @@ struct EntanglementStatusCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Quantum Entanglement")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
             
             HStack {
@@ -79,9 +79,9 @@ struct EntanglementStatusCard: View {
             // Visual representation
             EntanglementVisualization(status: status)
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
     
     private var coherenceColor: Color {
@@ -102,14 +102,14 @@ struct EntanglementVisualization: View {
                 Rectangle()
                     .fill(barColor(for: index))
                     .frame(height: 20)
-                    .cornerRadius(2)
+                    .cornerRadius(CGFloat(2))
             }
         }
     }
     
     private func barColor(for index: Int) -> Color {
         let threshold = Double(index) / 5.0
-        return status.entanglementStrength > threshold ? .blue : .gray.opacity(0.3)
+        return status.entanglementStrength > threshold ? .blue : .gray.opacity(0.3 as Double)
     }
 }
 
@@ -119,7 +119,7 @@ struct MoralGraphStatusCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Moral Graph Networks")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
             
             HStack {
@@ -148,20 +148,20 @@ struct MoralGraphStatusCard: View {
             if !status.recentViolations.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Recent Violations:")
-                        .font(.caption)
+                        .font(Font.caption)
                         .foregroundColor(.secondary)
                     
                     ForEach(status.recentViolations.prefix(3), id: \.self) { violation in
                         Text("• \(violation)")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.red)
                     }
                 }
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
     
     private var integrityColor: Color {
@@ -179,7 +179,7 @@ struct ChaosResilienceCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Chaos Resilience")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
             
             HStack {
@@ -207,9 +207,9 @@ struct ChaosResilienceCard: View {
             
             ChaosResilienceChart(result: result)
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
     
     private var testColor: Color {
@@ -224,7 +224,7 @@ struct ChaosResilienceChart: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("Resilience Distribution")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
             
             HStack(spacing: 2) {
@@ -234,7 +234,7 @@ struct ChaosResilienceChart: View {
                         .frame(height: 30)
                 }
             }
-            .cornerRadius(4)
+            .cornerRadius(CGFloat(4))
         }
     }
 }
@@ -246,10 +246,10 @@ struct EvolutionHistoryCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Latest Evolution")
-                    .font(.headline)
+                    .font(Font.headline)
                 Spacer()
                 Text(result.timestamp, style: .relative)
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.secondary)
             }
             
@@ -263,12 +263,12 @@ struct EvolutionHistoryCard: View {
             if result.success {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Genetic Changes:")
-                        .font(.subheadline)
+                        .font(Font.subheadline)
                         .fontWeight(.medium)
                     
                     ForEach(result.geneticChanges, id: \.id) { change in
                         Text("• \(change.displayName)")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -281,9 +281,9 @@ struct EvolutionHistoryCard: View {
                     .fontWeight(.semibold)
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundSecondary)
-        .cornerRadius(8)
+        .cornerRadius(CGFloat(8))
     }
 }
 
@@ -293,7 +293,7 @@ struct LastMutationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Last Mutation")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
             
             HStack {
@@ -301,23 +301,23 @@ struct LastMutationView: View {
                     .foregroundColor(.blue)
                 
                 Text(mutation.type.displayName)
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                     .fontWeight(.medium)
                 
                 Spacer()
                 
                 Text("\(mutation.confidence, specifier: "%.1f")%")
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.blue)
             }
             
             Text(mutation.expectedBenefit.displayName)
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.green)
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundSecondary)
-        .cornerRadius(8)
+        .cornerRadius(CGFloat(8))
     }
 }
 
@@ -328,11 +328,11 @@ struct DNAGenomeRow: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
             Spacer()
             Text(genome)
-                .font(.caption)
+                .font(Font.caption)
                 .fontWeight(.medium)
         }
     }
@@ -350,6 +350,6 @@ struct InfoRow: View {
             Text(value)
                 .fontWeight(.semibold)
         }
-        .font(.subheadline)
+        .font(Font.subheadline)
     }
 }

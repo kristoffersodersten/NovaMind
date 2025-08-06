@@ -3,7 +3,7 @@ import Foundation
 
 
 // MARK: - AI Provider Protocol (temporary)
-public protocol AIProvider {
+public protocol DeepSeekProviderProtocol {
     var providerName: String { get }
     var modelName: String { get }
 
@@ -11,7 +11,7 @@ public protocol AIProvider {
 }
 
 @available(macOS 10.15, iOS 13.0, *)
-public actor DeepSeekAPI: AIProvider {
+public actor DeepSeekAPI: DeepSeekProviderProtocol {
     nonisolated public let providerName: String = "DeepSeek"
     nonisolated public let modelName: String
     public var maxTokens = 4096

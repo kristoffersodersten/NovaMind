@@ -15,14 +15,14 @@ struct MemoryMinimapView: View {
             // Header
             HStack {
                 Text("Minimap")
-                    .font(.custom("SF Pro", size: 10, relativeTo: .caption2))
+                    .font(Font.system(.caption2))
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundSecondary)
 
                 Spacer()
 
                 Text("\(items.count) minnen")
-                    .font(.custom("SF Pro", size: 8, relativeTo: .caption2))
+                    .font(Font.system(.caption2))
                     .foregroundColor(.foregroundSecondary)
             }
 
@@ -37,8 +37,8 @@ struct MemoryMinimapView: View {
                 )
             }
             .frame(maxHeight: 80)
-            .background(Color.novaGray.opacity(0.3))
-            .cornerRadius(6)
+            .background(Color.novaGray.opacity(0.3 as Double))
+            .cornerRadius(CGFloat(6))
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
                     .stroke(Color.separator, lineWidth: 0.5)
@@ -81,17 +81,16 @@ struct MemoryMinimapView: View {
             )
 
             // Draw glow for important items
-            if item.isImportant {
-                context.addFilter(.blur(radius: 1))
+            if item.importance > 3 {
+                // Draw with glow effect
                 context.fill(
                     Path(ellipseIn: rect),
-                    with: .color(.glow.opacity(0.5))
+                    with: .color(.glow.opacity(0.5 as Double))
                 )
-                context.removeLastFilter()
             }
 
             // Draw connection lines for important items
-            if item.isImportant && index > 0 {
+            if item.importance > 3 && index > 0 {
                 let prevIndex = index - 1
                 let prevRow = prevIndex / itemsPerRow
                 let prevCol = prevIndex % itemsPerRow
@@ -104,7 +103,7 @@ struct MemoryMinimapView: View {
 
                 context.stroke(
                     path,
-                    with: .color(.glow.opacity(0.3)),
+                    with: .color(.glow.opacity(0.3 as Double)),
                     lineWidth: 0.5
                 )
             }
@@ -155,6 +154,6 @@ struct MemoryMinimapView_Previews: PreviewProvider {
             selectedItem: .constant(nil)
         )
         .frame(height: 100)
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
     }
 }

@@ -9,7 +9,7 @@ struct KrilleStyle_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: KrilleStyle.Spacing.large) {
             Text("KrilleCore2030 Design System")
-                .font(.krilleTitle1(.bold))
+                .font(Font.krilleTitle1(.bold))
                 .foregroundColor(.krillePrimary)
 
             HStack(spacing: KrilleStyle.Spacing.medium) {
@@ -25,11 +25,11 @@ struct KrilleStyle_Previews: PreviewProvider {
 
             VStack(alignment: .leading, spacing: KrilleStyle.Spacing.small) {
                 Text("Card Example")
-                    .font(.krilleHeadline())
+                    .font(Font.krilleHeadline())
                     .foregroundColor(.krillePrimary)
 
                 Text("This design system provides comprehensive styling, spacing, colors, and typography standards.")
-                    .font(.krilleBody())
+                    .font(Font.krilleBody())
                     .foregroundColor(.krilleSecondary)
             }
             .krilleCard()

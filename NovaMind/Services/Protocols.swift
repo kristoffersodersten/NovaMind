@@ -8,7 +8,7 @@ protocol APIClientProtocol {
 }
 
 // MARK: - AI Provider Protocol
-public protocol AIProvider {
+public protocol AIProviderProtocol {
     var providerName: String { get }
     var modelName: String { get }
 

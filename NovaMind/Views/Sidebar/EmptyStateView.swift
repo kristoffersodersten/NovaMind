@@ -7,11 +7,11 @@ struct EmptyStateView: View {
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: systemImage)
-                .font(.title2)
+                .font(Font.title2)
                 .foregroundColor(.gray)
 
             Text(title)
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity)

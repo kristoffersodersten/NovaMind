@@ -33,18 +33,18 @@ struct ChatMessageView: View {
     
     private var messageBubble: some View {
         Text(message.content)
-            .font(.custom("SF Pro", size: 15, relativeTo: .body))
+            .font(Font.custom("SF Pro", size: 15, relativeTo: .body))
             .foregroundColor(.foregroundPrimary)
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(message.isUser ? Color.glow.opacity(0.2) : Color.novaGray.opacity(0.3))
+                    .fill(message.isUser ? Color.glow.opacity(0.2 as Double) : Color.novaGray.opacity(0.3 as Double))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .stroke(
-                        message.isUser ? Color.glow.opacity(0.3) : Color.separator,
+                        message.isUser ? Color.glow.opacity(0.3 as Double) : Color.separator,
                         lineWidth: 1
                     )
             )
@@ -52,7 +52,7 @@ struct ChatMessageView: View {
     
     private var timestamp: some View {
         Text(timeString(from: message.timestamp))
-            .font(.custom("SF Pro", size: 11, relativeTo: .caption2))
+            .font(Font.custom("SF Pro", size: 11, relativeTo: .caption2))
             .foregroundColor(.foregroundSecondary)
             .padding(.horizontal, 4)
     }
@@ -61,14 +61,14 @@ struct ChatMessageView: View {
         HStack(spacing: 8) {
             Button(action: saveToMemory) {
                 Image(systemName: "tray.full")
-                    .font(.system(size: 12))
+                    .font(Font.system(size: 12))
                     .foregroundColor(.foregroundSecondary)
             }
             .buttonStyle(PlainButtonStyle())
             
             Button(action: copyMessage) {
                 Image(systemName: "doc.on.doc")
-                    .font(.system(size: 12))
+                    .font(Font.system(size: 12))
                     .foregroundColor(.foregroundSecondary)
             }
             .buttonStyle(PlainButtonStyle())

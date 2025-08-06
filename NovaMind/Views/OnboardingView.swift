@@ -8,11 +8,11 @@ struct OnboardingView: View {
         VStack {
             VStack {
                 Text("Welcome to NovaMind")
-                    .font(.largeTitle)
-                    .padding()
+                    .font(Font.largeTitle)
+                    .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
 
                 Text("Getting started...")
-                    .font(.body)
+                    .font(Font.body)
                     .foregroundColor(.secondary)
             }
 
@@ -25,14 +25,14 @@ struct OnboardingView: View {
                     .background(
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .fill(Color.accentColor)
-                            .shadow(color: Color.accentColor.opacity(0.18), radius: 8, x: 0, y: 2)
+                            .shadow(color: Color.accentColor.opacity(0.18 as Double), radius: 8, x: 0, y: 2)
                     )
                     .foregroundColor(.white)
                     .glowEffect(active: true)
                     .krilleHover()
                     .accessibilityLabel("Fortsätt onboarding")
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
         .background(Color(NSColor.windowBackgroundColor))
         .ignoresSafeArea(edges: .bottom)

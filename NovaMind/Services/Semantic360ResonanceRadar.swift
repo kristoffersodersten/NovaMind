@@ -346,7 +346,6 @@ extension Semantic360ResonanceRadar {
     }
 
     }
-}
 
 // MARK: - Helper Methods Extension
 extension Semantic360ResonanceRadar {
@@ -398,3 +397,4 @@ extension Semantic360ResonanceRadar {
         case .surpriseCongruence: return .unexpectedAlignment
         }
     }
+}

@@ -1,84 +1,7 @@
 import SwiftUI
 
 
-// Missing component placeholders
-struct TagChip: View {
-    let tag: String
-    let color: Color
-    let isAI: Bool
-
-    var body: some View {
-        HStack(spacing: 4) {
-            if isAI {
-                Image(systemName: "brain")
-                    .font(.system(size: 10))
-                    .foregroundColor(color)
-            }
-            Text(tag)
-                .font(.caption)
-                .foregroundColor(color)
-        }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(color.opacity(0.1))
-        .cornerRadius(8)
-    }
-}
-
-struct KrilleBadge: View {
-    let label: String
-    let color: Color
-    let icon: String
-
-    var body: some View {
-        HStack(spacing: 4) {
-            Image(systemName: icon)
-                .font(.system(size: 10))
-                .foregroundColor(color)
-            Text(label)
-                .font(.caption)
-                .fontWeight(.medium)
-                .foregroundColor(color)
-        }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(color.opacity(0.15))
-        .cornerRadius(6)
-    }
-}
-
-struct NovaMindStatusBubble: View {
-    let title: String
-    let icon: String
-    let isActive: Bool
-
-    var body: some View {
-        HStack(spacing: 4) {
-            Image(systemName: icon)
-                .font(.system(size: 10))
-                .foregroundColor(isActive ? .green : .secondary)
-            Text(title)
-                .font(.caption)
-                .fontWeight(.medium)
-                .foregroundColor(isActive ? .primary : .secondary)
-        }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(isActive ? Color.green.opacity(0.1) : Color.gray.opacity(0.1))
-        .cornerRadius(8)
-    }
-}
-
-struct GlowDivider: View {
-    let glowing: Bool
-
-    var body: some View {
-        Rectangle()
-            .fill(glowing ? Color.accentColor : Color.separator)
-            .frame(height: 1)
-            .animation(.easeInOut(duration: 0.3), value: glowing)
-    }
-}
+// Component definitions moved to NovaMindDesignSystem.swift to avoid duplicates
 
 struct KrilleUIComponents: View {
     @State private var isHovering = false
@@ -88,18 +11,18 @@ struct KrilleUIComponents: View {
         ScrollView {
             VStack(spacing: 32) {
                 Text("KrilleCore 2030 Design Demo")
-                    .font(.title.bold())
+                    .font(Font.title.bold())
                     .padding(.top, 20)
 
                 HStack(spacing: 16) {
                     Text("krilleCard()")
-                        .padding()
+                        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
                         .krilleCard()
 
                     Text("krilleHover")
-                        .padding()
+                        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
                         .krilleCard()
-                        .krilleHover(isHovering)
+                        .krilleHover()
                         .onHover { isHovering = $0 }
                 }
 
@@ -123,15 +46,15 @@ struct KrilleUIComponents: View {
                 GlowDivider(glowing: isHovering)
 
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.secondary.opacity(0.1))
+                    .fill(Color.secondary.opacity(0.1 as Double))
                     .frame(height: 60)
                     .overlay(
                         Text("AI Save Glow")
-                            .padding()
+                            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
                             .aiSaveGlow(active: $aiGlowActive, color: .blue)
                     )
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         }
         .frame(minWidth: 600, maxWidth: .infinity, minHeight: 500)
     }

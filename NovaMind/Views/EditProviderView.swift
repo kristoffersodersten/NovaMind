@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 struct EditProviderView: View {
     @Binding var provider: AIProviderConfig
@@ -35,12 +36,12 @@ struct EditProviderView: View {
                 .font(Font.custom("SF Pro", size: 15))
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .krilleHover()
         .background(
             RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .fill(Color(NSColor.windowBackgroundColor).opacity(0.98))
-                .shadow(color: Color.primary.opacity(0.12), radius: 12, x: 0, y: 4)
+                .fill(Color(NSColor.windowBackgroundColor).opacity(0.98 as Double))
+                .shadow(color: Color.primary.opacity(0.12 as Double), radius: 12, x: 0, y: 4)
         )
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Redigera AI-leverantör panel")

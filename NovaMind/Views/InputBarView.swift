@@ -14,13 +14,13 @@ struct InputBarView: View {
             // Input text area
             HStack(spacing: 12) {
                 TextEditor(text: $text)
-                    .font(.custom("SF Pro", size: 16))
+                    .font(Font.custom("SF Pro", size: 16))
                     .focused($isFocused)
                     .frame(minHeight: 44, maxHeight: 120)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
                     .background(Color.backgroundPrimary)
-                    .cornerRadius(12)
+                    .cornerRadius(CGFloat(12))
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(isFocused ? Color.glow : Color.separator, lineWidth: 1)
@@ -30,7 +30,7 @@ struct InputBarView: View {
                 // Send button
                 Button(action: onSend) {
                     Image(systemName: "arrow.up.circle.fill")
-                        .font(.title2)
+                        .font(Font.title2)
                         .foregroundColor(text.isEmpty ? .foregroundSecondary : .glow)
                         .glowEffect(active: !text.isEmpty)
                 }
@@ -68,14 +68,14 @@ struct InputBarView: View {
                 Spacer()
 
                 Text("\(text.count)/4000")
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.foregroundSecondary)
             }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
-        .background(Color.backgroundPrimary.opacity(0.98))
-        .shadow(color: .novaBlack.opacity(0.06), radius: 8, x: 0, y: -2)
+        .background(Color.backgroundPrimary.opacity(0.98 as Double))
+        .shadow(color: .novaBlack.opacity(0.06 as Double), radius: 8, x: 0, y: -2)
         .onHover { hovering in
             withAnimation(.spring(response: 0.3)) {
                 isHovering = hovering
@@ -85,11 +85,5 @@ struct InputBarView: View {
     }
 }
 
-// MARK: - Color Extensions
-private extension Color {
-    static let backgroundPrimary = Color("backgroundPrimary")
-    static let foregroundSecondary = Color("foregroundSecondary")
-    static let glow = Color("glow")
-    static let separator = Color("separator")
-    static let novaBlack = Color("novaBlack")
-}
+// MARK: - Color Extensions  
+// Color definitions moved to ColorExtensions.swift to avoid duplicates

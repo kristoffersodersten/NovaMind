@@ -1,49 +1,6 @@
 import Combine
 import Foundation
 
-
-// MARK: - AI Provider Models
-
-enum AIProvider: String, CaseIterable {
-    case openai
-    case anthropic
-    case deepseek
-    case local
-
-public struct APIKey {
-    let rawValue: String
-
-    public init(_ value: String) {
-        self.rawValue = value
-    }
-}
-
-public struct AIProviderConfig: Identifiable, Codable {
-    public let id: UUID
-    public var name: String
-    public var type: AIProviderType
-    public var endpoint: String
-    public var apiKey: String
-    public var model: String
-    public var maxTokens: Int
-    public var temperature: Double
-    public var isEnabled: Bool
-
-    public init(id: UUID = UUID(), name: String, type: AIProviderType, endpoint: String,
-                apiKey: String, model: String, maxTokens: Int = 4096,
-                temperature: Double = 0.7, isEnabled: Bool = true) {
-        self.id = id
-        self.name = name
-        self.type = type
-        self.endpoint = endpoint
-        self.apiKey = apiKey
-        self.model = model
-        self.maxTokens = maxTokens
-        self.temperature = temperature
-        self.isEnabled = isEnabled
-    }
-}
-
 // MARK: - AI Provider Service för NovaMind AI-integration
 @MainActor
 public class AIProviderService: ObservableObject {

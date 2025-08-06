@@ -17,7 +17,7 @@ struct EvolutionDetailsView: View {
                         performanceMetricsSection(result)
                         renderDNASection(result)
                     }
-                    .padding()
+                    .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
                 }
                 .navigationTitle("Evolution Details")
                 .navigationBarTitleDisplayMode(.inline)
@@ -38,7 +38,7 @@ struct EvolutionDetailsView: View {
     private func mutationOverviewSection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Mutation Overview")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -49,15 +49,15 @@ struct EvolutionDetailsView: View {
                 InfoRow(label: "Semantic Hash", value: result.semanticHash.value.prefix(16) + "...")
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     private func geneticChangesSection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Genetic Changes")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             ForEach(
@@ -67,15 +67,15 @@ struct EvolutionDetailsView: View {
                 GeneticChangeRow(change: change, index: index + 1)
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     private func performanceMetricsSection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Performance Metrics")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -100,15 +100,15 @@ struct EvolutionDetailsView: View {
                 )
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 
     private func renderDNASection(_ result: EvolutionResult) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Render DNA State")
-                .font(.title2)
+                .font(Font.title2)
                 .fontWeight(.bold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -134,9 +134,9 @@ struct EvolutionDetailsView: View {
                 )
             }
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
-        .cornerRadius(12)
+        .cornerRadius(CGFloat(12))
     }
 }
 
@@ -154,7 +154,7 @@ struct InfoRow: View {
             Text(value)
                 .fontWeight(.medium)
         }
-        .font(.subheadline)
+        .font(Font.subheadline)
     }
 }
 
@@ -165,17 +165,17 @@ struct GeneticChangeRow: View {
     var body: some View {
         HStack {
             Text("\(index).")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
                 .frame(width: 20, alignment: .leading)
 
             Text(change.displayName)
-                .font(.subheadline)
+                .font(Font.subheadline)
 
             Spacer()
 
             Image(systemName: "arrow.right")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.blue)
         }
         .padding(.vertical, 4)
@@ -189,13 +189,13 @@ struct DNAGenomeRow: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.subheadline)
+                .font(Font.subheadline)
                 .fontWeight(.medium)
 
             Spacer()
 
             Text(genome)
-                .font(.caption)
+                .font(Font.caption)
                 .fontFamily(.monospaced)
                 .foregroundColor(.secondary)
         }

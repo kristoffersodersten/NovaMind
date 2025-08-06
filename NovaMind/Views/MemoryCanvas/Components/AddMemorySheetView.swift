@@ -31,7 +31,7 @@ struct AddMemorySheetView: View {
 
                 Spacer()
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             .navigationTitle("New Memory")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

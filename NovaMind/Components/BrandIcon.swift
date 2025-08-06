@@ -27,7 +27,7 @@ public struct BrandIcon: View {
         self.size = size
     }
 
-    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme) private var colorScheme: ColorScheme
 
     public var body: some View {
         let (imageName, description) = BrandIcon.assetName(for: colorScheme)
@@ -37,7 +37,7 @@ public struct BrandIcon: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: size.value, height: size.value)
             .clipShape(RoundedRectangle(cornerRadius: size.value * 0.21, style: .continuous))
-            .shadow(color: .black.opacity(0.08), radius: 3, x: 0, y: 2)
+            .shadow(color: .black.opacity(0.08 as Double), radius: 3, x: 0, y: 2)
             .accessibilityLabel(description)
     }
 
@@ -81,7 +81,7 @@ struct BrandIcon_Previews: PreviewProvider {
             BrandIcon(size: .medium)
             BrandIcon(size: .large)
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color(.windowBackgroundColor))
         .previewLayout(.sizeThatFits)
     }

@@ -18,17 +18,17 @@ public struct WebSocketConnectionStatusView: View {
         .accessibilityHidden(true)
 
       Text(statusText)
-        .font(.caption)
+        .font(Font.caption)
         .foregroundColor(.secondary)
         .accessibilityLabel("Anslutningsstatus: \(statusText)")
     }
-    .padding(6)
+    .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
     .background(
       RoundedRectangle(cornerRadius: 6, style: .continuous)
         .fill(Color(NSColor.systemGray))
-        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+        .shadow(color: .black.opacity(0.05 as Double), radius: 2, x: 0, y: 1)
     )
-    .opacity(0.9)
+    .opacity(0.9 as Double)
   }
 
   private var statusText: String {

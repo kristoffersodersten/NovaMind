@@ -54,7 +54,7 @@ struct QuantumEvolutionaryView: View {
                     // Recent Evolution History
                     evolutionHistorySection
                 }
-                .padding()
+                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             }
             .navigationTitle("NovaMind Quantum System")
             .background(

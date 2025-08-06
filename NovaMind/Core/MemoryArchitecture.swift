@@ -797,25 +797,11 @@ struct MemoryContext {
     }
 }
 
-enum MemoryScope {
-    case shortTerm
-    case entityBound(String) // agentId
-    case relation(String, String) // agentA, agentB
-    case collective
-}
-
 enum ResetCondition {
     case contextSwitch
     case agentReset
     case mutualAgreement
     case systemRestart
-}
-
-enum MemoryPriority {
-    case low
-    case normal
-    case high
-    case critical
 }
 
 struct MemoryResult<T: MemoryContent> {
@@ -940,73 +926,4 @@ enum MemoryError: Error, LocalizedError {
         case .federationSyncFailed: return "Federation synchronization failed"
         }
     }
-}
-
-// MARK: - ChromaDB Client Mock
-
-/// Mock ChromaDB client for demonstration - would be replaced with actual ChromaDB integration
-class ChromaDBClient {
-    let path: String
-    let collectionName: String
-    let vectorModel: String
-    private var documents: [ChromaDocument] = []
-
-    init(path: String, collectionName: String, vectorModel: String) {
-        self.path = path
-        self.collectionName = collectionName
-        self.vectorModel = vectorModel
-    }
-
-    func initialize() async throws {
-        // Initialize ChromaDB collection
-    }
-
-    func add(_ document: ChromaDocument) async throws {
-        documents.append(document)
-    }
-
-    func query(
-        queryEmbeddings: [Double],
-        nResults: Int,
-        whereMetadata: [String: String]? = nil
-    ) async throws -> [QueryResult] {
-        // Mock query implementation
-        let filtered = documents.filter { doc in
-            guard let metadata = whereMetadata else { return true }
-            return metadata.allSatisfy { key, value in
-                doc.metadata[key] as? String == value
-            }
-        }
-
-        return filtered.prefix(nResults).map { doc in
-            QueryResult(
-                id: doc.id,
-                distance: Double.random(in: 0.1...0.9),
-                metadata: doc.metadata,
-                document: doc.document
-            )
-        }
-    }
-
-    func deleteCollection() async throws {
-        documents.removeAll()
-    }
-
-    func isHealthy() async -> Bool {
-        return true
-    }
-}
-
-struct ChromaDocument {
-    let id: String
-    let embeddings: [Double]
-    let metadata: [String: Any]
-    let document: String?
-}
-
-struct QueryResult {
-    let id: String
-    let distance: Double
-    let metadata: [String: Any]
-    let document: String?
 }

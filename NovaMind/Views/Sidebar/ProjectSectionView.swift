@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ProjectSectionView: View {
-    let projects: [Project]
+    let projects: [SidebarProject]
     @Binding var expandedProjectId: UUID?
     let maxHeight: CGFloat
     @ObservedObject var chatThreadStore: ChatThreadStore

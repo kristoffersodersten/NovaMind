@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FolderView: View {
-    let project: Project
+    let project: SidebarProject
     let isExpanded: Bool
     let onToggle: () -> Void
     
@@ -9,9 +9,9 @@ struct FolderView: View {
         Button(action: onToggle) {
             HStack {
                 Image(systemName: isExpanded ? "folder.fill" : "folder")
-                    .foregroundColor(.glow)
+                    .foregroundColor(.blue)
                 Text(project.name)
-                    .font(.headline)
+                    .font(Font.headline)
                     .foregroundColor(.foregroundPrimary)
                 Spacer()
                 Image(systemName: isExpanded ? "chevron.down" : "chevron.right")

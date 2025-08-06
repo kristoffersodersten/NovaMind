@@ -481,7 +481,7 @@ class NovaMindQuantumSystem: ObservableObject {
 
 // MARK: - Core System Components
 
-class NeuroSymbolicRenderer: ObservableObject {
+class NeuroSymbolicMetalRenderer: ObservableObject {
     private let metalDevice: MTLDevice
     private let coreMLModel: MLModel?
     private var renderPipeline: NeuroSymbolicPipeline
@@ -503,24 +503,6 @@ class NeuroSymbolicRenderer: ObservableObject {
     private func loadCoreMLModel() throws -> MLModel {
         // Load hybrid neural rendering model
         fatalError("CoreML model loading not implemented")
-    }
-}
-
-class PostQuantumSecurityCore {
-    private let latticeKeys: LatticeKeySystem
-    private let secureEnclave: SecureEnclaveManager
-
-    init() {
-        self.latticeKeys = LatticeKeySystem()
-        self.secureEnclave = SecureEnclaveManager()
-    }
-
-    func generateNeuralSeededKeys() async -> QuantumResistantKeys {
-        return await latticeKeys.generateKeys()
-    }
-
-    func validateSessionIntegrity() async -> SessionIntegrityResult {
-        return await secureEnclave.validateIntegrity()
     }
 }
 

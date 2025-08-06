@@ -7,11 +7,11 @@ struct WebSocketStatusView: View {
         HStack {
             Circle()
                 .fill(statusColor)
-                .frame(width: 10, height: 10)
+                .frame(width: CGFloat(10), height: CGFloat(10))
             Text(statusText)
-                .font(.caption)
+                .font(Font.caption)
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
     }
     private var statusColor: Color {
         switch webSocketManager.connectionState {

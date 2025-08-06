@@ -1,0 +1,85 @@
+name: 🎯 Post-Cleanup Quality Enhancement
+
+on:
+  workflow_run:
+    workflows: ["🧹 Swift Code Cleanup with Azure AI"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  quality-enhancement:
+    name: 🎯 Quality Enhancement Phase
+    runs-on: macos-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.0'
+
+      - name: 📊 Assess Cleanup Results
+        run: |
+          cd NovaMind
+          CURRENT_ERRORS=$(swift build 2>&1 | grep "error:" | wc -l | tr -d ' ')
+          echo "📈 Post-cleanup errors: $CURRENT_ERRORS"
+          
+          if [ $CURRENT_ERRORS -lt 15000 ]; then
+            echo "🚀 Excellent cleanup! Ready for optimization phase."
+          elif [ $CURRENT_ERRORS -lt 30000 ]; then
+            echo "✅ Good progress! Continuing with targeted fixes."
+          else
+            echo "⚠️ More cleanup needed. Triggering additional passes."
+          fi
+
+      - name: 🏗️ SwiftUI Component Analysis
+        run: |
+          echo "🏗️ Analyzing SwiftUI component structure..."
+          cd NovaMind
+          
+          echo "📊 Component counts:"
+          echo "  Views: $(find . -name "*.swift" -exec grep -l "struct.*View" {} \; | wc -l)"
+          echo "  ViewModels: $(find . -name "*ViewModel.swift" | wc -l)"
+          echo "  Models: $(find . -name "*Model.swift" | wc -l)"
+
+      - name: ⚡ Performance Optimization Prep
+        run: |
+          echo "⚡ Preparing performance optimization..."
+          cd NovaMind
+          
+          # Check for async/await usage
+          ASYNC_COUNT=$(find . -name "*.swift" -exec grep -l "async\|await" {} \; | wc -l)
+          echo "📊 Async functions: $ASYNC_COUNT"
+          
+          # Check for @MainActor usage
+          MAINACTOR_COUNT=$(find . -name "*.swift" -exec grep -l "@MainActor" {} \; | wc -l)
+          echo "📊 MainActor annotations: $MAINACTOR_COUNT"
+
+      - name: 🍎 Apple Silicon Optimization Check
+        run: |
+          echo "🍎 Checking Apple Silicon optimization opportunities..."
+          cd NovaMind
+          
+          # Check for Metal usage
+          METAL_COUNT=$(find . -name "*.swift" -exec grep -l "Metal" {} \; | wc -l || echo "0")
+          echo "📊 Metal integration: $METAL_COUNT files"
+          
+          # Check for CoreML usage  
+          COREML_COUNT=$(find . -name "*.swift" -exec grep -l "CoreML" {} \; | wc -l || echo "0")
+          echo "📊 CoreML integration: $COREML_COUNT files"
+
+      - name: 📋 Generate Next Phase Plan
+        run: |
+          echo "## 🎯 Post-Cleanup Enhancement Plan" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Current Status" >> $GITHUB_STEP_SUMMARY
+          echo "- **Compilation Errors**: $(cd NovaMind && swift build 2>&1 | grep "error:" | wc -l | tr -d ' ')" >> $GITHUB_STEP_SUMMARY
+          echo "- **SwiftUI Components**: $(cd NovaMind && find . -name "*.swift" -exec grep -l "struct.*View" {} \; | wc -l)" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 Next Optimization Phases" >> $GITHUB_STEP_SUMMARY
+          echo "1. **Component Consolidation** - Merge duplicate SwiftUI views" >> $GITHUB_STEP_SUMMARY
+          echo "2. **Performance Tuning** - Async/await optimization" >> $GITHUB_STEP_SUMMARY
+          echo "3. **Apple Silicon** - Metal/CoreML integration" >> $GITHUB_STEP_SUMMARY
+          echo "4. **Memory Architecture** - NeuroMesh optimization" >> $GITHUB_STEP_SUMMARY

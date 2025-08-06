@@ -18,7 +18,7 @@ struct OnboardingSplashView: View {
     var body: some View {
         ZStack {
             // Background with blur effect
-            Color.novaBlack.opacity(0.9)
+            Color.novaBlack.opacity(0.9 as Double)
                 .ignoresSafeArea()
                 .background(.ultraThinMaterial)
 
@@ -26,18 +26,18 @@ struct OnboardingSplashView: View {
                 // Logo and title section
                 VStack(spacing: 16) {
                     Image(systemName: "brain.head.profile")
-                        .font(.system(size: 80, weight: .light))
+                        .font(Font.system(size: 80, weight: .light))
                         .foregroundColor(.glow)
                         .scaleEffect(1.0 + animationPhase * 0.1)
                         .animation(.easeInOut(duration: 3).repeatForever(autoreverses: true), value: animationPhase)
 
                     Text("Welcome to NovaMind")
-                        .font(.largeTitle)
+                        .font(Font.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.foregroundPrimary)
 
                     Text("Your AI-powered cognitive workspace")
-                        .font(.title2)
+                        .font(Font.title2)
                         .foregroundColor(.foregroundSecondary)
                         .multilineTextAlignment(.center)
                 }
@@ -48,7 +48,7 @@ struct OnboardingSplashView: View {
                 // Action buttons
                 actionButtonsView
             }
-            .padding(40)
+            .padding(EdgeInsets(top: 40, leading: 40, bottom: 40, trailing: 40))
             .frame(maxWidth: 600)
         }
         .onAppear {
@@ -64,7 +64,7 @@ struct OnboardingSplashView: View {
                 ForEach(0..<totalSteps, id: \.self) { index in
                     Circle()
                         .fill(index <= currentStep ? Color.glow : Color.separator)
-                        .frame(width: 12, height: 12)
+                        .frame(width: CGFloat(12), height: CGFloat(12))
                         .animation(.easeInOut(duration: 0.3), value: currentStep)
                 }
             }
@@ -91,13 +91,13 @@ struct OnboardingSplashView: View {
     private var welcomeStepView: some View {
         VStack(spacing: 16) {
             Text("Intelligent Workspace")
-                .font(.title)
+                .font(Font.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
             Text("NovaMind combines AI-powered conversations with spatial memory organization, " +
                  "creating a seamless cognitive workspace for your thoughts and projects.")
-                .font(.body)
+                .font(Font.body)
                 .foregroundColor(.foregroundSecondary)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
@@ -107,7 +107,7 @@ struct OnboardingSplashView: View {
     private var featuresStepView: some View {
         VStack(spacing: 16) {
             Text("Core Features")
-                .font(.title)
+                .font(Font.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
@@ -134,13 +134,13 @@ struct OnboardingSplashView: View {
     private var readyStepView: some View {
         VStack(spacing: 16) {
             Text("Ready to Begin")
-                .font(.title)
+                .font(Font.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.foregroundPrimary)
 
             Text("You're all set! NovaMind will adapt to your workflow and help you organize " +
                  "your thoughts, projects, and conversations in a natural, intuitive way.")
-                .font(.body)
+                .font(Font.body)
                 .foregroundColor(.foregroundSecondary)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
@@ -191,17 +191,17 @@ struct FeatureRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon)
-                .font(.title2)
+                .font(Font.title2)
                 .foregroundColor(.glow)
                 .frame(width: 24)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.headline)
+                    .font(Font.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text(description)
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                     .foregroundColor(.foregroundSecondary)
                     .lineLimit(nil)
             }
@@ -219,8 +219,8 @@ struct PrimaryButtonStyle: ButtonStyle {
             .padding(.vertical, 12)
             .background(Color.glow)
             .foregroundColor(.backgroundPrimary)
-            .font(.headline)
-            .cornerRadius(8)
+            .font(Font.headline)
+            .cornerRadius(CGFloat(8))
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
     }
@@ -231,10 +231,10 @@ struct SecondaryButtonStyle: ButtonStyle {
         configuration.label
             .padding(.horizontal, 24)
             .padding(.vertical, 12)
-            .background(Color.separator.opacity(0.2))
+            .background(Color.separator.opacity(0.2 as Double))
             .foregroundColor(.foregroundSecondary)
-            .font(.headline)
-            .cornerRadius(8)
+            .font(Font.headline)
+            .cornerRadius(CGFloat(8))
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
     }

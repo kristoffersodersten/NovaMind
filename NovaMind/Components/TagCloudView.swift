@@ -16,14 +16,14 @@ struct TagCloudView: View {
     var body: some View {
         VStack(spacing: 30) {
             Text("TagCloud Interactive View")
-                .font(.largeTitle)
+                .font(Font.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.foregroundPrimary)
 
             // Control section
             VStack(spacing: 16) {
                 Toggle("Redigerbar tagg-moln", isOn: $showEditableCloud)
-                    .font(.headline)
+                    .font(Font.headline)
 
                 if showEditableCloud {
                     Button("Lägg till slumpmässig tagg") {
@@ -48,25 +48,25 @@ struct TagCloudView: View {
                     .buttonStyle(.bordered)
                 }
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             .krilleCard()
 
             // Editable TagCloud with AI-generated indicators
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("AI-Enhanced TagCloud")
-                        .font(.headline)
+                        .font(Font.headline)
                         .foregroundColor(.foregroundPrimary)
 
                     if !aiGeneratedTags.isEmpty {
                         Label("\(aiGeneratedTags.count) AI-genererade", systemImage: "sparkles")
-                            .font(.caption)
+                            .font(Font.caption)
                             .foregroundColor(.glow)
                     }
                 }
 
                 Text("✨ AI-genererade taggar har gnista-ikon och tjockare kant")
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.foregroundSecondary)
 
                 TagCloudView(
@@ -84,17 +84,17 @@ struct TagCloudView: View {
                     }
                 )
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             .krilleCard()
 
             // Non-editable TagCloud
             VStack(alignment: .leading, spacing: 12) {
                 Text("Icke-redigerbar TagCloud")
-                    .font(.headline)
+                    .font(Font.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Endast läsning med hover-effekter")
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.foregroundSecondary)
 
                 TagCloudView(
@@ -105,17 +105,17 @@ struct TagCloudView: View {
                     }
                 )
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             .krilleCard()
 
             // Legacy TagInfo support demo
             VStack(alignment: .leading, spacing: 12) {
                 Text("Legacy TagInfo Support")
-                    .font(.headline)
+                    .font(Font.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Bakåtkompatibilitet med befintlig TagInfo struktur")
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.foregroundSecondary)
 
                 TagCloudView(
@@ -131,17 +131,17 @@ struct TagCloudView: View {
                     }
                 )
             }
-            .padding()
+            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
             .krilleCard()
 
             Spacer()
         }
-        .padding()
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
         .background(Color.backgroundPrimary)
     }
 }
 
 #Preview {
     TagCloudView()
-        .frame(width: 600, height: 800)
+        .frame(width: CGFloat(600), height: CGFloat(800))
 }

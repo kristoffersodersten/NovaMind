@@ -89,12 +89,6 @@ struct EnhancedMemoryHealth {
     }
 }
 
-struct ComponentHealth {
-    let isHealthy: Bool
-    let lastCheck: Date
-    let metrics: [String: Double]
-}
-
 struct MemoryPerformanceMetrics {
     let operationCounts: [MemoryOperation: Int]
     let averageLatency: [MemoryOperation: TimeInterval]

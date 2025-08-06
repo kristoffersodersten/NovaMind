@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ProjectRow: View {
-    let project: Project
+    let project: SidebarProject
     let isExpanded: Bool
     @ObservedObject var chatThreadStore: ChatThreadStore
     let onToggle: () -> Void
@@ -21,7 +21,7 @@ struct ProjectRow: View {
 
                 Divider()
                     .frame(height: 1)
-                    .background(Color.separator)
+                    .background(Color.gray)
                     .padding(.vertical, 4)
 
                 LazyVStack(alignment: .leading, spacing: 4) {

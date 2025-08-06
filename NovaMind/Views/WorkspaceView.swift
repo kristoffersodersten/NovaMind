@@ -21,7 +21,7 @@ struct WorkspaceChatMessage: Identifiable {
   let id = UUID()
   let sender: SenderType
   let text: String
-  let agent: AgentType?
+  let agent: AgentProfile?
   let accent: Color?
   let scope: MemoryScope
 }
@@ -31,7 +31,7 @@ enum SenderType {
   case assistant
 }
 
-struct AgentType {
+struct AgentProfile {
   let id: String
   let name: String
   let icon: String  // SF Symbol name
@@ -53,7 +53,7 @@ struct WorkspaceView: View {
     WorkspaceChatMessage(
       sender: .assistant,
       text: "NovaMind är en AI-assistent som hjälper dig med utveckling.",
-      agent: AgentType(
+      agent: AgentProfile(
         id: "nova",
         name: "Nova",
         icon: "brain",
@@ -66,7 +66,7 @@ struct WorkspaceView: View {
     WorkspaceChatMessage(
       sender: .assistant,
       text: "Jag kan hjälpa till med kodning, design och planering.",
-      agent: AgentType(
+      agent: AgentProfile(
         id: "assistant",
         name: "Assistant",
         icon: "gear",
@@ -90,7 +90,7 @@ struct WorkspaceView: View {
       ScrollView {
         VStack(spacing: 18) {
           ForEach(messages) { msg in
-            ChatBubble(message: msg)
+            WorkspaceChatBubble(message: msg)
           }
         }
         .padding(.vertical, 24)
@@ -103,13 +103,13 @@ struct WorkspaceView: View {
       VStack(spacing: 8) {
         ZStack(alignment: .bottom) {
           TextEditor(text: $inputText)
-            .font(.custom("SF Pro", size: 16))
+            .font(Font.custom("SF Pro", size: 16))
             .frame(height: dynamicHeight())
-            .cornerRadius(8)
-            .shadow(color: .black.opacity(0.05), radius: 1, y: 1)
+            .cornerRadius(CGFloat(8))
+            .shadow(color: .black.opacity(0.05 as Double), radius: 1, y: 1)
             .overlay(
               RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray.opacity(0.12), lineWidth: 1)
+                .stroke(Color.gray.opacity(0.12 as Double), lineWidth: 1)
             )
             .focused($inputFocused)
             .padding(.horizontal, 4)
@@ -121,7 +121,7 @@ struct WorkspaceView: View {
               .resizable()
               .scaledToFit()
               .frame(maxHeight: 100)
-              .cornerRadius(8)
+              .cornerRadius(CGFloat(8))
               .padding(.bottom, 8)
           }
         }
@@ -144,7 +144,7 @@ struct WorkspaceView: View {
           Spacer()
           Button(action: sendMessage) {
             Image(systemName: "arrow.up.circle.fill")
-              .font(.title2)
+              .font(Font.title2)
               .foregroundColor(.accentColor)
               .glowEffect(active: inputText.count > 0)
           }
@@ -154,12 +154,12 @@ struct WorkspaceView: View {
       }
       .padding(.vertical, 12)
       .background(Color(.systemBackground))
-      .shadow(color: .black.opacity(0.04), radius: 2, y: -1)
+      .shadow(color: .black.opacity(0.04 as Double), radius: 2, y: -1)
     }
     .background(
       RoundedRectangle(cornerRadius: 24, style: .continuous)
-        .fill(Color(NSColor.controlBackgroundColor).opacity(0.98))
-        .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 4)
+        .fill(Color(NSColor.controlBackgroundColor).opacity(0.98 as Double))
+        .shadow(color: .black.opacity(0.08 as Double), radius: 16, x: 0, y: 4)
     )
     .padding(.horizontal, 8)
     .zIndex(2)
@@ -186,9 +186,9 @@ struct WorkspaceView: View {
   }
 }
 
-// MARK: - ChatBubble
+// MARK: - WorkspaceChatBubble
 
-struct ChatBubble: View {
+struct WorkspaceChatBubble: View {
   let message: WorkspaceChatMessage
   var body: some View {
     HStack {
@@ -215,30 +215,30 @@ struct BubbleContent: View {
         if let agent = message.agent {
           Image(systemName: agent.icon)
             .foregroundColor(agent.accent)
-            .font(.title3)
+            .font(Font.title3)
             .glowEffect(active: true)
           Text(agent.name)
-            .font(.caption)
+            .font(Font.caption)
             .foregroundColor(agent.accent)
             .bold()
         } else {
           Image(systemName: "person.crop.circle")
             .foregroundColor(.gray)
-            .font(.title3)
+            .font(Font.title3)
           Text("User")
-            .font(.caption)
+            .font(Font.caption)
             .foregroundColor(.gray)
             .bold()
         }
       }
       Text(message.text)
-        .font(.custom("SF Pro", size: 16))
+        .font(Font.custom("SF Pro", size: 16))
         .foregroundColor(.primary)
         .padding(.vertical, 8)
         .padding(.horizontal, 14)
         .background(message.sender == .user ? Color(NSColor.controlColor) : Color.white)
-        .cornerRadius(16)
-        .shadow(color: .black.opacity(0.06), radius: 2, y: 1)
+        .cornerRadius(CGFloat(16))
+        .shadow(color: .black.opacity(0.06 as Double), radius: 2, y: 1)
     }
     .padding(.vertical, 2)
     .padding(.horizontal, 4)

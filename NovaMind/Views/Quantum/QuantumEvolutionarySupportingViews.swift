@@ -18,18 +18,18 @@ struct MetricCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
 
             Text(formattedValue)
-                .font(.title3)
+                .font(Font.title3)
                 .fontWeight(.bold)
                 .foregroundColor(color)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(color.opacity(0.1))
-        .cornerRadius(8)
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .background(color.opacity(0.1 as Double))
+        .cornerRadius(CGFloat(8))
     }
 
     private var formattedValue: String {
@@ -52,10 +52,10 @@ struct PreferenceSlider: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
-                    .font(.caption)
+                    .font(Font.caption)
                 Spacer()
                 Text(value, format: .percent.precision(.fractionLength(1)))
-                    .font(.caption)
+                    .font(Font.caption)
                     .foregroundColor(.secondary)
             }
 
@@ -71,7 +71,7 @@ struct LastMutationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("Last Mutation")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
 
             HStack {
@@ -80,11 +80,11 @@ struct LastMutationView: View {
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(mutation.type.displayName)
-                        .font(.subheadline)
+                        .font(Font.subheadline)
                         .fontWeight(.medium)
 
                     Text("\(mutation.geneticChanges.count) genetic changes")
-                        .font(.caption)
+                        .font(Font.caption)
                         .foregroundColor(.secondary)
                 }
 
@@ -93,9 +93,9 @@ struct LastMutationView: View {
                 RiskBadge(level: mutation.riskAssessment)
             }
         }
-        .padding(8)
-        .background(Color.blue.opacity(0.1))
-        .cornerRadius(8)
+        .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+        .background(Color.blue.opacity(0.1 as Double))
+        .cornerRadius(CGFloat(8))
     }
 }
 
@@ -104,13 +104,13 @@ struct RiskBadge: View {
 
     var body: some View {
         Text(level.displayName)
-            .font(.caption)
+            .font(Font.caption)
             .fontWeight(.medium)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
-            .background(level.color.opacity(0.2))
+            .background(level.color.opacity(0.2 as Double))
             .foregroundColor(level.color)
-            .cornerRadius(4)
+            .cornerRadius(CGFloat(4))
     }
 }
 
@@ -120,7 +120,7 @@ struct QuantumEntanglementVisualization: View {
     var body: some View {
         VStack {
             Text("Entanglement Matrix")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
 
             LazyVGrid(
@@ -129,13 +129,13 @@ struct QuantumEntanglementVisualization: View {
             ) {
                 ForEach(0..<status.activeEntanglements, id: \.self) { _ in
                     Circle()
-                        .fill(Color.blue.opacity(0.6))
-                        .frame(width: 20, height: 20)
+                        .fill(Color.blue.opacity(0.6 as Double))
+                        .frame(width: CGFloat(20), height: CGFloat(20))
                         .overlay(
                             Circle()
                                 .stroke(Color.blue, lineWidth: 2)
                                 .scaleEffect(1.5)
-                                .opacity(0.5)
+                                .opacity(0.5 as Double)
                                 .animation(
                                     .easeInOut(duration: 1.0)
                                     .repeatForever(autoreverses: true),
@@ -158,24 +158,24 @@ struct MoralMetricBar: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                 Spacer()
                 Text(value, format: .percent.precision(.fractionLength(1)))
-                    .font(.subheadline)
+                    .font(Font.subheadline)
                     .fontWeight(.medium)
             }
 
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .fill(color.opacity(0.2))
+                        .fill(color.opacity(0.2 as Double))
                         .frame(height: 6)
-                        .cornerRadius(3)
+                        .cornerRadius(CGFloat(3))
 
                     Rectangle()
                         .fill(color)
                         .frame(width: geometry.size.width * value, height: 6)
-                        .cornerRadius(3)
+                        .cornerRadius(CGFloat(3))
                         .animation(.easeInOut(duration: 0.5), value: value)
                 }
             }
@@ -190,7 +190,7 @@ struct ChaosResilienceChart: View {
     var body: some View {
         VStack {
             Text("Resilience Visualization")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
 
             HStack(alignment: .bottom, spacing: 4) {
@@ -201,7 +201,7 @@ struct ChaosResilienceChart: View {
                     Rectangle()
                         .fill(isFailure ? Color.red : Color.green)
                         .frame(width: 8, height: CGFloat(height * 40))
-                        .cornerRadius(2)
+                        .cornerRadius(CGFloat(2))
                 }
             }
             .frame(height: 50)
@@ -216,37 +216,37 @@ struct EvolutionHistoryCard: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(result.mutation.type.displayName)
-                    .font(.headline)
+                    .font(Font.headline)
                     .fontWeight(.medium)
 
                 Spacer()
 
                 Text("Success")
-                    .font(.caption)
+                    .font(Font.caption)
                     .fontWeight(.medium)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
-                    .background(Color.green.opacity(0.2))
+                    .background(Color.green.opacity(0.2 as Double))
                     .foregroundColor(.green)
-                    .cornerRadius(4)
+                    .cornerRadius(CGFloat(4))
             }
 
             Text("Target: \(result.mutation.targetComponent.displayName)")
-                .font(.subheadline)
+                .font(Font.subheadline)
                 .foregroundColor(.secondary)
 
             Text("Genetic Changes: \(result.mutation.geneticChanges.count)")
-                .font(.subheadline)
+                .font(Font.subheadline)
                 .foregroundColor(.secondary)
 
             Text("Hash: \(result.semanticHash.value.prefix(16))...")
-                .font(.caption)
+                .font(Font.caption)
                 .foregroundColor(.secondary)
                 .fontFamily(.monospaced)
         }
-        .padding()
-        .background(Color.green.opacity(0.1))
-        .cornerRadius(8)
+        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .background(Color.green.opacity(0.1 as Double))
+        .cornerRadius(CGFloat(8))
     }
 }
 
@@ -258,8 +258,8 @@ struct QuantumBackground: View {
             ZStack {
                 LinearGradient(
                     colors: [
-                        Color.backgroundPrimary.opacity(0.8),
-                        Color.backgroundPrimary.opacity(0.4)
+                        Color.backgroundPrimary.opacity(0.8 as Double),
+                        Color.backgroundPrimary.opacity(0.4 as Double)
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
@@ -270,8 +270,8 @@ struct QuantumBackground: View {
                     id: \.self
                 ) { _ in
                     Circle()
-                        .fill(Color.blue.opacity(0.1))
-                        .frame(width: 4, height: 4)
+                        .fill(Color.blue.opacity(0.1 as Double))
+                        .frame(width: CGFloat(4), height: CGFloat(4))
                         .position(
                             x: Double.random(in: 0...geometry.size.width),
                             y: Double.random(in: 0...geometry.size.height)
