@@ -1,0 +1,12 @@
+{
+  "Name": "OpenAI Assistant Reader",
+  "IsCustom": true,
+  "Description": "Allows reading OpenAI assistants",
+  "Actions": [],
+  "DataActions": [
+    "Microsoft.CognitiveServices/accounts/AIServices/agents/read"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/e88e0d1b-0b6e-4838-a9e4-7de1d5180a8f/resourceGroups/novamind-rg/providers/Microsoft.CognitiveServices/accounts/novamind-openai"
+  ]
+}

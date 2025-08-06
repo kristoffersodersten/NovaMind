@@ -1,0 +1,329 @@
+name: NovaMind Code Decomposition
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_files:
+        description: 'Comma-separated list of files to decompose (or "all" for automated detection)'
+        required: false
+        default: 'all'
+      max_lines:
+        description: 'Maximum lines per file (Apple recommends 400)'
+        required: false
+        default: '400'
+      create_pr:
+        description: 'Create pull request with decomposition'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  detect-large-files:
+    name: Detect Large Files
+    runs-on: macos-14
+    outputs:
+      large-files: ${{ steps.detection.outputs.files }}
+      files-count: ${{ steps.detection.outputs.count }}
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Detect large Swift files
+      id: detection
+      run: |
+        echo "🔍 Detecting Swift files exceeding ${{ github.event.inputs.max_lines || 400 }} lines..."
+        
+        max_lines=${{ github.event.inputs.max_lines || 400 }}
+        large_files=()
+        
+        while IFS= read -r file; do
+          if [[ -f "$file" ]]; then
+            lines=$(wc -l < "$file")
+            if [[ $lines -gt $max_lines ]]; then
+              echo "📄 $file: $lines lines (exceeds $max_lines)"
+              large_files+=("$file:$lines")
+            fi
+          fi
+        done < <(find . -name "*.swift" -not -path "./.build/*" -not -path "./Carthage/*" -not -path "./Pods/*")
+        
+        # Convert array to JSON
+        files_json=$(printf '%s\n' "${large_files[@]}" | jq -R . | jq -s .)
+        echo "files=$files_json" >> $GITHUB_OUTPUT
+        echo "count=${#large_files[@]}" >> $GITHUB_OUTPUT
+        
+        echo ""
+        echo "📊 Found ${#large_files[@]} files exceeding $max_lines lines"
+
+  analyze-decomposition:
+    name: Analyze Decomposition Strategy
+    runs-on: macos-14
+    needs: detect-large-files
+    if: needs.detect-large-files.outputs.files-count > 0
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Analyze decomposition opportunities
+      run: |
+        echo "🧭 Analyzing decomposition strategies for large files..."
+        
+        files='${{ needs.detect-large-files.outputs.large-files }}'
+        echo "$files" | jq -r '.[]' | while IFS=':' read -r file lines; do
+          echo ""
+          echo "📋 Analyzing: $file ($lines lines)"
+          echo "────────────────────────────────────────"
+          
+          # Analyze file structure
+          if [[ -f "$file" ]]; then
+            # Count major structural elements
+            classes=$(grep -c "^class\|^struct\|^enum" "$file" 2>/dev/null || echo 0)
+            functions=$(grep -c "^[[:space:]]*func\|^func" "$file" 2>/dev/null || echo 0)
+            extensions=$(grep -c "^extension" "$file" 2>/dev/null || echo 0)
+            protocols=$(grep -c "^protocol" "$file" 2>/dev/null || echo 0)
+            
+            echo "🏗️  Structure Analysis:"
+            echo "   • Classes/Structs/Enums: $classes"
+            echo "   • Functions/Methods: $functions"  
+            echo "   • Extensions: $extensions"
+            echo "   • Protocols: $protocols"
+            
+            # Suggest decomposition strategy
+            echo ""
+            echo "💡 Decomposition Strategy:"
+            if [[ $classes -gt 3 ]]; then
+              echo "   • Split into separate files by class/struct"
+            fi
+            if [[ $extensions -gt 2 ]]; then
+              echo "   • Move extensions to separate files"
+            fi
+            if [[ $functions -gt 20 ]]; then
+              echo "   • Group related functions into separate modules"
+            fi
+            if [[ $protocols -gt 1 ]]; then
+              echo "   • Extract protocols to separate files"
+            fi
+            
+            # Look for natural boundaries
+            echo ""
+            echo "🎯 Natural Boundaries:"
+            grep -n "// MARK:" "$file" 2>/dev/null | head -5 | while read -r line; do
+              echo "   • $line"
+            done
+          fi
+        done
+
+  decomposition-plan:
+    name: Create Decomposition Plan
+    runs-on: ubuntu-latest
+    needs: [detect-large-files, analyze-decomposition]
+    if: needs.detect-large-files.outputs.files-count > 0
+    
+    steps:
+    - name: Generate decomposition plan
+      run: |
+        cat > decomposition-plan.md << 'EOF'
+        # NovaMind Code Decomposition Plan
+        
+        ## Overview
+        This plan outlines the decomposition strategy for large Swift files in the NovaMind project to comply with Apple's coding standards.
+        
+        ## Apple's Recommendations
+        - **Files**: ≤ 400 lines
+        - **Type bodies**: ≤ 350 lines  
+        - **Function bodies**: ≤ 50 lines
+        
+        ## Target Files
+        EOF
+        
+        # Add detected files to plan
+        files='${{ needs.detect-large-files.outputs.large-files }}'
+        echo "$files" | jq -r '.[]' | while IFS=':' read -r file lines; do
+          echo "- \`$file\` ($lines lines)" >> decomposition-plan.md
+        done
+        
+        cat >> decomposition-plan.md << 'EOF'
+        
+        ## Decomposition Strategy
+        
+        ### 1. Enhanced Memory Architecture
+        If `EnhancedMemoryArchitecture.swift` is large:
+        - Split into: Types, Config, Operations, Monitoring
+        - Create `EnhancedMemory/` folder structure
+        
+        ### 2. NeuroMesh Components
+        If NeuroMesh files are large:
+        - Separate by functional concerns
+        - Extract protocols and types
+        
+        ### 3. Service Orchestrators  
+        For large service files:
+        - Extract configuration to separate files
+        - Split by responsibility (SOLID principles)
+        - Create modular component architecture
+        
+        ### 4. UI Components
+        For large view files:
+        - Split into subviews
+        - Extract view models
+        - Separate supporting types
+        
+        ## Implementation Priority
+        1. Core services (highest impact)
+        2. Memory and AI components
+        3. UI and view components
+        4. Supporting utilities
+        
+        ## Success Criteria
+        - All files ≤ 400 lines
+        - Maintained functionality
+        - Improved testability
+        - Better separation of concerns
+        - Enhanced maintainability
+        
+        ---
+        *Generated by NovaMind Decomposition Workflow*
+        EOF
+        
+    - name: Upload decomposition plan
+      uses: actions/upload-artifact@v4
+      with:
+        name: decomposition-plan
+        path: decomposition-plan.md
+
+  create-decomposition-pr:
+    name: Create Decomposition PR
+    runs-on: ubuntu-latest
+    needs: [detect-large-files, decomposition-plan]
+    if: needs.detect-large-files.outputs.files-count > 0 && github.event.inputs.create_pr == 'true'
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Create decomposition branch
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Create branch for decomposition
+        branch_name="code-decomposition-$(date +%Y%m%d-%H%M%S)"
+        git checkout -b "$branch_name"
+        echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
+        
+    - name: Download decomposition plan
+      uses: actions/download-artifact@v4
+      with:
+        name: decomposition-plan
+        
+    - name: Add decomposition plan to repository
+      run: |
+        mkdir -p .github/decomposition
+        mv decomposition-plan.md .github/decomposition/
+        
+        # Create tracking file
+        cat > .github/decomposition/tracking.md << EOF
+        # Decomposition Progress Tracking
+        
+        **Created**: $(date)
+        **Files to decompose**: ${{ needs.detect-large-files.outputs.files-count }}
+        **Target**: All files ≤ ${{ github.event.inputs.max_lines || 400 }} lines
+        
+        ## Progress
+        - [ ] Analysis completed
+        - [ ] Decomposition plan created  
+        - [ ] Implementation started
+        - [ ] Testing completed
+        - [ ] Code review passed
+        
+        ## Files Status
+        EOF
+        
+        # Add file checklist
+        files='${{ needs.detect-large-files.outputs.large-files }}'
+        echo "$files" | jq -r '.[]' | while IFS=':' read -r file lines; do
+          echo "- [ ] \`$file\` ($lines lines)" >> .github/decomposition/tracking.md
+        done
+        
+        git add .github/decomposition/
+        git commit -m "Add code decomposition plan and tracking
+        
+        - Detected ${{ needs.detect-large-files.outputs.files-count }} files exceeding ${{ github.event.inputs.max_lines || 400 }} lines
+        - Created systematic decomposition strategy
+        - Following Apple's Swift coding guidelines"
+        
+    - name: Create Pull Request
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Push the branch
+        git push origin "$BRANCH_NAME"
+        
+        # Create PR using GitHub CLI if available, otherwise manual instructions
+        if command -v gh &> /dev/null; then
+          gh pr create \
+            --title "🔧 Code Decomposition: Comply with Apple Standards" \
+            --body "## Code Decomposition Plan
+            
+        This PR implements systematic decomposition of large Swift files to comply with Apple's coding standards.
+        
+        ### Changes
+        - **Files to decompose**: ${{ needs.detect-large-files.outputs.files-count }}
+        - **Target size**: ≤ ${{ github.event.inputs.max_lines || 400 }} lines per file
+        - **Strategy**: Modular component architecture
+        
+        ### Benefits
+        - ✅ Improved maintainability
+        - ✅ Better testability  
+        - ✅ Enhanced readability
+        - ✅ Compliance with Apple guidelines
+        - ✅ Reduced cognitive load
+        
+        ### Review Checklist
+        - [ ] All files ≤ ${{ github.event.inputs.max_lines || 400 }} lines
+        - [ ] Functionality preserved
+        - [ ] Tests passing
+        - [ ] No breaking changes
+        - [ ] Documentation updated
+        
+        See decomposition plan in \`.github/decomposition/\` for details." \
+            --head "$BRANCH_NAME" \
+            --base main
+        else
+          echo "✅ Branch '$BRANCH_NAME' created with decomposition plan"
+          echo "🔗 Create PR manually from this branch to main"
+        fi
+
+  decomposition-summary:
+    name: Decomposition Summary
+    runs-on: ubuntu-latest
+    needs: [detect-large-files]
+    if: always()
+    
+    steps:
+    - name: Summary
+      run: |
+        echo "📊 NovaMind Code Decomposition Summary"
+        echo "====================================="
+        
+        files_count="${{ needs.detect-large-files.outputs.files-count }}"
+        
+        if [[ "$files_count" -gt 0 ]]; then
+          echo "🔍 Detected $files_count files exceeding size limits"
+          echo "📋 Decomposition plan created"
+          echo "🎯 Target: All files ≤ ${{ github.event.inputs.max_lines || 400 }} lines"
+          echo ""
+          echo "💡 Next steps:"
+          echo "   1. Review the decomposition plan"
+          echo "   2. Implement systematic file splitting"
+          echo "   3. Test functionality preservation"
+          echo "   4. Update documentation as needed"
+        else
+          echo "✅ All Swift files already comply with size recommendations!"
+          echo "🎉 No decomposition needed - excellent code organization!"
+        fi
+        
+        echo ""
+        echo "📚 Remember: Apple recommends keeping files focused and concise"
+        echo "   for better maintainability and developer experience."

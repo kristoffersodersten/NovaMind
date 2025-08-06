@@ -1,0 +1,93 @@
+name: Swift Optimizer with Azure OpenAI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install openai
+          pip install azure-identity
+
+      - name: Find and prepare Swift files
+        run: |
+          echo "🔍 Searching for Swift files..."
+          mkdir -p swift_src
+          
+          # Find all .swift files, excluding build artifacts and dependencies
+          find . -name "*.swift" \
+            -not -path "./.build/*" \
+            -not -path "./Carthage/*" \
+            -not -path "./Pods/*" \
+            -not -path "./DerivedData/*" \
+            -exec cp {} swift_src/ \;
+          
+          # Count files
+          swift_count=$(find swift_src -name "*.swift" | wc -l)
+          echo "📁 Found $swift_count Swift files"
+          
+          # Create payload
+          zip -r swift_payload.zip swift_src/
+          
+          # Show structure
+          echo "📊 Swift files structure:"
+          ls -la swift_src/
+
+      - name: Run Azure GPT-4 Swift Optimizer
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_API_VERSION: ${{ secrets.AZURE_OPENAI_API_VERSION }}
+        run: |
+          echo "🧠 Starting Azure OpenAI Swift optimization with gpt-4.1..."
+          python scripts/optimize_with_azure.py swift_payload.zip
+
+      - name: Upload optimization results
+        uses: actions/upload-artifact@v4
+        with:
+          name: swift-optimization-results
+          path: |
+            optimization_results.md
+            swift_analysis.json
+          retention-days: 30
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            try {
+              const results = fs.readFileSync('optimization_results.md', 'utf8');
+              
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## 🧠 Azure AI Swift Optimization Results\n\n${results}`
+              });
+              
+              console.log('✅ Posted optimization results to PR');
+            } catch (error) {
+              console.log('⚠️ Could not post results to PR:', error.message);
+            }

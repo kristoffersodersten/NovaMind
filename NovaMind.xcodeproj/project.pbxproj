@@ -1,0 +1,715 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7ADC427963FF4A92B5B73C72 /* NovaMindCICDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D0C883B984E72A248CD33 /* NovaMindCICDConfig.swift */; };
+		4AA473D14B3A4AA8A80C782E /* NovaMindEcosystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72242BC77FCF48FF90C1E8D7 /* NovaMindEcosystemConfig.swift */; };
+		35E8EC71C4CF4699A0BCFCC1 /* NovaMindQuantumSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7300D82455244F1AE9064F8 /* NovaMindQuantumSystem.swift */; };
+		37F9357775324C64906AE1BD /* NovaMindSystemValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2051531A7453481A1E2FD /* NovaMindSystemValidator.swift */; };
+		1CF4E7E42E48469B9292DCE1 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37501677C52466F895B0F86 /* Color+Theme.swift */; };
+		D80CFB98BC084C069C9AF2BF /* project_cleanup_executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89091FA8ADA47778248E946 /* project_cleanup_executor.swift */; };
+		AA3BEC6133954FFD865F83BE /* NovaMindEcosystemTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A7B70D3D84F6AA136B992 /* NovaMindEcosystemTypes.swift */; };
+		3217222A03A44065A11EBFD4 /* MemoryIntegrationExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC457DDE19AA4C09B687DF43 /* MemoryIntegrationExample.swift */; };
+		A85B62BB644B4209AC18E87C /* EnhancedMemoryArchitecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAAC1B1F2F14A82987D713B /* EnhancedMemoryArchitecture.swift */; };
+		E6535041F708438CAFC2D187 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2899F1057234D418C0E94F8 /* Project.swift */; };
+		3E3D43B9CB6F4ECB89922B3A /* NeuroSymbolicMetalRenderer+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446FB9DC1A354522941E3461 /* NeuroSymbolicMetalRenderer+Core.swift */; };
+		486F7625327C417AB8EF1AD1 /* MemoryArchitecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4441E84953B4EEBB3D7F8D3 /* MemoryArchitecture.swift */; };
+		B5F6699F295B45A394FB0C03 /* CICDPipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94250B18F441DE8A08EF36 /* CICDPipelineExecutor.swift */; };
+		CAE864E8854141A9A1E6AD54 /* QuantumSystemCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6417637B1B0243289B7138E5 /* QuantumSystemCore.swift */; };
+		ABF4A142A99E48EA8A1E279E /* ChatThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA99862D325421EAB791DF3 /* ChatThread.swift */; };
+		906C1C905088469E98B2F544 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAC1FD30914E5E990A94A2 /* Models.swift */; };
+		BFB18C80851A454FBA7D193C /* ConstitutionalCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E09C940572B4155ADFE0975 /* ConstitutionalCore.swift */; };
+		D7E932D552AD464487183CB1 /* NovaCoreGuarantee.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB12C45AE8684C4A8EC80BE4 /* NovaCoreGuarantee.swift */; };
+		75A544A3273D42B69449CB54 /* NeuroMeshMemorySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9D7F5869C4100B10CE530 /* NeuroMeshMemorySystem.swift */; };
+		5785906830A547C299555E14 /* QuantumEvolutionaryComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6427CAFF32B34918B6F9B633 /* QuantumEvolutionaryComponents.swift */; };
+		1D4FB595D33B498EBEC2DF85 /* PostQuantumSecurityCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0424F1FF14A79A2C85998 /* PostQuantumSecurityCore.swift */; };
+		F4314520F650438D92DB8D37 /* LatticeKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B0232986E488EBEB9C654 /* LatticeKeyManager.swift */; };
+		EA70F1E18B994F049A6847A9 /* NeuralSeedGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E788BE605455BB3E0B140 /* NeuralSeedGenerator.swift */; };
+		59A20303C5914133ABC445A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13BD13A40446B9934602A8 /* AppDelegate.swift */; };
+		0134C6E90A524372947E5282 /* NovaMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A9B8B4F52413A974C0CBB /* NovaMindApp.swift */; };
+		65B6F26973094224AD3B3FFE /* NeuroMeshDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCD0F0FBA142469F028B42 /* NeuroMeshDashboard.swift */; };
+		B9A44C31FBF9425C8F9D2F14 /* NeuroMeshIntegrationProcessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB3C1072D144B9AC9D6C9A /* NeuroMeshIntegrationProcessors.swift */; };
+		4361F72E49ED4C7DBCDBCEBA /* NeuroMeshEmotionalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B56BA456524FF5B6FB0947 /* NeuroMeshEmotionalModel.swift */; };
+		4A77A05EADB041F4BF4519A0 /* NeuroMeshIntegrationExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACF01E85944F61B84A9F0A /* NeuroMeshIntegrationExamples.swift */; };
+		EB33069A6B954AD9B7FC95DC /* NeuroMeshIntegrationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A1C6C3CC54F3E865869D7 /* NeuroMeshIntegrationTypes.swift */; };
+		4C835B56C0BE4F3B8A9CF4CC /* TypingIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E17CCD6DDC4C82B6E0C398 /* TypingIndicatorManager.swift */; };
+		7EEBAD8561AC4AB9AA8A5EE5 /* WebSocketStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357320189E8B431691DEEEDB /* WebSocketStatusView.swift */; };
+		BEA50955D0AE4235A0B9D669 /* WebSocketManagerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA7B7458AB94C97A1F72046 /* WebSocketManagerHelpers.swift */; };
+		5B7C698AD43C4B598B3F0912 /* OfflineQueueTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A607D0A7E4DBF97554D2C /* OfflineQueueTypes.swift */; };
+		FDBBC4528D784ED0A2F68665 /* RealtimeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A942FE0F80242A78D67469A /* RealtimeUI.swift */; };
+		60190D7D3E9F4896B65C45F8 /* WebSocketStatusUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC7C495A794694A02F75B1 /* WebSocketStatusUI.swift */; };
+		28A4131367584B62AF00B2EC /* RealtimeBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0DFF4C6344275B4D44A31 /* RealtimeBridge.swift */; };
+		158EF448D34C4E198C79876D /* OfflineQueueViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC545AF97344D7B8C16A53 /* OfflineQueueViews.swift */; };
+		1810E3C53EBB4D6389802ADA /* OfflineMessageQueueNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC04CB9BCC4537878C1E62 /* OfflineMessageQueueNetwork.swift */; };
+		7997EB04F4FE408AB74C620C /* WebSocketExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3294596CC54C5EB4661F16 /* WebSocketExtensions.swift */; };
+		6C96E240E8454A86AABFB0F6 /* RealtimeSupportingTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F77F3C68804974B21180F6 /* RealtimeSupportingTypes.swift */; };
+		80A3BDA343674364B28247F9 /* WebSocketViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743752475FC740DDB97D513E /* WebSocketViews.swift */; };
+		9909534401414A21AC2097A3 /* RealtimeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2820E8643D36494F9AEB07B7 /* RealtimeTypes.swift */; };
+		10CD0CA8864E4EF69765428D /* RealtimeWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1115CCB09FFE4706B82C725F /* RealtimeWorkspaceView.swift */; };
+		9AE5C7E6EA5A465B9DA9E5FC /* NovaMindDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0CADA47E944717B5C07C7B /* NovaMindDesignSystem.swift */; };
+		E3ADD3733CD24DAD8F05C86E /* KrilleStyleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E8A09135B421CAEAF65BE /* KrilleStyleLayout.swift */; };
+		4E9B4A97C22B417E93376801 /* TagCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC396D66934D0AAE50828D /* TagCloudView.swift */; };
+		984F48DE9B4046239E7FB43A /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9881B82D5941420490AA93C2 /* MessageRow.swift */; };
+		CC33CA88AA134DBB9935AE86 /* UserActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D85F15FAE34C8FBCD8C54A /* UserActivityTracker.swift */; };
+		915447CA3F4E472CA1764C0C /* ColorPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0E389B008405892DB9AC2 /* ColorPreviewView.swift */; };
+		9152251390664254AD141DF8 /* MemoryMinimapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7959250871074DF097942EF7 /* MemoryMinimapView.swift */; };
+		7CEB3234600B4A56B8A99253 /* KrilleStyleComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15954D66BA7041CB8DCC328F /* KrilleStyleComponents.swift */; };
+		466DE91EECBC4237B1970CC3 /* ParallaxElevation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30A2EFC32884E9A9B63C12D /* ParallaxElevation.swift */; };
+		47826DACE0764C02B55EBAEA /* MessageRowAttachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A5334EBC4E0A8CC5DAFD /* MessageRowAttachments.swift */; };
+		591A191E2272492284E6925E /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88432E3782694EB1888DEF54 /* ModelPicker.swift */; };
+		9A538C811DB9408B9F200D36 /* AISaveGlowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C54D03B58F40E8BA9F152F /* AISaveGlowModifier.swift */; };
+		861745CC052446D7A3458EE5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4293453F394788B75ABE9B /* View+Extensions.swift */; };
+		CE1BE766B58C4540A4AB089F /* MessageInputArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE792DBFB747D9993F04CF /* MessageInputArea.swift */; };
+		86BBCFD8752349CB9C51CE9B /* BrandIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980DA95986241769BBC62CB /* BrandIcon.swift */; };
+		56AE25E57ADF4DE1ADA14201 /* DragResizableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C989D3EBD4A618796D822 /* DragResizableModifier.swift */; };
+		90104D84282D4C6CA5222646 /* KrilleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1D19192E640D8B5FE4B67 /* KrilleStyle.swift */; };
+		6C4F6BFCAEBD45388277104B /* ProjectAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E2473ADF748C4912BD675 /* ProjectAgentView.swift */; };
+		E2D4EB3F9A834E0D96EEEED1 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379F83DA61A140A79A84F7C3 /* ActionButton.swift */; };
+		E84E1E151526439887444C53 /* ProjectAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8801ED5F15495E9ED87459 /* ProjectAction.swift */; };
+		BFB1EAB779084B64A71156CB /* ProjectActionFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C84334494543B094A6D8E0 /* ProjectActionFormatters.swift */; };
+		4AC2E9D2FA5B413CAC4AC3ED /* KrilleCoreDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1603CA91D144658ABFB2553 /* KrilleCoreDesignSystem.swift */; };
+		CAEB7D91BE1A472E8E2D46B0 /* KrilleUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629AC60808C4D409533C2FE /* KrilleUIComponents.swift */; };
+		F54BD870CFBD4EBBA4042EC3 /* CanvasMinimapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D6D051C1DD4040A79AC0AA /* CanvasMinimapView.swift */; };
+		C036A5FFA4B14441B396C85F /* VisualHoverEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77963AAF4F34FE2BA363339 /* VisualHoverEffect.swift */; };
+		14C0605D66F04E71A7D46B8A /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3736FCB06DE54070B01BC055 /* ChatBubble.swift */; };
+		15E01CA7F5AC4087AFEB7B61 /* KrilleStylePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63242EB7DBF6498B98C81FAA /* KrilleStylePreview.swift */; };
+		B4E32DF87E0D46889F2FB7E5 /* KrilleStyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4F78E914F4033B8CEA9EE /* KrilleStyleExtensions.swift */; };
+		05B982AD9169445F8E5737B0 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6564C5D9B2743859E259B58 /* KeyManager.swift */; };
+		0F4F7DB93EA244CC80AC56E4 /* LeftSidebarShowcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF21B263BC438BBF982B47 /* LeftSidebarShowcase.swift */; };
+		007B70F2F67F4CFF8F46FE05 /* ChatThreadDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD7BB6B9C844A2BACBFA69 /* ChatThreadDetailView.swift */; };
+		A2575754DB68497F985539B7 /* InputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1096B9EF2BC84A04BF814897 /* InputBarView.swift */; };
+		A3FCA8D38E8E4DC1B1103984 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3068C630344138B7648382 /* SettingsView.swift */; };
+		BC9EC3E3739649F1BBC964F1 /* NovaMindMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D899855DB3F4DCB84977BEB /* NovaMindMainLayout.swift */; };
+		7B403C0148274D75AD38A753 /* RightMemoryCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6591835EA4516AD9AC347 /* RightMemoryCanvasView.swift */; };
+		7F80E5B3B1A548659780CA73 /* MainWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC0768FE664D84843A2CFC /* MainWorkspaceView.swift */; };
+		9AB56762AE1D4C419D6C6C58 /* MemoryCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C7550D24B34E98B791BCE1 /* MemoryCanvasView.swift */; };
+		1B712DEC498E452E92077AA9 /* NovaMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30243D7FF8EB4D4F906808C3 /* NovaMainLayout.swift */; };
+		3997E4B0F67E423A8F476AB3 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1203BA132984B699EE0E51C /* SidebarView.swift */; };
+		0A6FB56098134E38BA5CFDD9 /* ResonanceDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFB7627A534DB1AE379191 /* ResonanceDashboardView.swift */; };
+		6C5F50A90A3D425AB1017685 /* AudioSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E5A449735949E4BD0AC3F0 /* AudioSettingsView.swift */; };
+		B5E57C53F57C42D0B5A24011 /* NovaMindMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073332EC348E4F3293D0DCFC /* NovaMindMainView.swift */; };
+		C9BDF694080D47C79A4103BA /* LeftSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA526580DF24604A0816756 /* LeftSidebarView.swift */; };
+		5E64CA568C464D4BA96FC12D /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F91B571594567B5246EC5 /* WorkspaceView.swift */; };
+		AF000DF09AD0410E8407C50D /* EditProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E111F926DE9A40818825D399 /* EditProviderView.swift */; };
+		88C87B03C08A436CA18EA1E7 /* NovaMindSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B41D4215BB744ACB22021EE /* NovaMindSystemView.swift */; };
+		47185B5CABA6415AA292541D /* MemoryBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19F096F53D4F9C96F3B14E /* MemoryBlockView.swift */; };
+		A59E24177A684277B1C0F5EB /* OnboardingSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526AA8DE5FD64C13885B0688 /* OnboardingSplashView.swift */; };
+		155DE1ED18CB4DC4A5EA590F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE61EE81E0B4D348B9A66F0 /* ChatView.swift */; };
+		7F664E72E4E64B94B8C793FC /* QuantumEvolutionaryComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A7CF935F874B59813894CA /* QuantumEvolutionaryComponents.swift */; };
+		D45C324CC3E541278C353082 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3F51A0102647218AA4D46C /* OnboardingView.swift */; };
+		E8A59D513E904450B1D20BF2 /* ShapeExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F175D2EBB42AD9393AE21 /* ShapeExampleView.swift */; };
+		45D6F40225A44B8EAC776076 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA18DA3679F4C11841D00E0 /* SettingsStore.swift */; };
+		6324E52B5ED44C2CABC36577 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC37B393E644FFA648B848 /* ChatBubble.swift */; };
+		153E0FB42A99421C8B66A0D0 /* InputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755122FE17424135A8594714 /* InputBarView.swift */; };
+		D5A1A0497AC14310AF5DDDA0 /* VoiceInputSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4430E748E0488EA4E63F9F /* VoiceInputSystem.swift */; };
+		78E514F8A67D4C0DA6FB14B1 /* NovaMindMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72B4000BB24EE6A659FFF8 /* NovaMindMainLayout.swift */; };
+		AA430CB7D55947CAA98F434B /* NavigationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FFC5BF1E438B806C4DCC /* NavigationSystem.swift */; };
+		E4135E8C9E47424D82E1D4C4 /* MemoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87E46F6FFB94E308894E984 /* MemoryItem.swift */; };
+		1A1172416EC54860B2E2C0BA /* NSView+Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1082994314464957922F1 /* NSView+Cursor.swift */; };
+		E8FE204D9A74404F8830B7A1 /* QuantumEvolutionaryViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8627CE0A464A1EB20B1B41 /* QuantumEvolutionaryViewSections.swift */; };
+		6EFCFE154BE64DB580178A3E /* QuantumEvolutionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF77819EEBB04F94BA976236 /* QuantumEvolutionaryView.swift */; };
+		AB8CE9A658A54196A879AB30 /* QuantumEvolutionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5242FD950764064B54D0598 /* QuantumEvolutionaryExtensions.swift */; };
+		D6A2FCFCFB0249C0B61A9A51 /* QuantumEvolutionarySupportingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D198F4160AD34B03B8EE2B60 /* QuantumEvolutionarySupportingViews.swift */; };
+		144CA7D82D3243F181F1BAD9 /* QuantumEvolutionaryViewSections2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9638C07371349B6AD5B9756 /* QuantumEvolutionaryViewSections2.swift */; };
+		C53FF919D04843A58F2D204E /* EvolutionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70023D9678A4483A79AC8E0 /* EvolutionDetailsView.swift */; };
+		A114921A2BBF43E5BDD89D2F /* EcosystemValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A40AC31264CADAF007EEA /* EcosystemValidator.swift */; };
+		11078647725A48F892E7B59E /* NeuroMeshWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D432519662747DEADCDCD59 /* NeuroMeshWebSocketService.swift */; };
+		AFA5FDEDB1B44A43A3F8D042 /* CoralEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC3F2D5CA4411181268200 /* CoralEngine.swift */; };
+		8DF955A1BAF747219368D4EF /* NovaAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C348A3216A2C45BFA4E1D646 /* NovaAIService.swift */; };
+		61E3C6B01A604117800D76C0 /* ResonanceRadarSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC585A39C92460782BFA43D /* ResonanceRadarSystem.swift */; };
+		3D00ACDE40F145E0B6F69B62 /* MentorRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546F68A5760B436CB694E8A4 /* MentorRegistry.swift */; };
+		655EA8E67BAA4D0EA42FC8DE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC4C9D36F5462B976C92B1 /* APIService.swift */; };
+		B21365672FFC42EF80379D82 /* Semantic360ResonanceRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD7751C2A614F0890C38D0A /* Semantic360ResonanceRadar.swift */; };
+		E21DDA36BEE041AE85FA78FB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084709FA88464874B9777E3D /* APIClient.swift */; };
+		86F6BBD779E44F879EABF7D4 /* NeuroMeshIntegrationProcessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1B9A310584E2C8EC1CD27 /* NeuroMeshIntegrationProcessors.swift */; };
+		854815E7B4A44529BE37AFAC /* CommonAPITypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8676BE970584356B1F87FDA /* CommonAPITypes.swift */; };
+		183FEC753C7F44929994B785 /* DeepSeekTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF9114485634A5C82EA0BF4 /* DeepSeekTypes.swift */; };
+		9138B52C0431416F888BF533 /* SecurityVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212DB1C9510E4EEBA52EAD82 /* SecurityVerifier.swift */; };
+		ED7EA59E9EA64FF8AB1ADA54 /* BirdAgentOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE91B5E1FA84195985B15DA /* BirdAgentOrchestrator.swift */; };
+		F729531684B84FC7AF4BF8EB /* AIProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD02BB4CBEB04E3F88F0910F /* AIProviderService.swift */; };
+		43F5907F7F844AEFB6CB0144 /* LocalModelOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EFA02AACD4616B662720A /* LocalModelOrchestrator.swift */; };
+		FCC4F993A505474E997C4D42 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640CE7941C44994A5B2B86B /* Protocols.swift */; };
+		E0DF643A62F3474CB415F037 /* NeuroMeshResonanceRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DB05DA3FC4432B95BB8A52 /* NeuroMeshResonanceRadar.swift */; };
+		9EDD04EBEAB44D6293F29259 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A8DDAC98A64650B1BCE30E /* APIConfig.swift */; };
+		8DF0404FED9D4F05ACCE8CF6 /* NeuroMeshWebSocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D34E0268FE4AA4BD35ADC7 /* NeuroMeshWebSocketTypes.swift */; };
+		533A6B58479640C4B65267E7 /* AzureRealtimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49B2E3A62D459189B92006 /* AzureRealtimeAPI.swift */; };
+		CB8E0228107045FE81733DF0 /* NeuromeshIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093338A019044C0E91748AA7 /* NeuromeshIntegration.swift */; };
+		337FA8EE219C423C8D997209 /* AIProviderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7F7CEBDC84E079D9C405B /* AIProviderTypes.swift */; };
+		61877BC599444CB0803ECF24 /* DeepSeekAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65634C0AC46F480A88D8E396 /* DeepSeekAPI.swift */; };
+		C51D71329DAA46A79C604950 /* NovaLinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B788AB89F84F00A3D5C96A /* NovaLinkCoordinator.swift */; };
+		0CCE273274E143B89B075C92 /* NeuroMeshIntegrationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C332489AE91D469F9E6F2E1D /* NeuroMeshIntegrationTypes.swift */; };
+		FB9AA0BD0CF242609786EFAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9A24F22B224E6E8CF5E89E /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		538D0C883B984E72A248CD33 /* NovaMindCICDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindCICDConfig.swift; sourceTree = "<group>"; };
+		72242BC77FCF48FF90C1E8D7 /* NovaMindEcosystemConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindEcosystemConfig.swift; sourceTree = "<group>"; };
+		B7300D82455244F1AE9064F8 /* NovaMindQuantumSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindQuantumSystem.swift; sourceTree = "<group>"; };
+		64B2051531A7453481A1E2FD /* NovaMindSystemValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindSystemValidator.swift; sourceTree = "<group>"; };
+		D37501677C52466F895B0F86 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color+Theme.swift; sourceTree = "<group>"; };
+		D89091FA8ADA47778248E946 /* project_cleanup_executor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = project_cleanup_executor.swift; sourceTree = "<group>"; };
+		854A7B70D3D84F6AA136B992 /* NovaMindEcosystemTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindEcosystemTypes.swift; sourceTree = "<group>"; };
+		DC457DDE19AA4C09B687DF43 /* MemoryIntegrationExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryIntegrationExample.swift; sourceTree = "<group>"; };
+		FCAAC1B1F2F14A82987D713B /* EnhancedMemoryArchitecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedMemoryArchitecture.swift; sourceTree = "<group>"; };
+		A2899F1057234D418C0E94F8 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		446FB9DC1A354522941E3461 /* NeuroSymbolicMetalRenderer+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroSymbolicMetalRenderer+Core.swift; sourceTree = "<group>"; };
+		F4441E84953B4EEBB3D7F8D3 /* MemoryArchitecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryArchitecture.swift; sourceTree = "<group>"; };
+		0F94250B18F441DE8A08EF36 /* CICDPipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICDPipelineExecutor.swift; sourceTree = "<group>"; };
+		6417637B1B0243289B7138E5 /* QuantumSystemCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumSystemCore.swift; sourceTree = "<group>"; };
+		3DA99862D325421EAB791DF3 /* ChatThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThread.swift; sourceTree = "<group>"; };
+		45EAC1FD30914E5E990A94A2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1E09C940572B4155ADFE0975 /* ConstitutionalCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstitutionalCore.swift; sourceTree = "<group>"; };
+		BB12C45AE8684C4A8EC80BE4 /* NovaCoreGuarantee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaCoreGuarantee.swift; sourceTree = "<group>"; };
+		05D9D7F5869C4100B10CE530 /* NeuroMeshMemorySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshMemorySystem.swift; sourceTree = "<group>"; };
+		6427CAFF32B34918B6F9B633 /* QuantumEvolutionaryComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumEvolutionaryComponents.swift; sourceTree = "<group>"; };
+		27F0424F1FF14A79A2C85998 /* PostQuantumSecurityCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuantumSecurityCore.swift; sourceTree = "<group>"; };
+		144B0232986E488EBEB9C654 /* LatticeKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatticeKeyManager.swift; sourceTree = "<group>"; };
+		E31E788BE605455BB3E0B140 /* NeuralSeedGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralSeedGenerator.swift; sourceTree = "<group>"; };
+		0E13BD13A40446B9934602A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0B2A9B8B4F52413A974C0CBB /* NovaMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindApp.swift; sourceTree = "<group>"; };
+		8DFCD0F0FBA142469F028B42 /* NeuroMeshDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshDashboard.swift; sourceTree = "<group>"; };
+		DCCB3C1072D144B9AC9D6C9A /* NeuroMeshIntegrationProcessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshIntegrationProcessors.swift; sourceTree = "<group>"; };
+		B6B56BA456524FF5B6FB0947 /* NeuroMeshEmotionalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshEmotionalModel.swift; sourceTree = "<group>"; };
+		DCACF01E85944F61B84A9F0A /* NeuroMeshIntegrationExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshIntegrationExamples.swift; sourceTree = "<group>"; };
+		808A1C6C3CC54F3E865869D7 /* NeuroMeshIntegrationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshIntegrationTypes.swift; sourceTree = "<group>"; };
+		A8E17CCD6DDC4C82B6E0C398 /* TypingIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicatorManager.swift; sourceTree = "<group>"; };
+		357320189E8B431691DEEEDB /* WebSocketStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketStatusView.swift; sourceTree = "<group>"; };
+		4BA7B7458AB94C97A1F72046 /* WebSocketManagerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManagerHelpers.swift; sourceTree = "<group>"; };
+		8F3A607D0A7E4DBF97554D2C /* OfflineQueueTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineQueueTypes.swift; sourceTree = "<group>"; };
+		1A942FE0F80242A78D67469A /* RealtimeUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeUI.swift; sourceTree = "<group>"; };
+		09AC7C495A794694A02F75B1 /* WebSocketStatusUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketStatusUI.swift; sourceTree = "<group>"; };
+		30A0DFF4C6344275B4D44A31 /* RealtimeBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeBridge.swift; sourceTree = "<group>"; };
+		D9DC545AF97344D7B8C16A53 /* OfflineQueueViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineQueueViews.swift; sourceTree = "<group>"; };
+		8FDC04CB9BCC4537878C1E62 /* OfflineMessageQueueNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineMessageQueueNetwork.swift; sourceTree = "<group>"; };
+		3D3294596CC54C5EB4661F16 /* WebSocketExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketExtensions.swift; sourceTree = "<group>"; };
+		45F77F3C68804974B21180F6 /* RealtimeSupportingTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeSupportingTypes.swift; sourceTree = "<group>"; };
+		743752475FC740DDB97D513E /* WebSocketViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketViews.swift; sourceTree = "<group>"; };
+		2820E8643D36494F9AEB07B7 /* RealtimeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeTypes.swift; sourceTree = "<group>"; };
+		1115CCB09FFE4706B82C725F /* RealtimeWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeWorkspaceView.swift; sourceTree = "<group>"; };
+		2B0CADA47E944717B5C07C7B /* NovaMindDesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindDesignSystem.swift; sourceTree = "<group>"; };
+		A25E8A09135B421CAEAF65BE /* KrilleStyleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrilleStyleLayout.swift; sourceTree = "<group>"; };
+		08CC396D66934D0AAE50828D /* TagCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCloudView.swift; sourceTree = "<group>"; };
+		9881B82D5941420490AA93C2 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
+		66D85F15FAE34C8FBCD8C54A /* UserActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityTracker.swift; sourceTree = "<group>"; };
+		A9F0E389B008405892DB9AC2 /* ColorPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreviewView.swift; sourceTree = "<group>"; };
+		7959250871074DF097942EF7 /* MemoryMinimapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMinimapView.swift; sourceTree = "<group>"; };
+		15954D66BA7041CB8DCC328F /* KrilleStyleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrilleStyleComponents.swift; sourceTree = "<group>"; };
+		D30A2EFC32884E9A9B63C12D /* ParallaxElevation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxElevation.swift; sourceTree = "<group>"; };
+		83C6A5334EBC4E0A8CC5DAFD /* MessageRowAttachments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowAttachments.swift; sourceTree = "<group>"; };
+		88432E3782694EB1888DEF54 /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
+		75C54D03B58F40E8BA9F152F /* AISaveGlowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISaveGlowModifier.swift; sourceTree = "<group>"; };
+		1E4293453F394788B75ABE9B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View+Extensions.swift; sourceTree = "<group>"; };
+		F4AE792DBFB747D9993F04CF /* MessageInputArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputArea.swift; sourceTree = "<group>"; };
+		C980DA95986241769BBC62CB /* BrandIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIcon.swift; sourceTree = "<group>"; };
+		D69C989D3EBD4A618796D822 /* DragResizableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragResizableModifier.swift; sourceTree = "<group>"; };
+		DAE1D19192E640D8B5FE4B67 /* KrilleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrilleStyle.swift; sourceTree = "<group>"; };
+		055E2473ADF748C4912BD675 /* ProjectAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectAgentView.swift; sourceTree = "<group>"; };
+		379F83DA61A140A79A84F7C3 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		3E8801ED5F15495E9ED87459 /* ProjectAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectAction.swift; sourceTree = "<group>"; };
+		84C84334494543B094A6D8E0 /* ProjectActionFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectActionFormatters.swift; sourceTree = "<group>"; };
+		B1603CA91D144658ABFB2553 /* KrilleCoreDesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrilleCoreDesignSystem.swift; sourceTree = "<group>"; };
+		C629AC60808C4D409533C2FE /* KrilleUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrilleUIComponents.swift; sourceTree = "<group>"; };
+		35D6D051C1DD4040A79AC0AA /* CanvasMinimapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasMinimapView.swift; sourceTree = "<group>"; };
+		A77963AAF4F34FE2BA363339 /* VisualHoverEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualHoverEffect.swift; sourceTree = "<group>"; };
+		3736FCB06DE54070B01BC055 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		63242EB7DBF6498B98C81FAA /* KrilleStylePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrilleStylePreview.swift; sourceTree = "<group>"; };
+		48D4F78E914F4033B8CEA9EE /* KrilleStyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrilleStyleExtensions.swift; sourceTree = "<group>"; };
+		E6564C5D9B2743859E259B58 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
+		69CF21B263BC438BBF982B47 /* LeftSidebarShowcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSidebarShowcase.swift; sourceTree = "<group>"; };
+		E8AD7BB6B9C844A2BACBFA69 /* ChatThreadDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThreadDetailView.swift; sourceTree = "<group>"; };
+		1096B9EF2BC84A04BF814897 /* InputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarView.swift; sourceTree = "<group>"; };
+		4E3068C630344138B7648382 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6D899855DB3F4DCB84977BEB /* NovaMindMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindMainLayout.swift; sourceTree = "<group>"; };
+		1EF6591835EA4516AD9AC347 /* RightMemoryCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMemoryCanvasView.swift; sourceTree = "<group>"; };
+		9FAC0768FE664D84843A2CFC /* MainWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWorkspaceView.swift; sourceTree = "<group>"; };
+		A1C7550D24B34E98B791BCE1 /* MemoryCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCanvasView.swift; sourceTree = "<group>"; };
+		30243D7FF8EB4D4F906808C3 /* NovaMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMainLayout.swift; sourceTree = "<group>"; };
+		D1203BA132984B699EE0E51C /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		CDFFB7627A534DB1AE379191 /* ResonanceDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResonanceDashboardView.swift; sourceTree = "<group>"; };
+		74E5A449735949E4BD0AC3F0 /* AudioSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSettingsView.swift; sourceTree = "<group>"; };
+		073332EC348E4F3293D0DCFC /* NovaMindMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindMainView.swift; sourceTree = "<group>"; };
+		DCA526580DF24604A0816756 /* LeftSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSidebarView.swift; sourceTree = "<group>"; };
+		7C4F91B571594567B5246EC5 /* WorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; };
+		E111F926DE9A40818825D399 /* EditProviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProviderView.swift; sourceTree = "<group>"; };
+		3B41D4215BB744ACB22021EE /* NovaMindSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindSystemView.swift; sourceTree = "<group>"; };
+		0E19F096F53D4F9C96F3B14E /* MemoryBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBlockView.swift; sourceTree = "<group>"; };
+		526AA8DE5FD64C13885B0688 /* OnboardingSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSplashView.swift; sourceTree = "<group>"; };
+		EAE61EE81E0B4D348B9A66F0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		D2A7CF935F874B59813894CA /* QuantumEvolutionaryComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumEvolutionaryComponents.swift; sourceTree = "<group>"; };
+		AC3F51A0102647218AA4D46C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		733F175D2EBB42AD9393AE21 /* ShapeExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeExampleView.swift; sourceTree = "<group>"; };
+		7BA18DA3679F4C11841D00E0 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		3BEC37B393E644FFA648B848 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		755122FE17424135A8594714 /* InputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarView.swift; sourceTree = "<group>"; };
+		5F4430E748E0488EA4E63F9F /* VoiceInputSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputSystem.swift; sourceTree = "<group>"; };
+		CA72B4000BB24EE6A659FFF8 /* NovaMindMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaMindMainLayout.swift; sourceTree = "<group>"; };
+		1AD8FFC5BF1E438B806C4DCC /* NavigationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSystem.swift; sourceTree = "<group>"; };
+		B87E46F6FFB94E308894E984 /* MemoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItem.swift; sourceTree = "<group>"; };
+		1BA1082994314464957922F1 /* NSView+Cursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSView+Cursor.swift; sourceTree = "<group>"; };
+		5B8627CE0A464A1EB20B1B41 /* QuantumEvolutionaryViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumEvolutionaryViewSections.swift; sourceTree = "<group>"; };
+		DF77819EEBB04F94BA976236 /* QuantumEvolutionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumEvolutionaryView.swift; sourceTree = "<group>"; };
+		C5242FD950764064B54D0598 /* QuantumEvolutionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumEvolutionaryExtensions.swift; sourceTree = "<group>"; };
+		D198F4160AD34B03B8EE2B60 /* QuantumEvolutionarySupportingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumEvolutionarySupportingViews.swift; sourceTree = "<group>"; };
+		B9638C07371349B6AD5B9756 /* QuantumEvolutionaryViewSections2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumEvolutionaryViewSections2.swift; sourceTree = "<group>"; };
+		A70023D9678A4483A79AC8E0 /* EvolutionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionDetailsView.swift; sourceTree = "<group>"; };
+		2C3A40AC31264CADAF007EEA /* EcosystemValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcosystemValidator.swift; sourceTree = "<group>"; };
+		6D432519662747DEADCDCD59 /* NeuroMeshWebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshWebSocketService.swift; sourceTree = "<group>"; };
+		7BEC3F2D5CA4411181268200 /* CoralEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoralEngine.swift; sourceTree = "<group>"; };
+		C348A3216A2C45BFA4E1D646 /* NovaAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaAIService.swift; sourceTree = "<group>"; };
+		6FC585A39C92460782BFA43D /* ResonanceRadarSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResonanceRadarSystem.swift; sourceTree = "<group>"; };
+		546F68A5760B436CB694E8A4 /* MentorRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorRegistry.swift; sourceTree = "<group>"; };
+		F6EC4C9D36F5462B976C92B1 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		4DD7751C2A614F0890C38D0A /* Semantic360ResonanceRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Semantic360ResonanceRadar.swift; sourceTree = "<group>"; };
+		084709FA88464874B9777E3D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		C3C1B9A310584E2C8EC1CD27 /* NeuroMeshIntegrationProcessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshIntegrationProcessors.swift; sourceTree = "<group>"; };
+		A8676BE970584356B1F87FDA /* CommonAPITypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAPITypes.swift; sourceTree = "<group>"; };
+		FFF9114485634A5C82EA0BF4 /* DeepSeekTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepSeekTypes.swift; sourceTree = "<group>"; };
+		212DB1C9510E4EEBA52EAD82 /* SecurityVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityVerifier.swift; sourceTree = "<group>"; };
+		4CE91B5E1FA84195985B15DA /* BirdAgentOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAgentOrchestrator.swift; sourceTree = "<group>"; };
+		FD02BB4CBEB04E3F88F0910F /* AIProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProviderService.swift; sourceTree = "<group>"; };
+		568EFA02AACD4616B662720A /* LocalModelOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalModelOrchestrator.swift; sourceTree = "<group>"; };
+		1640CE7941C44994A5B2B86B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		A3DB05DA3FC4432B95BB8A52 /* NeuroMeshResonanceRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshResonanceRadar.swift; sourceTree = "<group>"; };
+		23A8DDAC98A64650B1BCE30E /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		81D34E0268FE4AA4BD35ADC7 /* NeuroMeshWebSocketTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshWebSocketTypes.swift; sourceTree = "<group>"; };
+		BB49B2E3A62D459189B92006 /* AzureRealtimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureRealtimeAPI.swift; sourceTree = "<group>"; };
+		093338A019044C0E91748AA7 /* NeuromeshIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuromeshIntegration.swift; sourceTree = "<group>"; };
+		EEB7F7CEBDC84E079D9C405B /* AIProviderTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProviderTypes.swift; sourceTree = "<group>"; };
+		65634C0AC46F480A88D8E396 /* DeepSeekAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepSeekAPI.swift; sourceTree = "<group>"; };
+		F0B788AB89F84F00A3D5C96A /* NovaLinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaLinkCoordinator.swift; sourceTree = "<group>"; };
+		C332489AE91D469F9E6F2E1D /* NeuroMeshIntegrationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuroMeshIntegrationTypes.swift; sourceTree = "<group>"; };
+		3F9A24F22B224E6E8CF5E89E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52664691C32F4B50B515476D /* NovaMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovaMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		4758D2E7A4C94FD087201A48 = {
+			isa = PBXGroup;
+			children = (
+				877BFC7021F54DF0BFF9B4B9 /* NovaMind */,
+				A7D650D13AF041C78986254F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		877BFC7021F54DF0BFF9B4B9 /* NovaMind */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A24F22B224E6E8CF5E89E /* Assets.xcassets */,
+			);
+			path = NovaMind;
+			sourceTree = "<group>";
+		};
+		067DA74489174AC2B75641C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52664691C32F4B50B515476D /* NovaMind.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6076E35176164BE8ADE175CA /* NovaMind */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B785DCEBE8B94CFE92E9D600 /* Build configuration list for PBXNativeTarget "NovaMind" */;
+			buildPhases = (
+				E0DBC20B0BE3463A8EA2F03C /* Sources */,
+				569ACF1464484274ACC3D0D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NovaMind;
+			productName = NovaMind;
+			productReference = 52664691C32F4B50B515476D /* NovaMind.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97CA2B763DDE4ECB988D40EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					6076E35176164BE8ADE175CA = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 8CC863A60AA54A19B46A963A /* Build configuration list for PBXProject "NovaMind" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5D81AA57CCA84A119AE765DC;
+			productRefGroup = E2C0E2BE971845F6B7F206E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6076E35176164BE8ADE175CA /* NovaMind */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		569ACF1464484274ACC3D0D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB9AA0BD0CF242609786EFAB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E0DBC20B0BE3463A8EA2F03C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ADC427963FF4A92B5B73C72 /* NovaMindCICDConfig.swift in Sources */,
+				4AA473D14B3A4AA8A80C782E /* NovaMindEcosystemConfig.swift in Sources */,
+				35E8EC71C4CF4699A0BCFCC1 /* NovaMindQuantumSystem.swift in Sources */,
+				37F9357775324C64906AE1BD /* NovaMindSystemValidator.swift in Sources */,
+				1CF4E7E42E48469B9292DCE1 /* Color+Theme.swift in Sources */,
+				D80CFB98BC084C069C9AF2BF /* project_cleanup_executor.swift in Sources */,
+				AA3BEC6133954FFD865F83BE /* NovaMindEcosystemTypes.swift in Sources */,
+				3217222A03A44065A11EBFD4 /* MemoryIntegrationExample.swift in Sources */,
+				A85B62BB644B4209AC18E87C /* EnhancedMemoryArchitecture.swift in Sources */,
+				E6535041F708438CAFC2D187 /* Project.swift in Sources */,
+				3E3D43B9CB6F4ECB89922B3A /* NeuroSymbolicMetalRenderer+Core.swift in Sources */,
+				486F7625327C417AB8EF1AD1 /* MemoryArchitecture.swift in Sources */,
+				B5F6699F295B45A394FB0C03 /* CICDPipelineExecutor.swift in Sources */,
+				CAE864E8854141A9A1E6AD54 /* QuantumSystemCore.swift in Sources */,
+				ABF4A142A99E48EA8A1E279E /* ChatThread.swift in Sources */,
+				906C1C905088469E98B2F544 /* Models.swift in Sources */,
+				BFB18C80851A454FBA7D193C /* ConstitutionalCore.swift in Sources */,
+				D7E932D552AD464487183CB1 /* NovaCoreGuarantee.swift in Sources */,
+				75A544A3273D42B69449CB54 /* NeuroMeshMemorySystem.swift in Sources */,
+				5785906830A547C299555E14 /* QuantumEvolutionaryComponents.swift in Sources */,
+				1D4FB595D33B498EBEC2DF85 /* PostQuantumSecurityCore.swift in Sources */,
+				F4314520F650438D92DB8D37 /* LatticeKeyManager.swift in Sources */,
+				EA70F1E18B994F049A6847A9 /* NeuralSeedGenerator.swift in Sources */,
+				59A20303C5914133ABC445A7 /* AppDelegate.swift in Sources */,
+				0134C6E90A524372947E5282 /* NovaMindApp.swift in Sources */,
+				65B6F26973094224AD3B3FFE /* NeuroMeshDashboard.swift in Sources */,
+				B9A44C31FBF9425C8F9D2F14 /* NeuroMeshIntegrationProcessors.swift in Sources */,
+				4361F72E49ED4C7DBCDBCEBA /* NeuroMeshEmotionalModel.swift in Sources */,
+				4A77A05EADB041F4BF4519A0 /* NeuroMeshIntegrationExamples.swift in Sources */,
+				EB33069A6B954AD9B7FC95DC /* NeuroMeshIntegrationTypes.swift in Sources */,
+				4C835B56C0BE4F3B8A9CF4CC /* TypingIndicatorManager.swift in Sources */,
+				7EEBAD8561AC4AB9AA8A5EE5 /* WebSocketStatusView.swift in Sources */,
+				BEA50955D0AE4235A0B9D669 /* WebSocketManagerHelpers.swift in Sources */,
+				5B7C698AD43C4B598B3F0912 /* OfflineQueueTypes.swift in Sources */,
+				FDBBC4528D784ED0A2F68665 /* RealtimeUI.swift in Sources */,
+				60190D7D3E9F4896B65C45F8 /* WebSocketStatusUI.swift in Sources */,
+				28A4131367584B62AF00B2EC /* RealtimeBridge.swift in Sources */,
+				158EF448D34C4E198C79876D /* OfflineQueueViews.swift in Sources */,
+				1810E3C53EBB4D6389802ADA /* OfflineMessageQueueNetwork.swift in Sources */,
+				7997EB04F4FE408AB74C620C /* WebSocketExtensions.swift in Sources */,
+				6C96E240E8454A86AABFB0F6 /* RealtimeSupportingTypes.swift in Sources */,
+				80A3BDA343674364B28247F9 /* WebSocketViews.swift in Sources */,
+				9909534401414A21AC2097A3 /* RealtimeTypes.swift in Sources */,
+				10CD0CA8864E4EF69765428D /* RealtimeWorkspaceView.swift in Sources */,
+				9AE5C7E6EA5A465B9DA9E5FC /* NovaMindDesignSystem.swift in Sources */,
+				E3ADD3733CD24DAD8F05C86E /* KrilleStyleLayout.swift in Sources */,
+				4E9B4A97C22B417E93376801 /* TagCloudView.swift in Sources */,
+				984F48DE9B4046239E7FB43A /* MessageRow.swift in Sources */,
+				CC33CA88AA134DBB9935AE86 /* UserActivityTracker.swift in Sources */,
+				915447CA3F4E472CA1764C0C /* ColorPreviewView.swift in Sources */,
+				9152251390664254AD141DF8 /* MemoryMinimapView.swift in Sources */,
+				7CEB3234600B4A56B8A99253 /* KrilleStyleComponents.swift in Sources */,
+				466DE91EECBC4237B1970CC3 /* ParallaxElevation.swift in Sources */,
+				47826DACE0764C02B55EBAEA /* MessageRowAttachments.swift in Sources */,
+				591A191E2272492284E6925E /* ModelPicker.swift in Sources */,
+				9A538C811DB9408B9F200D36 /* AISaveGlowModifier.swift in Sources */,
+				861745CC052446D7A3458EE5 /* View+Extensions.swift in Sources */,
+				CE1BE766B58C4540A4AB089F /* MessageInputArea.swift in Sources */,
+				86BBCFD8752349CB9C51CE9B /* BrandIcon.swift in Sources */,
+				56AE25E57ADF4DE1ADA14201 /* DragResizableModifier.swift in Sources */,
+				90104D84282D4C6CA5222646 /* KrilleStyle.swift in Sources */,
+				6C4F6BFCAEBD45388277104B /* ProjectAgentView.swift in Sources */,
+				E2D4EB3F9A834E0D96EEEED1 /* ActionButton.swift in Sources */,
+				E84E1E151526439887444C53 /* ProjectAction.swift in Sources */,
+				BFB1EAB779084B64A71156CB /* ProjectActionFormatters.swift in Sources */,
+				4AC2E9D2FA5B413CAC4AC3ED /* KrilleCoreDesignSystem.swift in Sources */,
+				CAEB7D91BE1A472E8E2D46B0 /* KrilleUIComponents.swift in Sources */,
+				F54BD870CFBD4EBBA4042EC3 /* CanvasMinimapView.swift in Sources */,
+				C036A5FFA4B14441B396C85F /* VisualHoverEffect.swift in Sources */,
+				14C0605D66F04E71A7D46B8A /* ChatBubble.swift in Sources */,
+				15E01CA7F5AC4087AFEB7B61 /* KrilleStylePreview.swift in Sources */,
+				B4E32DF87E0D46889F2FB7E5 /* KrilleStyleExtensions.swift in Sources */,
+				05B982AD9169445F8E5737B0 /* KeyManager.swift in Sources */,
+				0F4F7DB93EA244CC80AC56E4 /* LeftSidebarShowcase.swift in Sources */,
+				007B70F2F67F4CFF8F46FE05 /* ChatThreadDetailView.swift in Sources */,
+				A2575754DB68497F985539B7 /* InputBarView.swift in Sources */,
+				A3FCA8D38E8E4DC1B1103984 /* SettingsView.swift in Sources */,
+				BC9EC3E3739649F1BBC964F1 /* NovaMindMainLayout.swift in Sources */,
+				7B403C0148274D75AD38A753 /* RightMemoryCanvasView.swift in Sources */,
+				7F80E5B3B1A548659780CA73 /* MainWorkspaceView.swift in Sources */,
+				9AB56762AE1D4C419D6C6C58 /* MemoryCanvasView.swift in Sources */,
+				1B712DEC498E452E92077AA9 /* NovaMainLayout.swift in Sources */,
+				3997E4B0F67E423A8F476AB3 /* SidebarView.swift in Sources */,
+				0A6FB56098134E38BA5CFDD9 /* ResonanceDashboardView.swift in Sources */,
+				6C5F50A90A3D425AB1017685 /* AudioSettingsView.swift in Sources */,
+				B5E57C53F57C42D0B5A24011 /* NovaMindMainView.swift in Sources */,
+				C9BDF694080D47C79A4103BA /* LeftSidebarView.swift in Sources */,
+				5E64CA568C464D4BA96FC12D /* WorkspaceView.swift in Sources */,
+				AF000DF09AD0410E8407C50D /* EditProviderView.swift in Sources */,
+				88C87B03C08A436CA18EA1E7 /* NovaMindSystemView.swift in Sources */,
+				47185B5CABA6415AA292541D /* MemoryBlockView.swift in Sources */,
+				A59E24177A684277B1C0F5EB /* OnboardingSplashView.swift in Sources */,
+				155DE1ED18CB4DC4A5EA590F /* ChatView.swift in Sources */,
+				7F664E72E4E64B94B8C793FC /* QuantumEvolutionaryComponents.swift in Sources */,
+				D45C324CC3E541278C353082 /* OnboardingView.swift in Sources */,
+				E8A59D513E904450B1D20BF2 /* ShapeExampleView.swift in Sources */,
+				45D6F40225A44B8EAC776076 /* SettingsStore.swift in Sources */,
+				6324E52B5ED44C2CABC36577 /* ChatBubble.swift in Sources */,
+				153E0FB42A99421C8B66A0D0 /* InputBarView.swift in Sources */,
+				D5A1A0497AC14310AF5DDDA0 /* VoiceInputSystem.swift in Sources */,
+				78E514F8A67D4C0DA6FB14B1 /* NovaMindMainLayout.swift in Sources */,
+				AA430CB7D55947CAA98F434B /* NavigationSystem.swift in Sources */,
+				E4135E8C9E47424D82E1D4C4 /* MemoryItem.swift in Sources */,
+				1A1172416EC54860B2E2C0BA /* NSView+Cursor.swift in Sources */,
+				E8FE204D9A74404F8830B7A1 /* QuantumEvolutionaryViewSections.swift in Sources */,
+				6EFCFE154BE64DB580178A3E /* QuantumEvolutionaryView.swift in Sources */,
+				AB8CE9A658A54196A879AB30 /* QuantumEvolutionaryExtensions.swift in Sources */,
+				D6A2FCFCFB0249C0B61A9A51 /* QuantumEvolutionarySupportingViews.swift in Sources */,
+				144CA7D82D3243F181F1BAD9 /* QuantumEvolutionaryViewSections2.swift in Sources */,
+				C53FF919D04843A58F2D204E /* EvolutionDetailsView.swift in Sources */,
+				A114921A2BBF43E5BDD89D2F /* EcosystemValidator.swift in Sources */,
+				11078647725A48F892E7B59E /* NeuroMeshWebSocketService.swift in Sources */,
+				AFA5FDEDB1B44A43A3F8D042 /* CoralEngine.swift in Sources */,
+				8DF955A1BAF747219368D4EF /* NovaAIService.swift in Sources */,
+				61E3C6B01A604117800D76C0 /* ResonanceRadarSystem.swift in Sources */,
+				3D00ACDE40F145E0B6F69B62 /* MentorRegistry.swift in Sources */,
+				655EA8E67BAA4D0EA42FC8DE /* APIService.swift in Sources */,
+				B21365672FFC42EF80379D82 /* Semantic360ResonanceRadar.swift in Sources */,
+				E21DDA36BEE041AE85FA78FB /* APIClient.swift in Sources */,
+				86F6BBD779E44F879EABF7D4 /* NeuroMeshIntegrationProcessors.swift in Sources */,
+				854815E7B4A44529BE37AFAC /* CommonAPITypes.swift in Sources */,
+				183FEC753C7F44929994B785 /* DeepSeekTypes.swift in Sources */,
+				9138B52C0431416F888BF533 /* SecurityVerifier.swift in Sources */,
+				ED7EA59E9EA64FF8AB1ADA54 /* BirdAgentOrchestrator.swift in Sources */,
+				F729531684B84FC7AF4BF8EB /* AIProviderService.swift in Sources */,
+				43F5907F7F844AEFB6CB0144 /* LocalModelOrchestrator.swift in Sources */,
+				FCC4F993A505474E997C4D42 /* Protocols.swift in Sources */,
+				E0DF643A62F3474CB415F037 /* NeuroMeshResonanceRadar.swift in Sources */,
+				9EDD04EBEAB44D6293F29259 /* APIConfig.swift in Sources */,
+				8DF0404FED9D4F05ACCE8CF6 /* NeuroMeshWebSocketTypes.swift in Sources */,
+				533A6B58479640C4B65267E7 /* AzureRealtimeAPI.swift in Sources */,
+				CB8E0228107045FE81733DF0 /* NeuromeshIntegration.swift in Sources */,
+				337FA8EE219C423C8D997209 /* AIProviderTypes.swift in Sources */,
+				61877BC599444CB0803ECF24 /* DeepSeekAPI.swift in Sources */,
+				C51D71329DAA46A79C604950 /* NovaLinkCoordinator.swift in Sources */,
+				0CCE273274E143B89B075C92 /* NeuroMeshIntegrationTypes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7319CBBB4DE445FABCE80562 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASYNC_COMPILATION_ENABLED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"${inherited}",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ${inherited}";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CD0C7B7C5FF94914B5FB766D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASYNC_COMPILATION_ENABLED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		E85E590B72244E98B880DE17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASAP_METAL_PROJECT_NAME = "";
+				ASAP_METAL_PROJECT_VERSION = "";
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"${inherited}",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novamind.app;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3D3891B9EA7E411A80F16E9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASAP_METAL_PROJECT_NAME = "";
+				ASAP_METAL_PROJECT_VERSION = "";
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"${inherited}",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novamind.app;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F74506ECE434E90851E5F20 /* Build configuration list for PBXProject "NovaMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47301680F42E4E309F8D341B /* Debug */,
+				6AE5A814EA764D248A9AC22D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D3024D8F81445D3B099ECB3 /* Build configuration list for PBXNativeTarget "NovaMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				088CA63BA078480996DB1739 /* Debug */,
+				1ED569D0A9A14AF58FC858D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4EDCFE23FB442FEA748D5CB /* Project object */;
+}

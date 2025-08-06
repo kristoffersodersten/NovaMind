@@ -1,0 +1,249 @@
+name: 🚀 Comprehensive CI/CD Pipeline with Azure AI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      force_azure_analysis:
+        description: 'Force Azure AI analysis'
+        required: false
+        default: 'false'
+
+env:
+  XCODE_VERSION: '15.0'
+  SWIFT_VERSION: '5.9'
+
+jobs:
+  # ===============================
+  # 🔍 Code Quality & Analysis
+  # ===============================
+  quality-check:
+    name: 🔍 Quality Gates
+    runs-on: macos-latest
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🛠️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ env.XCODE_VERSION }}
+
+      - name: 📊 Swift Lint Check
+        run: |
+          if command -v swiftlint &> /dev/null; then
+            echo "🔍 Running SwiftLint..."
+            swiftlint --reporter github-actions-logging
+          else
+            echo "⚠️ SwiftLint not installed, skipping..."
+          fi
+
+      - name: 📈 Code Metrics
+        run: |
+          echo "📊 Analyzing Swift code metrics..."
+          
+          # Count Swift files
+          swift_files=$(find . -name "*.swift" -not -path "./Pods/*" -not -path "./.build/*" | wc -l)
+          echo "📁 Swift files: $swift_files"
+          
+          # Count lines of code
+          total_lines=$(find . -name "*.swift" -not -path "./Pods/*" -not -path "./.build/*" -exec wc -l {} + | tail -n 1 | awk '{print $1}')
+          echo "📝 Total lines: $total_lines"
+          
+          # Large files check (>400 lines)
+          large_files=$(find . -name "*.swift" -not -path "./Pods/*" -not -path "./.build/*" -exec wc -l {} + | awk '$1 > 400 {print $2 " (" $1 " lines)"}')
+          if [ ! -z "$large_files" ]; then
+            echo "⚠️ Large files (>400 lines):"
+            echo "$large_files"
+          else
+            echo "✅ All files under 400 lines"
+          fi
+
+  # ===============================
+  # 🏗️ Build & Test
+  # ===============================
+  build-and-test:
+    name: 🏗️ Build & Test
+    runs-on: macos-latest
+    needs: quality-check
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ env.XCODE_VERSION }}
+
+      - name: 🔧 Resolve Swift Package Dependencies
+        run: |
+          echo "🔄 Resolving Swift Package Manager dependencies..."
+          xcodebuild -resolvePackageDependencies -project NovaMind.xcodeproj -scheme NovaMind
+
+      - name: 🏗️ Build Project
+        run: |
+          echo "🏗️ Building NovaMind project..."
+          xcodebuild clean build \
+            -project NovaMind.xcodeproj \
+            -scheme NovaMind \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: 🧪 Run Tests
+        run: |
+          echo "🧪 Running unit tests..."
+          xcodebuild test \
+            -project NovaMind.xcodeproj \
+            -scheme NovaMind \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO
+
+  # ===============================
+  # 🧠 Azure AI Swift Optimization
+  # ===============================
+  azure-ai-optimization:
+    name: 🧠 Azure AI Swift Analysis
+    runs-on: ubuntu-latest
+    needs: [quality-check, build-and-test]
+    if: github.event_name == 'push' || github.event.inputs.force_azure_analysis == 'true'
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Azure Dependencies
+        run: |
+          echo "📦 Installing Azure OpenAI dependencies..."
+          pip install openai azure-identity requests
+
+      - name: 🔍 Collect Swift Files
+        run: |
+          echo "🔍 Collecting Swift files for Azure AI analysis..."
+          mkdir -p swift_analysis
+          
+          # Copy Swift files (excluding generated/external code)
+          find . -name "*.swift" \
+            -not -path "./Pods/*" \
+            -not -path "./.build/*" \
+            -not -path "./DerivedData/*" \
+            -not -path "./Build/*" \
+            -exec cp {} swift_analysis/ \;
+          
+          # Count and list files
+          swift_count=$(find swift_analysis -name "*.swift" | wc -l)
+          echo "📁 Found $swift_count Swift files for analysis"
+          
+          # Create analysis payload
+          cd swift_analysis
+          zip -r ../swift_code_payload.zip *.swift
+          cd ..
+          
+          echo "📦 Created analysis payload: swift_code_payload.zip"
+          ls -la swift_code_payload.zip
+
+      - name: 🧠 Azure OpenAI Swift Analysis
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_API_VERSION: ${{ secrets.AZURE_OPENAI_API_VERSION }}
+        run: |
+          echo "🧠 Starting Azure OpenAI GPT-4.1 Swift analysis..."
+          echo "🔗 Using endpoint: $AZURE_OPENAI_ENDPOINT"
+          echo "🤖 Using model: $AZURE_OPENAI_API_VERSION"
+          
+          # Run the Azure optimization script
+          python scripts/optimize_with_azure.py swift_code_payload.zip
+
+      - name: 📊 Upload Analysis Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: azure-ai-swift-analysis-${{ github.run_number }}
+          path: |
+            azure_optimization_report.md
+            azure_analysis_*.json
+            swift_code_payload.zip
+          retention-days: 30
+
+      - name: 💬 Comment Analysis Summary
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            try {
+              const reportPath = 'azure_optimization_report.md';
+              if (fs.existsSync(reportPath)) {
+                const report = fs.readFileSync(reportPath, 'utf8');
+                const summary = report.split('\n').slice(0, 20).join('\n');
+                
+                github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: `## 🧠 Azure AI Swift Analysis Results\n\n${summary}\n\n📁 Full analysis available in workflow artifacts.\n🔗 [View complete workflow run](${context.payload.pull_request.html_url}/checks)`
+                });
+              }
+            } catch (error) {
+              console.log('Could not post analysis summary:', error.message);
+            }
+
+  # ===============================
+  # 📊 Reporting & Notifications
+  # ===============================
+  final-report:
+    name: 📊 Final CI/CD Report
+    runs-on: ubuntu-latest
+    needs: [quality-check, build-and-test, azure-ai-optimization]
+    if: always()
+    
+    steps:
+      - name: 📊 Generate CI/CD Summary
+        run: |
+          echo "# 🚀 CI/CD Pipeline Summary" > pipeline_summary.md
+          echo "" >> pipeline_summary.md
+          echo "## 📈 Pipeline Results:" >> pipeline_summary.md
+          echo "" >> pipeline_summary.md
+          echo "- **Quality Check**: ${{ needs.quality-check.result }}" >> pipeline_summary.md
+          echo "- **Build & Test**: ${{ needs.build-and-test.result }}" >> pipeline_summary.md
+          echo "- **Azure AI Analysis**: ${{ needs.azure-ai-optimization.result }}" >> pipeline_summary.md
+          echo "" >> pipeline_summary.md
+          echo "## 🎯 Next Steps:" >> pipeline_summary.md
+          echo "" >> pipeline_summary.md
+          
+          if [ "${{ needs.azure-ai-optimization.result }}" == "success" ]; then
+            echo "✅ **Azure AI Analysis completed successfully!**" >> pipeline_summary.md
+            echo "- Review optimization recommendations in artifacts" >> pipeline_summary.md
+            echo "- Implement suggested improvements" >> pipeline_summary.md
+            echo "- Monitor code quality metrics" >> pipeline_summary.md
+          else
+            echo "⚠️ **Azure AI Analysis needs attention**" >> pipeline_summary.md
+            echo "- Check workflow logs for issues" >> pipeline_summary.md
+            echo "- Verify Azure OpenAI secrets configuration" >> pipeline_summary.md
+          fi
+          
+          echo "" >> pipeline_summary.md
+          echo "🔗 **Workflow run**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> pipeline_summary.md
+          
+          cat pipeline_summary.md
+
+      - name: 📁 Upload Pipeline Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-summary-${{ github.run_number }}
+          path: pipeline_summary.md
+          retention-days: 90

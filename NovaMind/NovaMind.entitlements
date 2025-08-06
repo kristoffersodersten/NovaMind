@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Team Identifier -->
+    <key>com.apple.developer.team-identifier</key>
+    <string>NOVAMIND_TEAM_ID</string>
+    
+    <!-- Keychain Access Groups -->
+    <key>keychain-access-groups</key>
+    <array>
+        <string>NOVAMIND_TEAM_ID.com.kristoffersodersten.NovaMindMacOS</string>
+        <string>NOVAMIND_TEAM_ID.shared</string>
+    </array>
+    
+    <!-- Application Groups -->
+    <key>com.apple.developer.security.application-groups</key>
+    <array>
+        <string>group.com.kristoffersodersten.NovaMindMacOS</string>
+    </array>
+    
+    <!-- App Sandbox -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    
+    <!-- Network Access -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+    
+    <!-- File Access -->
+    <key>com.apple.security.files.user-selected.read-write</key>
+    <true/>
+    
+    <!-- Microphone Access -->
+    <key>com.apple.security.device.microphone</key>
+    <true/>
+    
+    <!-- Secure Enclave Access -->
+    <key>com.apple.security.smartcard</key>
+    <true/>
+    
+    <!-- Hardened Runtime Capabilities -->
+    <key>com.apple.security.cs.allow-jit</key>
+    <false/>
+    
+    <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+    <false/>
+    
+    <key>com.apple.security.cs.allow-dyld-environment-variables</key>
+    <false/>
+    
+    <key>com.apple.security.cs.disable-library-validation</key>
+    <false/>
+    
+    <!-- Privacy Protections -->
+    <key>com.apple.security.personal-information.location</key>
+    <false/>
+    
+    <key>com.apple.security.personal-information.calendars</key>
+    <false/>
+    
+    <key>com.apple.security.personal-information.addressbook</key>
+    <false/>
+    
+    <!-- CloudKit -->
+    <key>com.apple.developer.icloud-container-identifiers</key>
+    <array>
+        <string>iCloud.com.kristoffersodersten.NovaMindMacOS</string>
+    </array>
+    
+    <key>com.apple.developer.ubiquity-kvstore-identifier</key>
+    <string>NOVAMIND_TEAM_ID.com.kristoffersodersten.NovaMindMacOS</string>
+</dict>
+</plist>

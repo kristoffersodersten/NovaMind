@@ -1,0 +1,458 @@
+project_correction_pipeline:
+  name: NovaMind macOS App Code Quality Improvement
+  version: 1.0
+  description: >
+    Systematisk hantering av varningar, fel och kodkvalitetsproblem för macOS Swift-app 
+    utan att flytta eller radera fungerande kod. Fokuserar på Swift-specifik 
+    korrigering, refaktorering och dokumentationsförbättringar.
+
+trigger:
+  manual: true
+  scheduled:
+    - cron: "0 1 * * 1-5"  # Varje vardag kl 01:00
+  events:
+    - git_push
+    - pr_created
+    - build_failure
+
+stages:
+  # ────────────────────────────────────────────────
+  # STAGE 1: Analys och Kategorisering
+  # ────────────────────────────────────────────────
+  analysis_and_categorization:
+    name: Code Analysis Engine
+    description: Analyserar och kategoriserar alla varningar och fel
+    enabled: true
+    
+    analysis_tools:
+      static_analysis:
+        tools: [swiftlint, xcodebuild, swift-format]
+        max_issues_per_file: 50
+        ignore_patterns:
+          - "build/**"
+          - "DerivedData/**"
+          - "*.xcworkspace/**"
+          - "Pods/**"
+          - ".build/**"
+          
+      code_metrics:
+        calculate_complexity: true
+        calculate_maintainability: true
+        calculate_test_coverage: true
+        threshold_warnings:
+          complexity: 15
+          maintainability: 50
+          coverage: 70
+          
+      file_analysis:
+        identify_long_files: true
+        long_file_threshold: 500
+        identify_duplicate_code: true
+        identify_dead_code: true
+        identify_unused_imports: true
+
+    categorization:
+      error_categories:
+        critical:
+          types: [compilation_error, security_vulnerability, null_pointer]
+          action: immediate_fix
+          priority: high
+          
+        major:
+          types: [type_error, syntax_error, deprecated_api]
+          action: scheduled_fix
+          priority: high
+          
+        minor:
+          types: [style_warning, unused_variable, missing_import]
+          action: batch_fix
+          priority: medium
+          
+        informational:
+          types: [code_style, documentation, best_practice]
+          action: suggestion
+          priority: low
+
+    outputs:
+      analysis_report: ./reports/analysis_report.json
+      issue_categorization: ./reports/issue_categories.json
+      file_complexity_report: ./reports/complexity_analysis.json
+
+  # ────────────────────────────────────────────────
+  # STAGE 2: Automatisk Korrigering
+  # ────────────────────────────────────────────────
+  automated_fixes:
+    name: Automated Correction Engine
+    description: Utför säkra automatiserade korrigeringar
+    enabled: true
+    
+    fix_strategies:
+      syntax_errors:
+        auto_fix: true
+        tools: [prettier, eslint --fix, swiftformat]
+        backup_before_fix: true
+        max_files_per_batch: 100
+        
+      unused_imports:
+        auto_remove: true
+        tools: [eslint --fix-unused-imports, unused-imports]
+        require_test_pass: true
+        
+      code_style:
+        auto_format: true
+        tools: [prettier, swiftformat, black]
+        style_guide: "project_standard"
+        
+      type_errors:
+        auto_infer_types: true
+        tools: [typescript --noEmit, tsc --noEmit]
+        confidence_threshold: 0.9
+        
+      security_issues:
+        auto_patch: true
+        tools: [npm audit fix, snykk wizard]
+        require_review: true
+        
+      deprecated_apis:
+        auto_migrate: true
+        migration_guide: true
+        tools: [jscodeshift, codemod]
+
+    safety_measures:
+      backup_before_changes: true
+      test_after_fix: true
+      rollback_on_failure: true
+      max_changes_per_file: 50
+      require_human_review_for:
+        - security_patches
+        - api_changes
+        - major_refactors
+
+    outputs:
+      fixes_report: ./reports/automated_fixes.json
+      failed_fixes: ./reports/failed_fixes.json
+      test_results: ./reports/fix_validation.json
+
+  # ────────────────────────────────────────────────
+  # STAGE 3: Refaktorering av Långa Filer
+  # ────────────────────────────────────────────────
+  refactoring_long_files:
+    name: Long File Refactoring
+    description: Bryter ner långa filer på ett strukturerat sätt
+    enabled: true
+    
+    refactoring_strategies:
+      function_extraction:
+        min_function_length: 50
+        max_function_length: 200
+        extract_to: separate_file_or_same_file
+        
+      component_separation:
+        identify_components: true
+        separate_concerns: true
+        create_new_files: true
+        
+      utility_extraction:
+        identify_common_patterns: true
+        create_utility_functions: true
+        move_to_shared: true
+        
+      config_separation:
+        separate_config_from_logic: true
+        create_config_files: true
+        environment_specific: true
+
+    file_handling:
+      max_file_length_after_refactor: 300
+      preserve_functionality: true
+      update_imports: true
+      create_tests: true
+      
+    validation:
+      ensure_no_breaking_changes: true
+      run_existing_tests: true
+      performance_benchmark: true
+
+    outputs:
+      refactoring_report: ./reports/refactoring_summary.json
+      new_files_created: ./reports/new_files.json
+      performance_impact: ./reports/performance_impact.json
+
+  # ────────────────────────────────────────────────
+  # STAGE 4: Dokumentationsförbättring
+  # ────────────────────────────────────────────────
+  documentation_improvement:
+    name: Documentation Enhancement
+    description: Förbättrar och skapar dokumentation för komplex kod
+    enabled: true
+    
+    documentation_strategies:
+      auto_generate_docs:
+        tools: [jsdoc, swift-doc, pydoc]
+        include_examples: true
+        include_parameters: true
+        include_return_types: true
+        
+      improve_existing_docs:
+        check_completeness: true
+        add_missing_docs: true
+        improve_clarity: true
+        
+      create_architecture_docs:
+        document_complex_modules: true
+        create_diagrams: true
+        explain_design_decisions: true
+        
+      inline_comments:
+        add_explanatory_comments: true
+        remove_redundant_comments: true
+        improve_comment_quality: true
+
+    quality_standards:
+      documentation_coverage:
+        minimum_coverage: 0.8
+        exclude_generated_code: true
+        
+      comment_quality:
+        min_comment_length: 10
+        max_comment_length: 200
+        require_explanation_for_complex_logic: true
+
+    outputs:
+      documentation_report: ./reports/documentation_status.json
+      generated_docs: ./docs/generated/
+      quality_metrics: ./reports/doc_quality_metrics.json
+
+  # ────────────────────────────────────────────────
+  # STAGE 5: Testförbättring
+  # ────────────────────────────────────────────────
+  test_improvement:
+    name: Test Enhancement
+    description: Förbättrar testtäckning och testkvalitet
+    enabled: true
+    
+    test_strategies:
+      generate_missing_tests:
+        coverage_target: 0.8
+        tools: [jest, quicktest, pytest]
+        generate_unit_tests: true
+        generate_integration_tests: true
+        
+      improve_existing_tests:
+        flaky_test_detection: true
+        test_refactoring: true
+        add_edge_cases: true
+        
+      performance_testing:
+        benchmark_critical_paths: true
+        memory_leak_detection: true
+        load_testing: true
+
+    validation:
+      ensure_all_tests_pass: true
+      check_coverage_improvement: true
+      performance_regression_check: true
+
+    outputs:
+      test_report: ./reports/test_coverage.json
+      performance_tests: ./tests/performance/
+      test_improvements: ./reports/test_improvements.json
+
+  # ────────────────────────────────────────────────
+  # STAGE 6: Kvalitetskontroll
+  # ────────────────────────────────────────────────
+  quality_control:
+    name: Quality Assurance
+    description: Säkerställer att alla förbättringar uppfyller kvalitetskrav
+    enabled: true
+    
+    quality_checks:
+      build_verification:
+        ensure_clean_build: true
+        no_new_errors: true
+        no_regressions: true
+        
+      performance_verification:
+        performance_improvement: true
+        no_performance_regression: true
+        memory_usage_check: true
+        
+      functionality_verification:
+        all_tests_pass: true
+        no_breaking_changes: true
+        feature_completeness: true
+        
+      code_quality_verification:
+        reduced_complexity: true
+        improved_maintainability: true
+        better_documentation: true
+
+    reporting:
+      generate_summary_report: true
+      create_before_after_comparison: true
+      highlight_improvements: true
+      identify_remaining_issues: true
+
+    outputs:
+      quality_report: ./reports/final_quality_report.json
+      improvement_summary: ./reports/improvement_summary.md
+      remaining_issues: ./reports/remaining_issues.json
+
+# ────────────────────────────────────────────────
+# GLOBAL CONFIGURATION
+# ────────────────────────────────────────────────
+global_settings:
+  backup_strategy:
+    create_backup_before_major_changes: true
+    backup_location: ./backups/
+    keep_backups_for_days: 30
+    
+  safety_measures:
+    dry_run_mode: false  # Set to true for testing
+    require_confirmation_for_destructive_changes: true
+    human_review_required_for:
+      - major_refactoring
+      - api_changes
+      - security_patches
+      
+  performance_settings:
+    max_concurrent_processes: 4
+    memory_limit: "4GB"
+    timeout_per_file: "5m"
+    
+  reporting:
+    detailed_logging: true
+    create_executive_summary: true
+    generate_visualizations: true
+    
+  integration:
+    git_integration:
+      auto_commit: false
+      create_pull_requests: true
+      branch_naming: "improvement/{type}/{timestamp}"
+      
+    issue_tracking:
+      create_tickets: false  # Set to true if you use Jira etc.
+      label_issues: true
+      assign_to_team: false
+
+# ────────────────────────────────────────────────
+# VERKTYGSKONFIGURATION
+# ────────────────────────────────────────────────
+tools:
+  linters:
+    javascript:
+      - eslint
+      - prettier
+    typescript:
+      - tsc
+      - eslint
+    swift:
+      - swiftlint
+      - swiftformat
+    python:
+      - pylint
+      - black
+      - isort
+      
+  formatters:
+    - prettier
+    - swiftformat
+    - black
+    - rustfmt
+    
+  analyzers:
+    - sonarqube
+    - codeclimate
+    - lgtm
+    
+  test_frameworks:
+    javascript:
+      - jest
+      - cypress
+    swift:
+      - quicktest
+      - xctest
+    python:
+      - pytest
+      - unittest
+
+# ────────────────────────────────────────────────
+# KVALITETSMÅL
+# ────────────────────────────────────────────────
+quality_targets:
+  error_reduction:
+    target_reduction_percentage: 90
+    max_remaining_errors: 100
+    
+  warning_reduction:
+    target_reduction_percentage: 80
+    max_remaining_warnings: 500
+    
+  code_quality:
+    max_complexity: 10
+    min_maintainability: 70
+    min_documentation_coverage: 80
+    
+  performance:
+    max_performance_regression: 5%
+    min_test_coverage: 80
+    
+  file_structure:
+    max_file_length: 300
+    max_function_length: 50
+    max_nesting_depth: 5
+
+# ────────────────────────────────────────────────
+# UNDANTAG OCH REGEL
+# ────────────────────────────────────────────────
+exclusions:
+  file_patterns:
+    - "node_modules/**"
+    - "build/**"
+    - "dist/**"
+    - "*.min.js"
+    - "*.min.css"
+    - "*.bundle.js"
+    - "*.map"
+    - ".git/**"
+    - ".vscode/**"
+    - ".idea/**"
+    
+  warning_types:
+    - "deprecated"  # Hanteras separat
+    - "todo"       # Användardefinierade kommentarer
+    - "fixme"      # Användardefinierade kommentarer
+    
+  error_types:
+    - "external_dependency"  # Fel från externa bibliotek
+    
+  directories:
+    - "vendor/**"
+    - "third_party/**"
+    - "generated/**"
+
+# ────────────────────────────────────────────────
+# RAPPORTERING
+# ────────────────────────────────────────────────
+reporting:
+  formats:
+    - json
+    - html
+    - markdown
+    
+  include_in_reports:
+    - executive_summary
+    - detailed_analysis
+    - before_after_comparison
+    - performance_metrics
+    - remaining_issues
+    - recommendations
+    
+  notification:
+    on_completion: true
+    on_failure: true
+    channels:
+      - email
+      - slack
+      - github_issues

@@ -1,0 +1,51 @@
+name: 🧠 Azure AI Swift Optimizer - Simple
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  azure-analysis:
+    name: 🧠 Azure AI Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install openai azure-identity
+
+      - name: 🔍 Prepare Swift Files
+        run: |
+          echo "🔍 Collecting Swift files..."
+          mkdir -p analysis_input
+          find . -name "*.swift" -not -path "./Pods/*" -exec cp {} analysis_input/ \;
+          cd analysis_input && zip -r ../swift_code.zip *.swift && cd ..
+          echo "📦 Swift files ready for Azure AI analysis"
+
+      - name: 🧠 Run Azure OpenAI Analysis
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_API_VERSION: ${{ secrets.AZURE_OPENAI_API_VERSION }}
+        run: |
+          echo "🧠 Starting Azure OpenAI Swift optimization..."
+          echo "Using model: $AZURE_OPENAI_API_VERSION"
+          python scripts/optimize_with_azure.py swift_code.zip
+
+      - name: 📊 Upload Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: azure-ai-analysis-${{ github.run_number }}
+          path: |
+            azure_optimization_report.md
+            *.json
+          retention-days: 30
