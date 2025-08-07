@@ -94,6 +94,41 @@ class Semantic360ResonanceRadar: ObservableObject {
             await analyzeEchoForPatterns(validEcho)
         }
     }
+    
+    /// Analyze echo for patterns
+    private func analyzeEchoForPatterns(_ echo: RadarEcho) async {
+        // Pattern analysis logic
+        let patterns = patternAnalyzer.detectPatterns(in: echo)
+        await updateResonanceMap(with: patterns)
+    }
+    
+    /// Generate ping cycle insights  
+    private func generatePingCycleInsights() async -> PingCycleInsights {
+        let recentEchoes = echoBuffer.suffix(50)
+        return PingCycleInsights(
+            totalEchoes: recentEchoes.count,
+            averageResonance: calculateAverageResonance(recentEchoes),
+            detectedPatterns: patternAnalyzer.getActivePatterns()
+        )
+    }
+    
+    /// Store ping cycle results
+    private func storePingCycleResults(_ insights: PingCycleInsights) async {
+        // Store results in memory
+        await memoryManager.store(insights, category: .pingCycle)
+    }
+    
+    /// Approve resonance map
+    private func approveResonanceMap(_ map: ResonanceMap) async {
+        map.status = .approved
+        await persistenceManager.save(map)
+    }
+    
+    /// Flag resonance map for review
+    private func flagResonanceMapForReview(_ map: ResonanceMap) async {
+        map.status = .flaggedForReview
+        await persistenceManager.save(map)
+    }
 
     /// Get current radar insights
     func getCurrentInsights() async -> RadarInsights {

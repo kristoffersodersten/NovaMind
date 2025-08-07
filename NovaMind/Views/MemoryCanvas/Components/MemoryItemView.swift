@@ -37,8 +37,8 @@ struct MemoryItemView: View {
                             .foregroundColor(.foregroundSecondary)
                             .padding(.horizontal, 4)
                             .padding(.vertical, 1)
-                            .background(Color.separator.opacity(0.3 as Double))
-                            .cornerRadius(CGFloat(4))
+                            .background(Color.separator.opacity(0.3))
+                            .cornerRadius(4)
                     }
                     Spacer()
                 }
@@ -46,7 +46,7 @@ struct MemoryItemView: View {
         }
         .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(8))
+        .cornerRadius(8)
         .krilleHover()
     }
 }

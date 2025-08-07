@@ -26,11 +26,11 @@ struct LeftSidebarShowcase: View {
                             Image(systemName: showSidebar ? "sidebar.left" : "sidebar.right")
                             Text(showSidebar ? "Dölj Sidebar" : "Visa Sidebar")
                         }
-                        .systemFont(Font.headline)
-                        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
-                        .background(Color.blue.opacity(0.2 as Double))
+                        .font(.headline)
+                        .padding(.padding(.all))
+                        .background(Color.blue.opacity(0.2))
                         .foregroundColor(.blue)
-                        .cornerRadius(CGFloat(8))
+                        .cornerRadius(8)
                     })
 
                     Spacer()
@@ -40,12 +40,12 @@ struct LeftSidebarShowcase: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.primary)
                 }
-                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                .padding(.padding(.all))
 
                 // Demo content
                 VStack(spacing: 16) {
                     Text("Sidebar Features:")
-                        .systemFont(Font.headline)
+                        .font(.headline)
                         .foregroundColor(.primary)
 
                     VStack(alignment: .leading, spacing: 8) {
@@ -85,13 +85,13 @@ struct LeftSidebarShowcase: View {
                             description: "Komplett stöd för skärmläsare och tangentbordsnavigation"
                         )
                     }
-                    .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
-                    .background(Color.black.opacity(0.3 as Double))
-                    .cornerRadius(CGFloat(12))
+                    .padding(.padding(.all))
+                    .background(Color.black.opacity(0.3))
+                    .cornerRadius(12)
 
                     Spacer()
                 }
-                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                .padding(.padding(.all))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(NSColor.controlBackgroundColor))

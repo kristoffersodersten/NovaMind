@@ -9,33 +9,36 @@ struct KrilleStyle_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: KrilleStyle.Spacing.large) {
             Text("KrilleCore2030 Design System")
-                .systemFont(Font.krilleTitle1(.bold))
-                .foregroundColor(.krillePrimary)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.primary)
 
             HStack(spacing: KrilleStyle.Spacing.medium) {
                 Button("Primary") {}
-                    .buttonStyle(KrilleStyle.Components.primaryButton())
+                    .buttonStyle(.borderedProminent)
 
                 Button("Secondary") {}
-                    .buttonStyle(KrilleStyle.Components.secondaryButton())
+                    .buttonStyle(.bordered)
 
                 Button("Ghost") {}
-                    .buttonStyle(KrilleStyle.Components.ghostButton())
+                    .buttonStyle(.plain)
             }
 
             VStack(alignment: .leading, spacing: KrilleStyle.Spacing.small) {
                 Text("Card Example")
-                    .systemFont(Font.krilleHeadline())
-                    .foregroundColor(.krillePrimary)
+                    .font(.headline)
+                    .foregroundColor(.primary)
 
                 Text("This design system provides comprehensive styling, spacing, colors, and typography standards.")
-                    .systemFont(Font.krilleBody())
-                    .foregroundColor(.krilleSecondary)
+                    .font(.body)
+                    .foregroundColor(.secondary)
             }
-            .krilleCard()
+            .padding()
+            .background(Color(.controlBackgroundColor))
+            .cornerRadius(8)
         }
         .padding(KrilleStyle.Spacing.large)
-        .background(Color.krilleBackground)
+        .background(Color(.windowBackgroundColor))
     }
 }
 #endif

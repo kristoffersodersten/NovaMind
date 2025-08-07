@@ -29,9 +29,9 @@ struct GradientPreviewView: View {
                 .systemFont(Font.caption)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .background(Color.glow.opacity(0.2 as Double))
+                .background(Color.glow.opacity(0.2))
                 .foregroundColor(.glow)
-                .cornerRadius(CGFloat(4))
+                .cornerRadius(4)
             }
 
             RoundedRectangle(cornerRadius: 8)

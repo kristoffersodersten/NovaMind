@@ -26,7 +26,7 @@ struct NovaMindSystemView: View {
             ZStack {
                 // Background
                 LinearGradient(
-                    colors: [Color.blue.opacity(0.1 as Double), Color.purple.opacity(0.1 as Double)],
+                    colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.1)],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -61,7 +61,7 @@ extension NovaMindSystemView {
             HStack {
                 HStack(spacing: 8) {
                     Image(systemName: "brain.head.profile")
-                        .systemFont(Font.title)
+                        .font(.title)
                         .foregroundStyle(
                             .linearGradient(
                                 colors: [.blue, .purple],
@@ -82,7 +82,7 @@ extension NovaMindSystemView {
                 controlButtons
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal)
     }
@@ -141,14 +141,14 @@ extension NovaMindSystemView {
                 securityCard
                 metricsCard
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
     }
 
     private var systemOverviewCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Quantum System")
-                .systemFont(Font.headline)
+                .font(.headline)
                 .fontWeight(.semibold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -169,14 +169,14 @@ extension NovaMindSystemView {
             .buttonStyle(.borderedProminent)
             .disabled(quantumSystem.evolutionLocked)
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
     private var securityCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Security Status")
-                .systemFont(Font.headline)
+                .font(.headline)
                 .fontWeight(.semibold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -191,14 +191,14 @@ extension NovaMindSystemView {
                 MetricRow(label: "Active Sessions", value: "1")
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
     private var metricsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("System Metrics")
-                .systemFont(Font.headline)
+                .font(.headline)
                 .fontWeight(.semibold)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -217,7 +217,7 @@ extension NovaMindSystemView {
                 )
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
@@ -226,7 +226,7 @@ extension NovaMindSystemView {
             HStack(spacing: 4) {
                 Circle()
                     .fill(systemModeColor)
-                    .frame(width: CGFloat(8), height: CGFloat(8))
+                    .frame(width: 8, height: 8)
 
                 Text(systemMode.displayName)
                     .systemFont(Font.caption)

@@ -21,8 +21,8 @@ struct GeneralThreadsView: View {
                         .foregroundColor(.secondary)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
-                        .background(Color.secondary.opacity(0.2 as Double))
-                        .cornerRadius(CGFloat(8))
+                        .background(Color.secondary.opacity(0.2))
+                        .cornerRadius(8)
                 }
                 .padding(.horizontal, 12)
                 .padding(.top, 8)

@@ -11,16 +11,16 @@ struct KrilleUIComponents: View {
         ScrollView {
             VStack(spacing: 32) {
                 Text("KrilleCore 2030 Design Demo")
-                    .systemFont(Font.title.bold())
+                    .font(Font.title.bold())
                     .padding(.top, 20)
 
                 HStack(spacing: 16) {
                     Text("krilleCard()")
-                        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                        .padding()
                         .krilleCard()
 
                     Text("krilleHover")
-                        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                        .padding()
                         .krilleCard()
                         .krilleHover()
                         .onHover { isHovering = $0 }
@@ -46,15 +46,15 @@ struct KrilleUIComponents: View {
                 GlowDivider(glowing: isHovering)
 
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.secondary.opacity(0.1 as Double))
+                    .fill(Color.secondary.opacity(0.1))
                     .frame(height: 60)
                     .overlay(
                         Text("AI Save Glow")
-                            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                            .padding()
                             .aiSaveGlow(active: $aiGlowActive, color: .blue)
                     )
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding()
         }
         .frame(minWidth: 600, maxWidth: .infinity, minHeight: 500)
     }

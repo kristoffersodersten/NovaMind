@@ -52,12 +52,12 @@ struct TagChip: View {
 
     var body: some View {
         Text(tag)
-            .systemFont(Font.caption)
+            .font(Font.caption)
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
-            .background(color.opacity(0.2 as Double))
+            .background(color.opacity(0.2))
             .foregroundColor(color)
-            .cornerRadius(CGFloat(8))
+            .cornerRadius(8)
     }
 }
 
@@ -71,12 +71,12 @@ struct KrilleBadge: View {
             Image(systemName: icon)
             Text(label)
         }
-        .systemFont(Font.caption)
+        .font(Font.caption)
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
-        .background(color.opacity(0.2 as Double))
+        .background(color.opacity(0.2))
         .foregroundColor(color)
-        .cornerRadius(CGFloat(8))
+        .cornerRadius(8)
     }
 }
 
@@ -90,12 +90,12 @@ struct NovaMindStatusBubble: View {
             Image(systemName: icon)
             Text(title)
         }
-        .systemFont(Font.caption)
+        .font(Font.caption)
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
-        .background(isActive ? Color.green.opacity(0.2 as Double) : Color.red.opacity(0.2 as Double))
+        .background(isActive ? Color.green.opacity(0.2) : Color.red.opacity(0.2))
         .foregroundColor(isActive ? .green : .red)
-        .cornerRadius(CGFloat(8))
+        .cornerRadius(8)
     }
 }
 
@@ -104,9 +104,9 @@ struct GlowDivider: View {
 
     var body: some View {
         Rectangle()
-            .fill(Color.secondary.opacity(0.3 as Double))
+            .fill(Color.secondary.opacity(0.3))
             .frame(height: 1)
-            .shadow(color: glowing ? .blue.opacity(0.5 as Double) : .clear, radius: glowing ? 4 : 0)
+            .shadow(color: glowing ? .blue.opacity(0.5) : .clear, radius: glowing ? 4 : 0)
     }
 }
 
@@ -116,12 +116,12 @@ struct OnboardingMainContentView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Welcome to NovaMind")
-                .systemFont(Font.largeTitle.weight(.bold))
+                .font(Font.largeTitle.weight(.bold))
             Text("Your AI-powered development assistant")
-                .systemFont(Font.title2)
+                .font(Font.title2)
                 .foregroundColor(.secondary)
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding()
     }
 }
 
@@ -161,7 +161,7 @@ struct IconButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: systemName)
-                .systemFont(Font.title2)
+                .font(Font.title2)
                 .foregroundColor(active ? .accentColor : .secondary)
                 .scaleEffect(pulse ? 1.1 : 1.0)
                 .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: pulse)
@@ -221,9 +221,9 @@ struct MessageRowAttachmentView: View {
 
     var body: some View {
         Text("Attachment")
-            .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
-            .background(Color.secondary.opacity(0.2 as Double))
-            .cornerRadius(CGFloat(4))
+            .padding(4)
+            .background(Color.secondary.opacity(0.2))
+            .cornerRadius(4)
     }
 }
 

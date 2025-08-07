@@ -257,7 +257,7 @@ public struct TypingIndicatorView: View {
         ForEach(0..<3) { index in
           Circle()
             .fill(Color.secondary)
-            .frame(width: CGFloat(4), height: CGFloat(4))
+            .frame(width: 4, height: 4)
             .scaleEffect(animatingDots ? 1.2 : 0.8)
             .animation(
               .easeInOut(duration: 0.6).repeatForever().delay(Double(index) * 0.2),
@@ -268,7 +268,7 @@ public struct TypingIndicatorView: View {
       Text(text).systemFont(Font.caption).foregroundColor(.secondary)
     }
     .padding(.horizontal, 12).padding(.vertical, 6)
-    .background(Color.secondary.opacity(0.1 as Double)).cornerRadius(CGFloat(12))
+    .background(Color.secondary.opacity(0.1)).cornerRadius(12)
     .onAppear { animatingDots = true }
     .onDisappear { animatingDots = false }
   }

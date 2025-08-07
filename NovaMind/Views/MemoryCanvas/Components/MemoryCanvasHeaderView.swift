@@ -37,8 +37,8 @@ struct MemoryCanvasHeaderView: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            .background(Color.separator.opacity(0.3 as Double))
-            .cornerRadius(CGFloat(8))
+            .background(Color.separator.opacity(0.3))
+            .cornerRadius(8)
         }
         .padding(.horizontal, 16)
         .padding(.top, 16)

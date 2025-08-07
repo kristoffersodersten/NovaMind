@@ -12,11 +12,11 @@ struct ChatBubble: View {
                 Text(message.content)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(message.role == .user ? Color.blue : Color.gray.opacity(0.2 as Double))
+                    .background(message.role == .user ? Color.blue : Color.gray.opacity(0.2))
                     .foregroundColor(message.role == .user ? .white : .primary)
-                    .cornerRadius(CGFloat(16))
+                    .cornerRadius(16)
                 Text(message.timestamp, style: .time)
-                    .systemFont(Font.caption2)
+                    .font(.caption2)
                     .foregroundColor(.secondary)
             }
             if message.role == .assistant {

@@ -47,7 +47,7 @@ struct SettingsView: View {
             
             VStack(alignment: .leading, spacing: 16) {
                 Text("Theme")
-                    .systemFont(Font.headline)
+                    .font(.headline)
                 
                 HStack(spacing: 16) {
                     ForEach([ThemeManager.AppTheme.system, .light, .dark], id: \.self) { theme in
@@ -57,7 +57,7 @@ struct SettingsView: View {
                             VStack(spacing: 8) {
                                 RoundedRectangle(cornerRadius: 8)
                                     .fill(themePreviewColor(for: theme))
-                                    .frame(width: CGFloat(60), height: CGFloat(40))
+                                    .frame(width: 60, height: 40)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
                                             .stroke(
@@ -75,19 +75,19 @@ struct SettingsView: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
-            .background(Color.gray.opacity(0.1 as Double))
-            .cornerRadius(CGFloat(12))
+            .padding(.padding(.all))
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(12)
             
             Spacer()
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
     }
     
     private func themePreviewColor(for theme: ThemeManager.AppTheme) -> Color {
         switch theme {
         case .system:
-            return Color.gray.opacity(0.3 as Double)
+            return Color.gray.opacity(0.3)
         case .light:
             return Color.white
         case .dark:

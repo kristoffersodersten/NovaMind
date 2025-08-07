@@ -27,9 +27,9 @@ struct MetricCard: View {
                 .foregroundColor(color)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
-        .background(color.opacity(0.1 as Double))
-        .cornerRadius(CGFloat(8))
+        .padding(.padding(.all))
+        .background(color.opacity(0.1))
+        .cornerRadius(8)
     }
 
     private var formattedValue: String {
@@ -94,8 +94,8 @@ struct LastMutationView: View {
             }
         }
         .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-        .background(Color.blue.opacity(0.1 as Double))
-        .cornerRadius(CGFloat(8))
+        .background(Color.blue.opacity(0.1))
+        .cornerRadius(8)
     }
 }
 
@@ -108,9 +108,9 @@ struct RiskBadge: View {
             .fontWeight(.medium)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
-            .background(level.color.opacity(0.2 as Double))
+            .background(level.color.opacity(0.2))
             .foregroundColor(level.color)
-            .cornerRadius(CGFloat(4))
+            .cornerRadius(4)
     }
 }
 
@@ -129,13 +129,13 @@ struct QuantumEntanglementVisualization: View {
             ) {
                 ForEach(0..<status.activeEntanglements, id: \.self) { _ in
                     Circle()
-                        .fill(Color.blue.opacity(0.6 as Double))
-                        .frame(width: CGFloat(20), height: CGFloat(20))
+                        .fill(Color.blue.opacity(0.6))
+                        .frame(width: 20, height: 20)
                         .overlay(
                             Circle()
                                 .stroke(Color.blue, lineWidth: 2)
                                 .scaleEffect(1.5)
-                                .opacity(0.5 as Double)
+                                .opacity(0.5)
                                 .animation(
                                     .easeInOut(duration: 1.0)
                                     .repeatForever(autoreverses: true),
@@ -168,14 +168,14 @@ struct MoralMetricBar: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .fill(color.opacity(0.2 as Double))
+                        .fill(color.opacity(0.2))
                         .frame(height: 6)
-                        .cornerRadius(CGFloat(3))
+                        .cornerRadius(3)
 
                     Rectangle()
                         .fill(color)
                         .frame(width: geometry.size.width * value, height: 6)
-                        .cornerRadius(CGFloat(3))
+                        .cornerRadius(3)
                         .animation(.easeInOut(duration: 0.5), value: value)
                 }
             }
@@ -201,7 +201,7 @@ struct ChaosResilienceChart: View {
                     Rectangle()
                         .fill(isFailure ? Color.red : Color.green)
                         .frame(width: 8, height: CGFloat(height * 40))
-                        .cornerRadius(CGFloat(2))
+                        .cornerRadius(2)
                 }
             }
             .frame(height: 50)
@@ -216,7 +216,7 @@ struct EvolutionHistoryCard: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(result.mutation.type.displayName)
-                    .systemFont(Font.headline)
+                    .font(.headline)
                     .fontWeight(.medium)
 
                 Spacer()
@@ -226,9 +226,9 @@ struct EvolutionHistoryCard: View {
                     .fontWeight(.medium)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
-                    .background(Color.green.opacity(0.2 as Double))
+                    .background(Color.green.opacity(0.2))
                     .foregroundColor(.green)
-                    .cornerRadius(CGFloat(4))
+                    .cornerRadius(4)
             }
 
             Text("Target: \(result.mutation.targetComponent.displayName)")
@@ -244,9 +244,9 @@ struct EvolutionHistoryCard: View {
                 .foregroundColor(.secondary)
                 .fontFamily(.monospaced)
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
-        .background(Color.green.opacity(0.1 as Double))
-        .cornerRadius(CGFloat(8))
+        .padding(.padding(.all))
+        .background(Color.green.opacity(0.1))
+        .cornerRadius(8)
     }
 }
 
@@ -258,8 +258,8 @@ struct QuantumBackground: View {
             ZStack {
                 LinearGradient(
                     colors: [
-                        Color.backgroundPrimary.opacity(0.8 as Double),
-                        Color.backgroundPrimary.opacity(0.4 as Double)
+                        Color.backgroundPrimary.opacity(0.8),
+                        Color.backgroundPrimary.opacity(0.4)
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
@@ -270,8 +270,8 @@ struct QuantumBackground: View {
                     id: \.self
                 ) { _ in
                     Circle()
-                        .fill(Color.blue.opacity(0.1 as Double))
-                        .frame(width: CGFloat(4), height: CGFloat(4))
+                        .fill(Color.blue.opacity(0.1))
+                        .frame(width: 4, height: 4)
                         .position(
                             x: Double.random(in: 0...geometry.size.width),
                             y: Double.random(in: 0...geometry.size.height)

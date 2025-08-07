@@ -24,8 +24,8 @@ struct ThreadRow: View {
                                 .foregroundColor(.foregroundSecondary)
                                 .padding(.horizontal, 4)
                                 .padding(.vertical, 2)
-                                .background(Color.novaBlack.opacity(0.5 as Double))
-                                .cornerRadius(CGFloat(4))
+                                .background(Color.novaBlack.opacity(0.5))
+                                .cornerRadius(4)
                         }
 
                         if thread.isImportant {
@@ -41,8 +41,8 @@ struct ThreadRow: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
-        .background(Color.black.opacity(0.3 as Double))
-        .cornerRadius(CGFloat(6))
+        .background(Color.black.opacity(0.3))
+        .cornerRadius(6)
         .padding(.horizontal, 8)
     }
 }

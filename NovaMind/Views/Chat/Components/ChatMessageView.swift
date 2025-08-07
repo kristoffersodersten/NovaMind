@@ -39,12 +39,12 @@ struct ChatMessageView: View {
             .padding(.vertical, 12)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(message.isUser ? Color.glow.opacity(0.2 as Double) : Color.novaGray.opacity(0.3 as Double))
+                    .fill(message.isUser ? Color.glow.opacity(0.2) : Color.novaGray.opacity(0.3))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .stroke(
-                        message.isUser ? Color.glow.opacity(0.3 as Double) : Color.separator,
+                        message.isUser ? Color.glow.opacity(0.3) : Color.separator,
                         lineWidth: 1
                     )
             )

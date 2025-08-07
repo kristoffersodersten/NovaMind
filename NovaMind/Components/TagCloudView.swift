@@ -23,7 +23,7 @@ struct TagCloudView: View {
             // Control section
             VStack(spacing: 16) {
                 Toggle("Redigerbar tagg-moln", isOn: $showEditableCloud)
-                    .systemFont(Font.headline)
+                    .font(.headline)
 
                 if showEditableCloud {
                     Button("Lägg till slumpmässig tagg") {
@@ -48,14 +48,14 @@ struct TagCloudView: View {
                     .buttonStyle(.bordered)
                 }
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
             .krilleCard()
 
             // Editable TagCloud with AI-generated indicators
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("AI-Enhanced TagCloud")
-                        .systemFont(Font.headline)
+                        .font(.headline)
                         .foregroundColor(.foregroundPrimary)
 
                     if !aiGeneratedTags.isEmpty {
@@ -84,13 +84,13 @@ struct TagCloudView: View {
                     }
                 )
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
             .krilleCard()
 
             // Non-editable TagCloud
             VStack(alignment: .leading, spacing: 12) {
                 Text("Icke-redigerbar TagCloud")
-                    .systemFont(Font.headline)
+                    .font(.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Endast läsning med hover-effekter")
@@ -105,13 +105,13 @@ struct TagCloudView: View {
                     }
                 )
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
             .krilleCard()
 
             // Legacy TagInfo support demo
             VStack(alignment: .leading, spacing: 12) {
                 Text("Legacy TagInfo Support")
-                    .systemFont(Font.headline)
+                    .font(.headline)
                     .foregroundColor(.foregroundPrimary)
 
                 Text("Bakåtkompatibilitet med befintlig TagInfo struktur")
@@ -131,17 +131,17 @@ struct TagCloudView: View {
                     }
                 )
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
             .krilleCard()
 
             Spacer()
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
     }
 }
 
 #Preview {
     TagCloudView()
-        .frame(width: CGFloat(600), height: CGFloat(800))
+        .frame(width: 600, height: 800)
 }

@@ -25,7 +25,7 @@ struct OfflineQueueView: View {
                         .systemFont(Font.footnote)
                         .foregroundColor(.secondary)
                 }
-                .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                .padding(.padding(.all))
             }
         }
         .onAppear(perform: updateQueueCount)

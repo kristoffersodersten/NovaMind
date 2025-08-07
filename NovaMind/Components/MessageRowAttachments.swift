@@ -40,8 +40,8 @@ struct MessageRowAttachments: View {
         }
         .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
         .background(Color(NSColor.windowBackgroundColor))
-        .cornerRadius(CGFloat(8))
-        .shadow(color: isHovered ? Color.accentColor.opacity(0.3 as Double) : .clear, radius: isHovered ? 6 : 0)
+        .cornerRadius(8)
+        .shadow(color: isHovered ? Color.accentColor.opacity(0.3) : .clear, radius: isHovered ? 6 : 0)
         .scaleEffect(isHovered ? 1.02 : 1.0)
         .animation(.easeInOut(duration: 0.2), value: isHovered)
         .onHover { hovering in

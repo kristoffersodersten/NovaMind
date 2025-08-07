@@ -18,7 +18,7 @@ struct RightMemoryCanvasView: View {
             // Header med add-knapp
             HStack {
                 Text("Minneskarta")
-                    .systemFont(Font.system(.title2))
+                    .font(Font.system(.title2))
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
                 
@@ -26,11 +26,11 @@ struct RightMemoryCanvasView: View {
                 
                 Button(action: {
                     showingAddMemorySheet = true
-                }) {
+                }, label: {
                     Image(systemName: "plus.circle.fill")
-                        .systemFont(Font.system(.title2))
+                        .font(Font.system(.title2))
                         .foregroundColor(.accentColor)
-                }
+                })
                 .buttonStyle(PlainButtonStyle())
             }
             .padding(.horizontal, 20)
@@ -42,14 +42,14 @@ struct RightMemoryCanvasView: View {
                 ScrollView([.horizontal, .vertical]) {
                     LazyVStack(spacing: 12) {
                         ForEach(sampleMemoryItems) { memory in
-                            MemoryItemView(memory: memory)
+                            MemoryItemView(item: memory)
                                 .onTapGesture {
                                     selectedMemory = memory
                                     showingMemoryDetailSheet = true
                                 }
                         }
                     }
-                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+                    .padding(20)
                     .frame(minWidth: geometry.size.width, minHeight: geometry.size.height)
                 }
             }
@@ -74,26 +74,24 @@ let sampleMemoryItems: [MemoryItem] = [
         id: UUID(),
         title: "SwiftUI Navigation",
         content: "Best practices for SwiftUI navigation patterns",
-        type: .concept,
-        isImportant: true,
+        type: .conceptual, // Replace with a valid case of MemoryType, e.g., .conceptual
+        isImportant: 1,    // Assuming isImportant expects Int (1 for true, 0 for false)
         tags: ["SwiftUI", "Navigation"],
-        createdAt: Date().addingTimeInterval(-86400),
-        lastModified: Date()
+        createdAt: Date().addingTimeInterval(-86400)
     ),
     MemoryItem(
         id: UUID(),
-        title: "AI Integration Notes", 
+        title: "AI Integration Notes",
         content: "Notes on integrating AI capabilities into the app",
-        type: .note,
-        isImportant: false,
+        type: .noteType,   // Replace with a valid case of MemoryType, e.g., .noteType
+        isImportant: 0,    // Assuming isImportant expects Int (1 for true, 0 for false)
         tags: ["AI", "Integration"],
-        createdAt: Date().addingTimeInterval(-3600),
-        lastModified: Date()
+        createdAt: Date().addingTimeInterval(-3600)
     )
 ]
 
 // MARK: - Preview
 #Preview {
     RightMemoryCanvasView()
-        .frame(width: CGFloat(400), height: CGFloat(600))
+        .frame(width: 400, height: 600)
 }

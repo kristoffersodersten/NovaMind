@@ -59,6 +59,6 @@ struct LeftSidebarView: View {
 // MARK: - Previews
 #Preview {
     LeftSidebarView()
-        .frame(width: CGFloat(300), height: CGFloat(600))
+        .frame(width: 300, height: 600)
         .preferredColorScheme(.dark)
 }

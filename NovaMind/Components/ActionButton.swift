@@ -22,10 +22,10 @@ struct ActionButton: View {
                 }
                 Text(title)
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding()
             .background(Color.accentColor)
             .foregroundColor(.white)
-            .cornerRadius(CGFloat(8))
+            .cornerRadius(8)
         }
         .onLongPressGesture(perform: onLongPress ?? {})
     }

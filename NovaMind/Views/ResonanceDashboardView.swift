@@ -52,7 +52,7 @@ extension ResonanceDashboardView {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Resonance System Overview")
-                    .systemFont(Font.title)
+                    .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.foregroundPrimary)
 
@@ -75,7 +75,7 @@ extension ResonanceDashboardView {
         HStack(spacing: 8) {
             Circle()
                 .fill(systemHealthColor)
-                .frame(width: CGFloat(12), height: CGFloat(12))
+                .frame(width: 12, height: 12)
 
             Text(systemHealthText)
                 .systemFont(Font.caption)
@@ -84,8 +84,8 @@ extension ResonanceDashboardView {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
-        .background(Color.backgroundPrimary.opacity(0.8 as Double))
-        .cornerRadius(CGFloat(12))
+        .background(Color.backgroundPrimary.opacity(0.8))
+        .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.separator, lineWidth: 1)
@@ -137,7 +137,7 @@ extension ResonanceDashboardView {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
                     .background(
-                        selectedTab == index ? Color.highlightAction.opacity(0.1 as Double) : Color.clear
+                        selectedTab == index ? Color.highlightAction.opacity(0.1) : Color.clear
                     )
                     }
                 )
@@ -176,7 +176,7 @@ extension ResonanceDashboardView {
                 Text("Dashboard content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
     }
 
@@ -190,7 +190,7 @@ extension ResonanceDashboardView {
                 Text("Agent management content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
     }
 
@@ -204,7 +204,7 @@ extension ResonanceDashboardView {
                 Text("Radar content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
     }
 
@@ -218,7 +218,7 @@ extension ResonanceDashboardView {
                 Text("Pipeline status content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
     }
 
@@ -232,7 +232,7 @@ extension ResonanceDashboardView {
                 Text("Memory architecture content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
     }
 
@@ -246,7 +246,7 @@ extension ResonanceDashboardView {
                 Text("Ethics compliance content will be implemented here")
                     .foregroundColor(.foregroundSecondary)
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
     }
 }
@@ -286,9 +286,9 @@ struct DetailedLogsView: View {
         NavigationView {
             VStack {
                 Text("Detailed Logs")
-                    .systemFont(Font.title)
+                    .font(.title)
                     .fontWeight(.bold)
-                    .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                    .padding(.padding(.all))
 
                 Text("Log details will be shown here")
                     .foregroundColor(.secondary)

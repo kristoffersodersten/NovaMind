@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - Custom Button Styles
-struct DestructiveButtonStyle: ButtonStyle {
+// MARK: - Basic Button Styles (Non-Krille)
+struct BasicDestructiveButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.white)
@@ -14,7 +14,7 @@ struct DestructiveButtonStyle: ButtonStyle {
     }
 }
 
-struct PrimaryButtonStyle: ButtonStyle {
+struct BasicPrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.white)
@@ -27,7 +27,7 @@ struct PrimaryButtonStyle: ButtonStyle {
     }
 }
 
-struct SecondaryButtonStyle: ButtonStyle {
+struct BasicSecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.blue)
@@ -44,21 +44,21 @@ struct SecondaryButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - Button Style Extensions
-extension ButtonStyle where Self == DestructiveButtonStyle {
-    static var destructive: DestructiveButtonStyle {
-        DestructiveButtonStyle()
+// MARK: - Button Style Extensions  
+extension ButtonStyle where Self == BasicDestructiveButtonStyle {
+    static var basicDestructive: BasicDestructiveButtonStyle {
+        BasicDestructiveButtonStyle()
     }
 }
 
-extension ButtonStyle where Self == PrimaryButtonStyle {
-    static var primary: PrimaryButtonStyle {
-        PrimaryButtonStyle()
+extension ButtonStyle where Self == BasicPrimaryButtonStyle {
+    static var basicPrimary: BasicPrimaryButtonStyle {
+        BasicPrimaryButtonStyle()
     }
 }
 
-extension ButtonStyle where Self == SecondaryButtonStyle {
-    static var secondary: SecondaryButtonStyle {
-        SecondaryButtonStyle()
+extension ButtonStyle where Self == BasicSecondaryButtonStyle {
+    static var basicSecondary: BasicSecondaryButtonStyle {
+        BasicSecondaryButtonStyle()
     }
 }

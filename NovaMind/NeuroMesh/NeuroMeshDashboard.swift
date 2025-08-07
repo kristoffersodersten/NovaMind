@@ -88,7 +88,7 @@ struct NeuroMeshDashboard: View {
                     .foregroundColor(.nova_primary)
 
                 Text("Neuromesh Memory System")
-                    .systemFont(Font.headline)
+                    .font(.headline)
                     .fontWeight(.semibold)
 
                 Spacer()
@@ -154,7 +154,7 @@ struct NeuroMeshDashboard: View {
                 // Learning Pattern Analysis
                 LearningPatternAnalysis()
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
         .background(Color.backgroundPrimary)
     }
@@ -176,7 +176,7 @@ struct NeuroMeshDashboard: View {
                 // Mutual Consent Network
                 MutualConsentNetwork()
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
         .background(Color.backgroundPrimary)
     }
@@ -201,7 +201,7 @@ struct NeuroMeshDashboard: View {
                 // Federation Status
                 FederationStatusView()
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
         .background(Color.backgroundPrimary)
     }
@@ -223,7 +223,7 @@ struct NeuroMeshDashboard: View {
                 // Collective Emotional Context
                 CollectiveEmotionalContextView()
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
         .background(Color.backgroundPrimary)
     }
@@ -248,7 +248,7 @@ struct NeuroMeshDashboard: View {
                 // Signal Strength Analysis
                 SignalStrengthAnalysis()
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
         }
         .background(Color.backgroundPrimary)
     }
@@ -331,7 +331,7 @@ struct CollectiveMemoryCard: View {
                             .systemFont(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.goldenStandards)")
-                            .systemFont(Font.headline)
+                            .font(.headline)
                             .foregroundColor(.highlightAction)
                     }
 
@@ -342,7 +342,7 @@ struct CollectiveMemoryCard: View {
                             .systemFont(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.improvementTweaks)")
-                            .systemFont(Font.headline)
+                            .font(.headline)
                             .foregroundColor(.nova_primary)
                     }
                 }
@@ -353,7 +353,7 @@ struct CollectiveMemoryCard: View {
                             .systemFont(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.errorPatterns)")
-                            .systemFont(Font.headline)
+                            .font(.headline)
                             .foregroundColor(.red)
                     }
 
@@ -364,7 +364,7 @@ struct CollectiveMemoryCard: View {
                             .systemFont(Font.caption)
                             .foregroundColor(.foregroundSecondary)
                         Text("\(collectiveStats.federationNodes)")
-                            .systemFont(Font.headline)
+                            .font(.headline)
                             .foregroundColor(.green)
                     }
                 }
@@ -549,7 +549,7 @@ struct CardView<Content: View>: View {
                     .foregroundColor(.nova_primary)
 
                 Text(title)
-                    .systemFont(Font.headline)
+                    .font(.headline)
                     .fontWeight(.semibold)
 
                 Spacer()
@@ -557,10 +557,10 @@ struct CardView<Content: View>: View {
 
             content
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
-        .shadow(color: .black.opacity(0.1 as Double), radius: 4, x: 0, y: 2)
+        .cornerRadius(12)
+        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
 
@@ -619,7 +619,7 @@ struct HealthIndicator: View {
         VStack(spacing: 4) {
             Circle()
                 .fill(status.color)
-                .frame(width: CGFloat(8), height: CGFloat(8))
+                .frame(width: 8, height: 8)
 
             Text(title)
                 .systemFont(Font.caption2)

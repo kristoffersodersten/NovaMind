@@ -109,3 +109,31 @@ let md = SizeConstants.md
 let lg = SizeConstants.lg
 let xl = SizeConstants.xl
 let xxl = SizeConstants.xxl
+
+// MARK: - Radar and Resonance Types
+struct RadarEcho {
+    let id: UUID = UUID()
+    let signal: String
+    let timestamp: Date = Date()
+    let resonanceLevel: Double
+    let patterns: [String]
+}
+
+struct PingCycleInsights {
+    let totalEchoes: Int
+    let averageResonance: Double  
+    let detectedPatterns: [String]
+}
+
+struct ResonanceMap {
+    let id: UUID = UUID()
+    var status: ResonanceStatus = .pending
+    let patterns: [String]
+    let resonanceLevel: Double
+}
+
+enum ResonanceStatus {
+    case pending
+    case approved
+    case flaggedForReview
+}

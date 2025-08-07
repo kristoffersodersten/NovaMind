@@ -16,14 +16,14 @@ struct MetricCard: View {
                 .foregroundColor(.secondary)
             
             Text(formattedValue)
-                .systemFont(Font.headline)
+                .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(color)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
         .background(Color.backgroundSecondary)
-        .cornerRadius(CGFloat(8))
+        .cornerRadius(8)
     }
     
     private var formattedValue: String {
@@ -79,9 +79,9 @@ struct EntanglementStatusCard: View {
             // Visual representation
             EntanglementVisualization(status: status)
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
     }
     
     private var coherenceColor: Color {
@@ -102,14 +102,14 @@ struct EntanglementVisualization: View {
                 Rectangle()
                     .fill(barColor(for: index))
                     .frame(height: 20)
-                    .cornerRadius(CGFloat(2))
+                    .cornerRadius(2)
             }
         }
     }
     
     private func barColor(for index: Int) -> Color {
         let threshold = Double(index) / 5.0
-        return status.entanglementStrength > threshold ? .blue : .gray.opacity(0.3 as Double)
+        return status.entanglementStrength > threshold ? .blue : .gray.opacity(0.3)
     }
 }
 
@@ -159,9 +159,9 @@ struct MoralGraphStatusCard: View {
                 }
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
     }
     
     private var integrityColor: Color {
@@ -207,9 +207,9 @@ struct ChaosResilienceCard: View {
             
             ChaosResilienceChart(result: result)
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
     }
     
     private var testColor: Color {
@@ -234,7 +234,7 @@ struct ChaosResilienceChart: View {
                         .frame(height: 30)
                 }
             }
-            .cornerRadius(CGFloat(4))
+            .cornerRadius(4)
         }
     }
 }
@@ -246,7 +246,7 @@ struct EvolutionHistoryCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Latest Evolution")
-                    .systemFont(Font.headline)
+                    .font(.headline)
                 Spacer()
                 Text(result.timestamp, style: .relative)
                     .systemFont(Font.caption)
@@ -281,9 +281,9 @@ struct EvolutionHistoryCard: View {
                     .fontWeight(.semibold)
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundSecondary)
-        .cornerRadius(CGFloat(8))
+        .cornerRadius(8)
     }
 }
 
@@ -315,9 +315,9 @@ struct LastMutationView: View {
                 .systemFont(Font.caption)
                 .foregroundColor(.green)
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundSecondary)
-        .cornerRadius(CGFloat(8))
+        .cornerRadius(8)
     }
 }
 

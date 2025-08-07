@@ -22,14 +22,14 @@ struct CanvasMinimapView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Minimap")
-                    .systemFont(Font.system(.caption))
+                    .font(.caption)
                     .fontWeight(.medium)
                     .foregroundColor(.foregroundPrimary)
 
                 Spacer()
 
                 Text("\(memoryBlocks.count) blocks")
-                    .systemFont(Font.custom("SF Pro", size: 10, relativeTo: .caption2))
+                    .font(Font.custom("SF Pro", size: 10, relativeTo: .caption2))
                     .foregroundColor(.foregroundSecondary)
             }
 
@@ -47,16 +47,16 @@ struct CanvasMinimapView: View {
             }
             .frame(height: blockSize * 3 + spacing * 2 + 8)
         }
-        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
-        .background(Color.novaGray.opacity(0.3 as Double))
-        .cornerRadius(CGFloat(8))
+        .padding(12)
+        .background(Color.novaGray.opacity(0.3))
+        .cornerRadius(8)
     }
 
     private func minimapBlock(for block: MemoryBlock) -> some View {
         Rectangle()
             .fill(blockColor(for: block))
             .frame(width: blockSize, height: blockSize)
-            .cornerRadius(CGFloat(2))
+            .cornerRadius(2)
             .overlay(
                 RoundedRectangle(cornerRadius: 2)
                     .stroke(
@@ -78,13 +78,13 @@ struct CanvasMinimapView: View {
     private func blockColor(for block: MemoryBlock) -> Color {
         switch block.type {
         case .shortTerm:
-            return .blue.opacity(0.7 as Double)
+            return .blue.opacity(0.7)
         case .midTerm:
-            return .orange.opacity(0.7 as Double)
+            return .orange.opacity(0.7)
         case .longTerm:
-            return .purple.opacity(0.7 as Double)
+            return .purple.opacity(0.7)
         case .vector:
-            return .glow.opacity(0.7 as Double)
+            return .glow.opacity(0.7)
         }
     }
 }
@@ -108,8 +108,24 @@ struct MemoryBlock: Identifiable, Hashable {
 #Preview {
     CanvasMinimapView(
         memoryBlocks: [
-            MemoryBlock(title: "Test 1", content: "Content", type: .shortTerm, isImportant: false, tags: [], createdAt: Date(), lastModified: Date()),
-            MemoryBlock(title: "Test 2", content: "Content", type: .midTerm, isImportant: true, tags: [], createdAt: Date(), lastModified: Date())
+            MemoryBlock(
+                title: "Test 1",
+                content: "Content",
+                type: .shortTerm,
+                isImportant: false,
+                tags: [],
+                createdAt: Date(),
+                lastModified: Date()
+            ),
+            MemoryBlock(
+                title: "Test 2",
+                content: "Content",
+                type: .midTerm,
+                isImportant: true,
+                tags: [],
+                createdAt: Date(),
+                lastModified: Date()
+            )
         ],
         selectedBlock: .constant(nil),
         onBlockSelected: { _ in }

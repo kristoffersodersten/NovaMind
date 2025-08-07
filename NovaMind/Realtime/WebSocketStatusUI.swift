@@ -30,7 +30,7 @@ public struct WebSocketStatusIndicator: View {
             Circle()
                 .fill(connectionColor)
                 .accessibilityLabel(connectionLabel)
-                .frame(width: CGFloat(8), height: CGFloat(8))
+                .frame(width: 8, height: 8)
                 .scaleEffect(webSocketManager.connectionState == .connected ? 1.2 : 1.0)
                 .animation(
                     .easeInOut(duration: 0.5)
@@ -45,7 +45,7 @@ public struct WebSocketStatusIndicator: View {
         .padding(.horizontal, 6)
         .padding(.vertical, 3)
         .background(.ultraThinMaterial)
-        .cornerRadius(CGFloat(6))
+        .cornerRadius(6)
         .accessibilityElement(children: .combine)
         .accessibilityHint("WebSocket-status och meddelanderäkning")
     }

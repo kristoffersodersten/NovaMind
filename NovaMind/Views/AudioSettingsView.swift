@@ -13,6 +13,6 @@ struct AudioSettingsView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
     }
 }

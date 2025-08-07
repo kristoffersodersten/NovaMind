@@ -16,11 +16,11 @@ struct MessageInputArea: View {
             TextEditor(text: $inputText)
                 .frame(minHeight: 30, maxHeight: 200)
                 .padding(.horizontal, 4)
-                .background(Color.white.opacity(0.1 as Double))
-                .cornerRadius(CGFloat(8))
+                .background(Color.white.opacity(0.1))
+                .cornerRadius(8)
             Button(action: sendMessage) {
                 Image(systemName: "arrow.up.circle.fill")
-                    .systemFont(Font.title)
+                    .font(.title)
             }
             .buttonStyle(PlainButtonStyle())
             .disabled(inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
@@ -28,7 +28,7 @@ struct MessageInputArea: View {
         .padding(.horizontal)
         .padding(.vertical, 8)
         .background(Color(NSColor.controlBackgroundColor))
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
         .shadow(radius: 2)
     }
     private func sendMessage() {

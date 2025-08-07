@@ -17,7 +17,7 @@ struct EvolutionDetailsView: View {
                         performanceMetricsSection(result)
                         renderDNASection(result)
                     }
-                    .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+                    .padding(.padding(.all))
                 }
                 .navigationTitle("Evolution Details")
                 .navigationBarTitleDisplayMode(.inline)
@@ -49,9 +49,9 @@ struct EvolutionDetailsView: View {
                 InfoRow(label: "Semantic Hash", value: result.semanticHash.value.prefix(16) + "...")
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
     }
 
     private func geneticChangesSection(_ result: EvolutionResult) -> some View {
@@ -67,9 +67,9 @@ struct EvolutionDetailsView: View {
                 GeneticChangeRow(change: change, index: index + 1)
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
     }
 
     private func performanceMetricsSection(_ result: EvolutionResult) -> some View {
@@ -100,9 +100,9 @@ struct EvolutionDetailsView: View {
                 )
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
     }
 
     private func renderDNASection(_ result: EvolutionResult) -> some View {
@@ -134,9 +134,9 @@ struct EvolutionDetailsView: View {
                 )
             }
         }
-        .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+        .padding(.padding(.all))
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
+        .cornerRadius(12)
     }
 }
 

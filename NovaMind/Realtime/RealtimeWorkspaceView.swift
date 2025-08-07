@@ -45,13 +45,13 @@ struct RealtimeWorkspaceView: View {
           Image(systemName: "sparkles")
             .foregroundStyle(.yellow)
         }
-        .opacity(0.7 as Double)
+        .opacity(0.7)
       }
       .padding(.horizontal)
       .padding(.top, 12)
       .padding(.bottom, 4)
       .background(Material.ultraThinMaterial)
-      .shadow(color: .black.opacity(0.04 as Double), radius: 2, y: 1)
+      .shadow(color: .black.opacity(0.04), radius: 2, y: 1)
 
       Divider()
 
@@ -85,8 +85,8 @@ struct RealtimeWorkspaceView: View {
       .padding(.horizontal)
       .padding(.bottom, 8)
       .background(.ultraThinMaterial)
-      .cornerRadius(CGFloat(16))
-      .shadow(color: .black.opacity(0.03 as Double), radius: 2, y: -1)
+      .cornerRadius(16)
+      .shadow(color: .black.opacity(0.03), radius: 2, y: -1)
     }
     .background(Color(.systemGroupedBackground))
     .ignoresSafeArea(edges: .bottom)
@@ -150,7 +150,7 @@ private struct InputBar: View {
           .systemFont(Font.custom("SF Pro", size: 15))
           .focused($isFocused)
           .background(Color(NSColor.controlBackgroundColor))
-          .cornerRadius(CGFloat(10))
+          .cornerRadius(10)
           .accessibilityLabel("Meddelandefält")
       }
       .frame(maxWidth: .infinity)
@@ -166,8 +166,8 @@ private struct InputBar: View {
     }
     .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
     .background(Color(NSColor.windowBackgroundColor))
-    .cornerRadius(CGFloat(16))
-    .shadow(color: .black.opacity(0.03 as Double), radius: 2, y: -1)
+    .cornerRadius(16)
+    .shadow(color: .black.opacity(0.03), radius: 2, y: -1)
   }
 }
 
@@ -176,10 +176,10 @@ private struct InputBar: View {
 struct RealtimeWorkspaceView_Previews: PreviewProvider {
   static var previews: some View {
     RealtimeWorkspaceView()
-      .frame(width: CGFloat(520), height: CGFloat(600))
+      .frame(width: 520, height: 600)
       .preferredColorScheme(.light)
     WorkspaceView()
-      .frame(width: CGFloat(520), height: CGFloat(600))
+      .frame(width: 520, height: 600)
       .preferredColorScheme(.dark)
   }
 }

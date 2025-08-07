@@ -36,7 +36,7 @@ struct MemoryDetailSheetView: View {
 
                 Spacer()
             }
-            .padding(EdgeInsets(top: , leading: , bottom: , trailing: ))
+            .padding(.padding(.all))
             .navigationTitle("Edit Memory")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

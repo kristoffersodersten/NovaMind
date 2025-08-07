@@ -170,8 +170,8 @@ struct UnifiedTitleBar: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
-            .background(Color.novaGray.opacity(0.3 as Double))
-            .cornerRadius(CGFloat(6))
+            .background(Color.novaGray.opacity(0.3))
+            .cornerRadius(6)
 
             Spacer()
 
@@ -188,20 +188,20 @@ struct UnifiedTitleBar: View {
                 // Window controls placeholder
                 HStack(spacing: 4) {
                     Circle()
-                        .fill(Color.red.opacity(0.7 as Double))
-                        .frame(width: CGFloat(12), height: CGFloat(12))
+                        .fill(Color.red.opacity(0.7))
+                        .frame(width: 12, height: 12)
                     Circle()
-                        .fill(Color.yellow.opacity(0.7 as Double))
-                        .frame(width: CGFloat(12), height: CGFloat(12))
+                        .fill(Color.yellow.opacity(0.7))
+                        .frame(width: 12, height: 12)
                     Circle()
-                        .fill(Color.green.opacity(0.7 as Double))
-                        .frame(width: CGFloat(12), height: CGFloat(12))
+                        .fill(Color.green.opacity(0.7))
+                        .frame(width: 12, height: 12)
                 }
             }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .background(Color.backgroundPrimary.opacity(0.95 as Double))
+        .background(Color.backgroundPrimary.opacity(0.95))
         .overlay(
             Rectangle()
                 .frame(height: 0.5)

@@ -11,7 +11,7 @@ struct FolderView: View {
                 Image(systemName: isExpanded ? "folder.fill" : "folder")
                     .foregroundColor(.blue)
                 Text(project.name)
-                    .systemFont(Font.headline)
+                    .font(.headline)
                     .foregroundColor(.foregroundPrimary)
                 Spacer()
                 Image(systemName: isExpanded ? "chevron.down" : "chevron.right")

@@ -8,7 +8,7 @@ struct AISaveGlowModifier: ViewModifier {
         content
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(active ? color.opacity(0.8 as Double) : Color.clear, lineWidth: 4)
+                    .stroke(active ? color.opacity(0.8) : Color.clear, lineWidth: 4)
                     .blur(radius: active ? 8 : 0)
             )
             .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: active)

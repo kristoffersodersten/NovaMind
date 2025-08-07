@@ -1,4 +1,4 @@
-import AppKit // For Color(.windowBackgroundColor) on macOS
+import AppKit // For Color(.systemBackground) on macOS
 import Foundation
 import SwiftUI
 
@@ -9,35 +9,9 @@ import SwiftUI
 
 // MARK: - Memory Scope Definition
 
-enum MemoryScope {
-  case workingMemory
-  case longTermMemory
-  case contextMemory
-}
-
-// MARK: - Local ChatMessage Model for WorkspaceView
-
-struct WorkspaceChatMessage: Identifiable {
-  let id = UUID()
-  let sender: SenderType
-  let text: String
-  let agent: AgentProfile?
-  let accent: Color?
-  let scope: MemoryScope
-}
-
-enum SenderType {
-  case user
-  case assistant
-}
-
-struct AgentProfile {
-  let id: String
-  let name: String
-  let icon: String  // SF Symbol name
-  let accent: Color
-  let modelType: String
-}
+//
+// Types MemoryScope, WorkspaceChatMessage, SenderType, and AgentProfile are imported from shared modules.
+//
 
 // MARK: - WorkspaceView
 
@@ -103,13 +77,13 @@ struct WorkspaceView: View {
       VStack(spacing: 8) {
         ZStack(alignment: .bottom) {
           TextEditor(text: $inputText)
-            .systemFont(Font.custom("SF Pro", size: 16))
+            .font(.custom("SF Pro", size: 16))
             .frame(height: dynamicHeight())
-            .cornerRadius(CGFloat(8))
-            .shadow(color: .black.opacity(0.05 as Double), radius: 1, y: 1)
+            .cornerRadius(8)
+            .shadow(color: .black.opacity(0.05), radius: 1, y: 1)
             .overlay(
               RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray.opacity(0.12 as Double), lineWidth: 1)
+                .stroke(Color.gray.opacity(0.12), lineWidth: 1)
             )
             .focused($inputFocused)
             .padding(.horizontal, 4)
@@ -121,7 +95,7 @@ struct WorkspaceView: View {
               .resizable()
               .scaledToFit()
               .frame(maxHeight: 100)
-              .cornerRadius(CGFloat(8))
+              .cornerRadius(8)
               .padding(.bottom, 8)
           }
         }
@@ -144,7 +118,7 @@ struct WorkspaceView: View {
           Spacer()
           Button(action: sendMessage) {
             Image(systemName: "arrow.up.circle.fill")
-              .systemFont(Font.title2)
+              .font(.title2)
               .foregroundColor(.accentColor)
               .glowEffect(active: inputText.count > 0)
           }
@@ -153,13 +127,13 @@ struct WorkspaceView: View {
         .padding(.horizontal, 4)
       }
       .padding(.vertical, 12)
-      .background(Color(.windowBackgroundColor))
-      .shadow(color: .black.opacity(0.04 as Double), radius: 2, y: -1)
+      .background(Color(.systemBackground))
+      .shadow(color: .black.opacity(0.04), radius: 2, y: -1)
     }
     .background(
       RoundedRectangle(cornerRadius: 24, style: .continuous)
-        .fill(Color(NSColor.controlBackgroundColor).opacity(0.98 as Double))
-        .shadow(color: .black.opacity(0.08 as Double), radius: 16, x: 0, y: 4)
+        .fill(Color(NSColor.controlBackgroundColor).opacity(0.98))
+        .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 4)
     )
     .padding(.horizontal, 8)
     .zIndex(2)
@@ -214,55 +188,9 @@ struct BubbleContent: View {
       HStack {
         if let agent = message.agent {
           Image(systemName: agent.icon)
-            .foregroundColor(agent.accent)
-            .systemFont(Font.title3)
-            .glowEffect(active: true)
-          Text(agent.name)
-            .systemFont(Font.caption)
-            .foregroundColor(agent.accent)
-            .bold()
-        } else {
-          Image(systemName: "person.crop.circle")
-            .foregroundColor(.gray)
-            .systemFont(Font.title3)
-          Text("User")
-            .systemFont(Font.caption)
-            .foregroundColor(.gray)
-            .bold()
-        }
-      }
-      Text(message.text)
-        .systemFont(Font.custom("SF Pro", size: 16))
-        .foregroundColor(.primary)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 14)
-        .background(message.sender == .user ? Color(NSColor.controlColor) : Color.white)
-        .cornerRadius(CGFloat(16))
-        .shadow(color: .black.opacity(0.06 as Double), radius: 2, y: 1)
-    }
-    .padding(.vertical, 2)
-    .padding(.horizontal, 4)
-  }
-}
-
-// IconButton is now imported from dedicated IconButton.swift file
-
-// MARK: - View Extensions
-
-extension View {
-  func parallaxEffect(strength: CGFloat = 0.08) -> some View {
-    GeometryReader { geo in
-      self.offset(y: -geo.frame(in: .global).minY * strength)
-    }
-  }
-
-  func glowEffect(active: Bool, color: Color = .accentColor, radius: CGFloat = 4) -> some View {
-    self.overlay(
-      self
-        .blur(radius: active ? radius : 0)
-        .opacity(active ? 0.6 : 0)
-        .foregroundColor(color)
-        .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: active)
-    )
-  }
-}
+//
+// WorkspaceChatBubble and BubbleContent are defined in MainWorkspaceView.swift and should not be redeclared here.
+//
+//
+// View extensions parallaxEffect and glowEffect are defined in NovaMindDesignSystem.swift and View+Extensions.swift.
+//

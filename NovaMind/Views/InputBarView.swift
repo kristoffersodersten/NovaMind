@@ -20,7 +20,7 @@ struct InputBarView: View {
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
                     .background(Color.backgroundPrimary)
-                    .cornerRadius(CGFloat(12))
+                    .cornerRadius(12)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(isFocused ? Color.glow : Color.separator, lineWidth: 1)
@@ -74,8 +74,8 @@ struct InputBarView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
-        .background(Color.backgroundPrimary.opacity(0.98 as Double))
-        .shadow(color: .novaBlack.opacity(0.06 as Double), radius: 8, x: 0, y: -2)
+        .background(Color.backgroundPrimary.opacity(0.98))
+        .shadow(color: .novaBlack.opacity(0.06), radius: 8, x: 0, y: -2)
         .onHover { hovering in
             withAnimation(.spring(response: 0.3)) {
                 isHovering = hovering

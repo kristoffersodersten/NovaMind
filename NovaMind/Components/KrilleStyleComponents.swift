@@ -174,7 +174,7 @@ struct KrilleNavigationBarModifier: ViewModifier {
         content
             .background(
                 Rectangle()
-                    .fill(KrilleStyle.Colors.novaBackground.opacity(0.9 as Double))
+                    .fill(KrilleStyle.Colors.novaBackground.opacity(0.9))
                     .shadow(
                         color: KrilleStyle.Shadows.small.color,
                         radius: KrilleStyle.Shadows.small.radius,

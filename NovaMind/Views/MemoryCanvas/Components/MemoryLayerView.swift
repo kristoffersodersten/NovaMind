@@ -12,7 +12,7 @@ struct MemoryLayerView: View {
             HStack {
                 Circle()
                     .fill(memoryType.color)
-                    .frame(width: CGFloat(8), height: CGFloat(8))
+                    .frame(width: 8, height: 8)
 
                 Text(memoryType.displayName)
                     .systemFont(Font.system(size: 14, weight: .medium))
@@ -25,8 +25,8 @@ struct MemoryLayerView: View {
                     .foregroundColor(.foregroundSecondary)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
-                    .background(Color.separator.opacity(0.3 as Double))
-                    .cornerRadius(CGFloat(8))
+                    .background(Color.separator.opacity(0.3))
+                    .cornerRadius(8)
             }
 
             // Memory items
@@ -38,7 +38,7 @@ struct MemoryLayerView: View {
         .padding(.vertical, 8)
         .padding(.horizontal, 12)
         .background(Color.backgroundPrimary)
-        .cornerRadius(CGFloat(12))
-        .shadow(color: .novaBlack.opacity(0.05 as Double), radius: 2, y: 1)
+        .cornerRadius(12)
+        .shadow(color: .novaBlack.opacity(0.05), radius: 2, y: 1)
     }
 }

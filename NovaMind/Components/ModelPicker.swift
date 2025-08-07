@@ -92,7 +92,7 @@ public struct ModelPicker: View {
                 Image(systemName: modelIcon)
                     .foregroundColor(.secondary)
                     .scaleEffect(1.0)
-                    .shadow(color: .accentColor.opacity(0.3 as Double), radius: 1, x: 0, y: 0)
+                    .shadow(color: .accentColor.opacity(0.3), radius: 1, x: 0, y: 0)
 
                 Text(selectedModelDisplayName)
                     .systemFont(Font.system(.body))
@@ -105,12 +105,12 @@ public struct ModelPicker: View {
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Color(NSColor.quaternaryLabelColor))
-            .cornerRadius(CGFloat(6))
+            .cornerRadius(6)
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.accentColor.opacity(0.2 as Double), lineWidth: 1)
-                    .shadow(color: .accentColor.opacity(0.3 as Double), radius: 3, x: 0, y: 1)
-                    .opacity(0.4 as Double)
+                    .stroke(Color.accentColor.opacity(0.2), lineWidth: 1)
+                    .shadow(color: .accentColor.opacity(0.3), radius: 3, x: 0, y: 1)
+                    .opacity(0.4)
             )
             .onHover { hovering in
                 withAnimation(.easeInOut(duration: 0.2)) {

@@ -10,7 +10,7 @@ struct RealtimeUI: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text("Realtime Feed")
-        .systemFont(Font.title)
+        .font(.title)
         .bold()
         .padding(.top)
 
@@ -20,7 +20,7 @@ struct RealtimeUI: View {
             Text(realtimeMessages[messageIndex])
               .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
               .background(Color(NSColor.controlBackgroundColor))
-              .cornerRadius(CGFloat(8))
+              .cornerRadius(8)
               .transition(.move(edge: .bottom).combined(with: .opacity))
           }
         }

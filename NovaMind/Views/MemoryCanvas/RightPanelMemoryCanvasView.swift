@@ -42,9 +42,9 @@ struct RightPanelMemoryCanvasView: View {
 
             Spacer()
         }
-        .background(Color.backgroundPrimary.opacity(0.95 as Double))
+        .background(Color.backgroundPrimary.opacity(0.95))
         .cornerRadius(isLocked || isHovered ? 16 : 8)
-        .shadow(color: .novaBlack.opacity(0.1 as Double), radius: 8, x: 0, y: 2)
+        .shadow(color: .novaBlack.opacity(0.1), radius: 8, x: 0, y: 2)
         .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isLocked)
         .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isHovered)
         .sheet(isPresented: $viewModel.showAddSheet) {

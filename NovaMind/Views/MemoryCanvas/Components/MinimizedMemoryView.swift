@@ -6,8 +6,8 @@ struct MinimizedMemoryView: View {
         VStack(spacing: 8) {
             ForEach(MemoryType.allCases, id: \.self) { memoryType in
                 Circle()
-                    .fill(memoryType.color.opacity(0.7 as Double))
-                    .frame(width: CGFloat(16), height: CGFloat(16))
+                    .fill(memoryType.color.opacity(0.7))
+                    .frame(width: 16, height: 16)
                     .overlay(
                         Image(systemName: memoryType.iconName)
                             .systemFont(Font.system(size: 8))
