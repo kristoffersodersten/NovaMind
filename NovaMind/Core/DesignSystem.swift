@@ -8,6 +8,10 @@ struct ContrastTest {
     let wcagLevel: WCAGLevel
     let description: String
     
+    var isAccessible: Bool {
+        return wcagLevel != .fail
+    }
+    
     enum WCAGLevel: String, CaseIterable {
         case fail = "Fail"
         case aa = "AA"

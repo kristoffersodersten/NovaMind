@@ -19,6 +19,9 @@ class Semantic360ResonanceRadar: ObservableObject {
     private let memoryIntegrator: MemoryIntegrator
     private let outputAnalyzer: OutputAnalyzer
     private let ethicsValidator: EthicsValidator
+    private let patternAnalyzer: PatternAnalyzer
+    private let memoryManager: MemoryManager
+    private let persistenceManager: PersistenceManager
 
     // Configuration
     private let config = Semantic360Config()
@@ -128,6 +131,20 @@ class Semantic360ResonanceRadar: ObservableObject {
     private func flagResonanceMapForReview(_ map: ResonanceMap) async {
         map.status = .flaggedForReview
         await persistenceManager.save(map)
+    }
+    
+    /// Update resonance map with new patterns
+    private func updateResonanceMap(with patterns: [SemanticPattern]) async {
+        guard let currentMap = resonanceMap else {
+            // Create new resonance map if none exists
+            let newMap = ResonanceMap(patterns: patterns, averageResonance: 0.5)
+            resonanceMap = newMap
+            return
+        }
+        
+        // Update existing map with new patterns
+        currentMap.updateWith(patterns: patterns)
+        await persistenceManager.save(currentMap)
     }
 
     /// Get current radar insights

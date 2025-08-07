@@ -19,13 +19,13 @@ struct ComponentPreviewView: View {
 
             HStack(spacing: 12) {
                 Button("Primary") {}
-                    .buttonStyle(PrimaryButtonStyle())
+                    .buttonStyle(.borderedProminent)
 
                 Button("Secondary") {}
-                    .buttonStyle(SecondaryButtonStyle())
+                    .buttonStyle(.bordered)
 
                 Button("Destructive") {}
-                    .buttonStyle(.basicDestructive)
+                    .buttonStyle(.borderedProminent)
             }
         }
     }
